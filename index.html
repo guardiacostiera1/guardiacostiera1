@@ -14,6 +14,8 @@
             --gta-card: rgba(18, 18, 18, 0.95);
             --gta-border: rgba(255, 153, 0, 0.3);
             --telegram-blue: #0088cc;
+            --twitch-purple: #9146FF;
+            --paypal-gold: #ffc439;
             --text-color: #ffffff;
             --text-muted: #aaaaaa;
         }
@@ -31,34 +33,37 @@
         }
 
         header {
-            min-height: 50vh; display: flex; flex-direction: column;
+            min-height: 45vh; display: flex; flex-direction: column;
             justify-content: center; align-items: center; text-align: center;
-            padding: 3rem 1rem; position: relative; border-bottom: 3px solid var(--gta-orange);
+            padding: 2.5rem 1rem; position: relative; border-bottom: 3px solid var(--gta-orange);
             background: linear-gradient(180deg, rgba(255, 153, 0, 0.1) 0%, rgba(8, 8, 8, 0.9) 100%);
         }
 
         .avatar {
-            width: 110px; height: 110px; border-radius: 8px; border: 3px solid var(--gta-orange);
+            width: 100px; height: 100px; border-radius: 8px; border: 3px solid var(--gta-orange);
             box-shadow: 0 0 20px rgba(255, 153, 0, 0.4); margin-bottom: 1rem; background-color: #111;
             display: flex; align-items: center; justify-content: center;
-            font-family: 'Pricedown', sans-serif; font-size: 2.8rem; color: var(--gta-orange); transform: rotate(-2deg);
+            font-family: 'Pricedown', sans-serif; font-size: 2.5rem; color: var(--gta-orange); transform: rotate(-2deg);
         }
 
         h1 {
-            font-family: 'Pricedown', sans-serif; font-size: 3.8rem; letter-spacing: 2px;
+            font-family: 'Pricedown', sans-serif; font-size: 3.5rem; letter-spacing: 2px;
             text-transform: uppercase; color: #fff; text-shadow: 3px 3px 0px #000, -2px -2px 0px var(--gta-orange); line-height: 1;
         }
 
-        .subtitle { font-family: 'Teko', sans-serif; color: var(--gta-orange); font-size: 1.5rem; letter-spacing: 2px; margin-bottom: 1.5rem; }
+        .subtitle { font-family: 'Teko', sans-serif; color: var(--gta-orange); font-size: 1.4rem; letter-spacing: 2px; margin-bottom: 1.5rem; }
 
-        .btn-group { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
+        .btn-group { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
 
         .btn-main {
-            display: inline-flex; align-items: center; gap: 10px; padding: 0.8rem 2rem;
-            font-family: 'Teko', sans-serif; font-size: 1.5rem; font-weight: bold;
+            display: inline-flex; align-items: center; gap: 10px; padding: 0.8rem 1.8rem;
+            font-family: 'Teko', sans-serif; font-size: 1.4rem; font-weight: bold;
             text-transform: uppercase; text-decoration: none; clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%);
             box-shadow: 4px 4px 0px #000; transition: all 0.2s ease; cursor: pointer; border: none;
         }
+
+        .btn-twitch { background: var(--twitch-purple); color: #fff; }
+        .btn-twitch:hover { background: #fff; color: var(--twitch-purple); transform: scale(1.03); }
 
         .btn-tiktok { background: linear-gradient(135deg, var(--gta-orange), #d47a00); color: #000; }
         .btn-tiktok:hover { background: #fff; color: #000; transform: scale(1.03); }
@@ -66,8 +71,11 @@
         .btn-telegram { background: var(--telegram-blue); color: #fff; }
         .btn-telegram:hover { background: #fff; color: var(--telegram-blue); transform: scale(1.03); }
 
+        .btn-donate { background: var(--paypal-gold); color: #000; }
+        .btn-donate:hover { background: #fff; color: #000; transform: scale(1.03); }
+
         .main-layout {
-            max-width: 1200px; margin: 0 auto; padding: 3rem 1.5rem;
+            max-width: 1200px; margin: 0 auto; padding: 2.5rem 1.5rem;
             display: grid; grid-template-columns: 320px 1fr; gap: 2rem;
         }
 
@@ -110,6 +118,17 @@
 
         .section-heading i { color: var(--gta-orange); }
 
+        /* CLASSIFICA CREW */
+        .leaderboard-table {
+            width: 100%; border-collapse: collapse; margin-top: 0.8rem;
+        }
+        .leaderboard-table th, .leaderboard-table td {
+            padding: 8px 12px; text-align: left; border-bottom: 1px solid #222;
+        }
+        .leaderboard-table th { color: var(--gta-orange); font-family: 'Teko', sans-serif; font-size: 1.2rem; }
+        .leaderboard-table td { font-size: 0.95rem; }
+        .leaderboard-table tr:first-child td { color: #f1c40f; font-weight: bold; }
+
         /* MINIGIOCHI STYLES */
         .minigames-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem; }
         @media (max-width: 700px) { .minigames-grid { grid-template-columns: 1fr; } }
@@ -117,9 +136,10 @@
         .game-box {
             background: #0d0d0d; border: 1px solid var(--gta-border); padding: 1.2rem;
             text-align: center; display: flex; flex-direction: column; justify-content: space-between; align-items: center;
+            min-height: 280px;
         }
 
-        .wheel-container { position: relative; width: 180px; height: 180px; margin: 1rem 0; }
+        .wheel-container { position: relative; width: 150px; height: 150px; margin: 0.5rem 0; }
         .wheel {
             width: 100%; height: 100%; border-radius: 50%; border: 4px solid var(--gta-orange);
             background: conic-gradient(#ff9900 0 60deg, #111 60deg 120deg, #d47a00 120deg 180deg, #222 180deg 240deg, #f1c40f 240deg 300deg, #333 300deg 360deg);
@@ -127,10 +147,8 @@
         }
         .wheel-pointer {
             position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
-            width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-top: 15px solid #fff; z-index: 10;
+            width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 12px solid #fff; z-index: 10;
         }
-
-        .clicker-score { font-family: 'Teko', sans-serif; font-size: 2.5rem; color: var(--gta-orange); margin: 0.5rem 0; }
 
         /* FORM RICHIESTA SERVER */
         .server-form { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
@@ -144,10 +162,11 @@
 
         .btn-submit {
             background: var(--gta-orange); color: #000; font-family: 'Teko', sans-serif;
-            font-size: 1.5rem; font-weight: bold; border: none; padding: 0.6rem 2rem; cursor: pointer; text-transform: uppercase;
+            font-size: 1.4rem; font-weight: bold; border: none; padding: 0.5rem 1.5rem; cursor: pointer; text-transform: uppercase;
         }
 
         .btn-submit:hover { background: #fff; color: #000; }
+        .btn-submit:disabled { background: #444; color: #888; cursor: not-allowed; }
 
         .chat-box { height: 180px; overflow-y: auto; border: 1px solid #222; padding: 1rem; background-color: #0a0a0a; margin-bottom: 1rem; display: flex; flex-direction: column; gap: 10px; }
         .chat-msg { font-size: 0.95rem; padding: 8px; background: #141414; border-left: 3px solid var(--gta-orange); }
@@ -163,14 +182,20 @@
     <header>
         <div class="avatar">GTV</div>
         <h1>GUZMAN TV</h1>
-        <p class="subtitle">LIVE STREAMER ON TIKTOK — OFFICIAL PORTAL</p>
+        <p class="subtitle">LIVE STREAMER — OFFICIAL PORTAL</p>
         
         <div class="btn-group">
+            <a href="https://www.twitch.tv/guzmantv7" target="_blank" class="btn-main btn-twitch">
+                <i class="fa-brands fa-twitch"></i> Twitch
+            </a>
             <a href="https://www.tiktok.com/@guzman_tv_?_r=1&_t=ZN-98uIXC6cmIA" target="_blank" class="btn-main btn-tiktok">
                 <i class="fa-brands fa-tiktok"></i> TikTok Live
             </a>
             <a href="https://t.me/+EnU_g0nYS5Q5YjA8" target="_blank" class="btn-main btn-telegram">
                 <i class="fa-brands fa-telegram"></i> Telegram
+            </a>
+            <a href="https://www.paypal.me/FrancescoFerrara175" target="_blank" class="btn-main btn-donate">
+                <i class="fa-brands fa-paypal"></i> Donazioni
             </a>
         </div>
     </header>
@@ -179,6 +204,7 @@
 
         <!-- SIDEBAR -->
         <aside class="sidebar">
+            <!-- STORIA -->
             <div class="side-card">
                 <div class="side-title"><i class="fa-solid fa-book-bookmark"></i> LA STORIA</div>
                 <div class="timeline-compact">
@@ -200,6 +226,21 @@
                 </div>
             </div>
 
+            <!-- CLASSIFICA CREW -->
+            <div class="side-card">
+                <div class="side-title"><i class="fa-solid fa-trophy"></i> CLASSIFICA CREW</div>
+                <p style="font-size: 0.85rem; color: #aaa;">Punteggio aggiornato tramite i giochi!</p>
+                <table class="leaderboard-table">
+                    <thead>
+                        <tr><th>#</th><th>MEMBRO</th><th>PUNTI</th></tr>
+                    </thead>
+                    <tbody id="leaderboardBody">
+                        <!-- Generato da JS -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- RISPETTO -->
             <div class="side-card">
                 <div class="side-title"><i class="fa-solid fa-shield-halved"></i> COMMUNITY</div>
                 <p style="font-size: 0.9rem; color: #bbb;">Supporta il canale lasciando il tuo rispetto virtuale.</p>
@@ -213,6 +254,17 @@
         <!-- CONTENT AREA -->
         <main class="content-area">
 
+            <!-- SCHEDA CANALE TWITCH -->
+            <section class="section-card" style="border-color: var(--twitch-purple); background: linear-gradient(135deg, rgba(145, 70, 255, 0.08) 0%, rgba(18, 18, 18, 0.95) 100%);">
+                <h2 class="section-heading" style="color: #fff;"><i class="fa-brands fa-twitch" style="color: var(--twitch-purple);"></i> CANALE UFFICIALE TWITCH</h2>
+                <p style="color: #ccc; font-size: 1rem;">Segui le dirette in alta definizione, interagisci in chat ed entra a far parte della community su Twitch!</p>
+                <div style="margin-top: 1.2rem; text-align: center;">
+                    <a href="https://www.twitch.tv/guzmantv7" target="_blank" class="btn-main btn-twitch" style="font-size: 1.6rem; padding: 0.8rem 2.5rem;">
+                        <i class="fa-brands fa-twitch"></i> VAI AL CANALE TWITCH
+                    </a>
+                </div>
+            </section>
+
             <!-- PROSSIMA LIVE COUNTDOWN -->
             <section class="section-card">
                 <h2 class="section-heading"><i class="fa-solid fa-clock"></i> PROSSIMA LIVE</h2>
@@ -223,31 +275,84 @@
                 </div>
             </section>
 
-            <!-- SEZIONE MINI-GIOCHI ARCADES -->
+            <!-- SUPPORTA LO STREAMER -->
+            <section class="section-card" style="border-color: var(--paypal-gold); background: linear-gradient(135deg, rgba(255, 196, 57, 0.05) 0%, rgba(18, 18, 18, 0.95) 100%);">
+                <h2 class="section-heading" style="color: var(--paypal-gold);"><i class="fa-solid fa-hand-holding-dollar" style="color: var(--paypal-gold);"></i> SUPPORTA GUZMAN TV</h2>
+                <p style="color: #ccc; font-size: 1rem;">Vuoi sostenere la crescita del canale e contribuire al miglioramento delle live? Fai una donazione spontanea via PayPal!</p>
+                <div style="margin-top: 1.2rem; text-align: center;">
+                    <a href="https://www.paypal.me/FrancescoFerrara175" target="_blank" class="btn-main btn-donate" style="font-size: 1.6rem; padding: 0.8rem 2.5rem;">
+                        <i class="fa-brands fa-paypal"></i> DONA CON PAYPAL
+                    </a>
+                </div>
+            </section>
+
+            <!-- SEZIONE RUOTA DELLA FORTUNA CON TIMER 4 ORE E -200 PUNTI PERDITA -->
             <section class="section-card">
-                <h2 class="section-heading"><i class="fa-solid fa-gamepad"></i> MINI-GIOCHI COMMUNITY</h2>
-                <p style="color: #ccc; font-size: 0.95rem;">Divertiti con i minigiochi ufficiali della Guzman TV Crew mentre aspetti la diretta!</p>
+                <h2 class="section-heading"><i class="fa-solid fa-dharmachakra"></i> RUOTA DELLA FORTUNA (4H COOLDOWN)</h2>
+                <p style="color: #ccc; font-size: 0.95rem;">Gira la ruota per guadagnare punti Crew o rischia di perderne 200! Scegli il tuo nome prima di girare.</p>
+                
+                <div style="margin-top: 1rem; display: flex; gap: 10px; align-items: center; justify-content: center; flex-wrap: wrap;">
+                    <label style="font-family: 'Teko', sans-serif; font-size: 1.3rem; color: var(--gta-orange);">IL TUO NICKNAME CREW:</label>
+                    <select id="userSelect" style="padding: 0.5rem; background: #0d0d0d; color: #fff; border: 1px solid #333; font-family: 'Oswald', sans-serif;"></select>
+                </div>
+
+                <div style="display: flex; flex-direction: column; align-items: center; margin-top: 1rem;">
+                    <div class="wheel-container">
+                        <div class="wheel-pointer"></div>
+                        <div class="wheel" id="wheel"></div>
+                    </div>
+                    <p id="wheelResult" style="font-size: 1.1rem; color: #fff; margin: 0.5rem 0; font-family: 'Teko', sans-serif; font-size: 1.4rem;">Fai il tuo giro!</p>
+                    <p id="wheelTimer" style="color: var(--gta-orange); font-size: 0.9rem; margin-bottom: 0.5rem;"></p>
+                    <button class="btn-submit" id="spinBtn" onclick="spinWheel()">GIRA LA RUOTA</button>
+                </div>
+            </section>
+
+            <!-- SEZIONE 4 ALTRI MINI-GIOCHI -->
+            <section class="section-card">
+                <h2 class="section-heading"><i class="fa-solid fa-gamepad"></i> ALTRI 4 MINI-GIOCHI ARCADE</h2>
 
                 <div class="minigames-grid">
-                    <!-- GIOCO 1: RUOTA DELLA FORTUNA -->
+                    
+                    <!-- GIOCO 1: CASINO SLOT MACHINE -->
                     <div class="game-box">
-                        <h3 style="font-family: 'Teko', sans-serif; font-size: 1.5rem; color: var(--gta-orange);">RUOTA DEL FORTUNATO</h3>
-                        <div class="wheel-container">
-                            <div class="wheel-pointer"></div>
-                            <div class="wheel" id="wheel"></div>
-                        </div>
-                        <p id="wheelResult" style="font-size: 0.9rem; min-height: 24px; color: #fff;">Gira la ruota per un premio!</p>
-                        <button class="btn-submit" onclick="spinWheel()" style="margin-top: 0.5rem; padding: 0.4rem 1rem;">GIRA LA RUOTA</button>
+                        <h3 style="font-family: 'Teko', sans-serif; font-size: 1.4rem; color: var(--gta-orange);">1. CASINO SLOT MACHINE</h3>
+                        <div id="slotDisplay" style="font-size: 2.5rem; letter-spacing: 10px; margin: 0.5rem 0;">🎰 🎰 🎰</div>
+                        <p id="slotResult" style="font-size: 0.9rem; color: #aaa;">Tenta la fortuna!</p>
+                        <button class="btn-submit" onclick="playSlot()">GIOCA SLOT (+200 / -200)</button>
                     </div>
 
-                    <!-- GIOCO 2: HACKER CLICKER RP -->
+                    <!-- GIOCO 2: INDOVINA LA COPERTURA -->
                     <div class="game-box">
-                        <h3 style="font-family: 'Teko', sans-serif; font-size: 1.5rem; color: var(--gta-orange);">HACKER CLICKER RP</h3>
-                        <p style="font-size: 0.85rem; color: #aaa;">Hackera il database del server prima che scada il tempo!</p>
-                        <div class="clicker-score" id="clickScore">0 GB</div>
-                        <p id="clickTimer" style="color: #fff; font-size: 0.9rem;">Tempo: 10s</p>
-                        <button class="btn-submit" id="hackBtn" onclick="hackClick()" style="margin-top: 0.5rem; padding: 0.4rem 1rem;">HACKERA SISTEMA</button>
+                        <h3 style="font-family: 'Teko', sans-serif; font-size: 1.4rem; color: var(--gta-orange);">2. TROVA IL BOTTINO</h3>
+                        <p style="font-size: 0.85rem; color: #aaa;">Trova quale cassa contiene il bottino!</p>
+                        <div style="display: flex; gap: 10px; margin: 1rem 0;">
+                            <button class="btn-submit" onclick="guessBox(1)">📦 1</button>
+                            <button class="btn-submit" onclick="guessBox(2)">📦 2</button>
+                            <button class="btn-submit" onclick="guessBox(3)">📦 3</button>
+                        </div>
+                        <p id="boxResult" style="font-size: 0.9rem; color: #aaa;">Scegli una cassa...</p>
                     </div>
+
+                    <!-- GIOCO 3: REAZIONE FUGA POLIZIA -->
+                    <div class="game-box">
+                        <h3 style="font-family: 'Teko', sans-serif; font-size: 1.4rem; color: var(--gta-orange);">3. FUGA DALLA POLIZIA</h3>
+                        <p style="font-size: 0.85rem; color: #aaa;">Clicca "SCAPPA!" appena la spia diventa VERDE!</p>
+                        <div id="reflexBox" style="width: 80px; height: 80px; background: red; margin: 0.5rem 0; border-radius: 50%;"></div>
+                        <p id="reflexResult" style="font-size: 0.9rem; color: #aaa;">Premi avvia...</p>
+                        <button class="btn-submit" id="reflexBtn" onclick="startReflexTest()">AVVIA FUGA</button>
+                    </div>
+
+                    <!-- GIOCO 4: QUIZ RP GTA -->
+                    <div class="game-box">
+                        <h3 style="font-family: 'Teko', sans-serif; font-size: 1.4rem; color: var(--gta-orange);">4. QUIZ LORE RP</h3>
+                        <p id="quizQuestion" style="font-size: 0.85rem; color: #fff; margin-bottom: 0.5rem;">Cosa significa FailRP?</p>
+                        <div style="display: flex; flex-direction: column; gap: 5px; width: 100%;">
+                            <button class="btn-submit" style="font-size: 0.9rem; padding: 0.3rem;" onclick="answerQuiz(false)">A) Guidare un'auto veloce</button>
+                            <button class="btn-submit" style="font-size: 0.9rem; padding: 0.3rem;" onclick="answerQuiz(true)">B) Azione irrealistica fuori dal RP</button>
+                        </div>
+                        <p id="quizResult" style="font-size: 0.85rem; color: #aaa; margin-top: 0.4rem;">Scegli la risposta corretta</p>
+                    </div>
+
                 </div>
             </section>
 
@@ -308,21 +413,86 @@
     </footer>
 
     <script>
-        // --- LOGICA MINI-GIOCO 1: RUOTA DELLA FORTUNA ---
-        let wheelSpinning = false;
-        const rewards = [
-            "+500 Rispetto Crew!",
-            "Accesso al VIP Lounge RP!",
-            "Bannato per 5 Minuti (Scherzo!)",
-            "Sconto sullo Store In Arrivo!",
-            "Shoutout Live in Chat TikTok!",
-            "Tiro Sfortunato! Riprova!"
+        // --- DATA E CLASSIFICA CREW ---
+        const defaultCrew = [
+            { name: "Guzman_Boss", score: 2500 },
+            { name: "Franklin_99", score: 1800 },
+            { name: "Trevor_RP", score: 1400 },
+            { name: "Michael_GT", score: 1100 },
+            { name: "User_Guest", score: 800 }
         ];
 
-        function spinWheel() {
-            if (wheelSpinning) return;
-            wheelSpinning = true;
+        let crewData = JSON.parse(localStorage.getItem('guzman_crew')) || defaultCrew;
+
+        function updateLeaderboard() {
+            crewData.sort((a, b) => b.score - a.score);
+            const body = document.getElementById('leaderboardBody');
+            const select = document.getElementById('userSelect');
             
+            body.innerHTML = '';
+            select.innerHTML = '';
+
+            crewData.forEach((member, index) => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td>${index + 1}</td><td>${escapeHTML(member.name)}</td><td>${member.score} pts</td>`;
+                body.appendChild(tr);
+
+                const option = document.createElement('option');
+                option.value = member.name;
+                option.innerText = member.name;
+                select.appendChild(option);
+            });
+
+            localStorage.setItem('guzman_crew', JSON.stringify(crewData));
+        }
+
+        function addScore(amount) {
+            const selectedName = document.getElementById('userSelect').value;
+            const user = crewData.find(m => m.name === selectedName);
+            if (user) {
+                user.score += amount;
+                updateLeaderboard();
+            }
+        }
+
+        // --- RUOTA DELLA FORTUNA CON COOLDOWN DI 4 ORE E PENALITÀ -200 PUNTI ---
+        let wheelSpinning = false;
+        const wheelOutcomes = [
+            { text: "Vinto +300 Punti!", score: 300 },
+            { text: "HAI PERSO! -200 Punti", score: -200 },
+            { text: "Vinto +500 Punti!", score: 500 },
+            { text: "HAI PERSO! -200 Punti", score: -200 },
+            { text: "Vinto +100 Punti!", score: 100 },
+            { text: "HAI PERSO! -200 Punti", score: -200 }
+        ];
+
+        function checkWheelCooldown() {
+            const lastSpin = localStorage.getItem('guzman_last_spin');
+            const btn = document.getElementById('spinBtn');
+            const timerDisplay = document.getElementById('wheelTimer');
+
+            if (lastSpin) {
+                const elapsed = Date.now() - parseInt(lastSpin);
+                const fourHours = 4 * 60 * 60 * 1000;
+
+                if (elapsed < fourHours) {
+                    btn.disabled = true;
+                    const remainingMs = fourHours - elapsed;
+                    const hours = Math.floor(remainingMs / (1000 * 60 * 60));
+                    const mins = Math.floor((remainingMs % (1000 * 60 * 60)) / (1000 * 60));
+                    timerDisplay.innerText = `Prossimo giro disponibile tra: ${hours}h ${mins}m`;
+                    return false;
+                }
+            }
+            btn.disabled = false;
+            timerDisplay.innerText = "Ruota pronta per girare!";
+            return true;
+        }
+
+        function spinWheel() {
+            if (wheelSpinning || !checkWheelCooldown()) return;
+
+            wheelSpinning = true;
             const wheel = document.getElementById('wheel');
             const resultText = document.getElementById('wheelResult');
             resultText.innerText = "Giro in corso...";
@@ -332,42 +502,95 @@
 
             setTimeout(() => {
                 wheelSpinning = false;
-                const rewardIndex = Math.floor(Math.random() * rewards.length);
-                resultText.innerText = "🏆 Risultato: " + rewards[rewardIndex];
+                const outcome = wheelOutcomes[Math.floor(Math.random() * wheelOutcomes.length)];
+                resultText.innerText = outcome.text;
+                
+                addScore(outcome.score);
+
+                localStorage.setItem('guzman_last_spin', Date.now().toString());
+                checkWheelCooldown();
             }, 3000);
         }
 
-        // --- LOGICA MINI-GIOCO 2: HACKER CLICKER RP ---
-        let hackCount = 0;
-        let timeLeft = 10;
-        let gameActive = false;
-        let timerInterval = null;
+        // --- 1. GIOCO CASINO SLOT ---
+        const slotSymbols = ["🍎", "🍋", "🔔", "🎰", "💎"];
+        function playSlot() {
+            const s1 = slotSymbols[Math.floor(Math.random() * slotSymbols.length)];
+            const s2 = slotSymbols[Math.floor(Math.random() * slotSymbols.length)];
+            const s3 = slotSymbols[Math.floor(Math.random() * slotSymbols.length)];
+            
+            document.getElementById('slotDisplay').innerText = `${s1} ${s2} ${s3}`;
+            const res = document.getElementById('slotResult');
 
-        function hackClick() {
-            const btn = document.getElementById('hackBtn');
-            const scoreDisplay = document.getElementById('clickScore');
-            const timerDisplay = document.getElementById('clickTimer');
-
-            if (!gameActive && timeLeft === 10) {
-                gameActive = true;
-                btn.innerText = "CLICCA VELOCE!";
-                timerInterval = setInterval(() => {
-                    timeLeft--;
-                    timerDisplay.innerText = `Tempo: ${timeLeft}s`;
-                    if (timeLeft <= 0) {
-                        clearInterval(timerInterval);
-                        gameActive = false;
-                        btn.innerText = "GIOCA ANCORA";
-                        alert(`Hacking Completato! Hai scaricato ${hackCount} GB di dati!`);
-                        hackCount = 0;
-                        timeLeft = 10;
-                    }
-                }, 1000);
+            if (s1 === s2 && s2 === s3) {
+                res.innerText = "JACKPOT! +300 Punti Crew!";
+                addScore(300);
+            } else if (s1 === s2 || s2 === s3 || s1 === s3) {
+                res.innerText = "Coppia! +100 Punti!";
+                addScore(100);
+            } else {
+                res.innerText = "Nessuna combinazione! -200 Punti!";
+                addScore(-200);
             }
+        }
 
-            if (gameActive) {
-                hackCount += 2;
-                scoreDisplay.innerText = `${hackCount} GB`;
+        // --- 2. GIOCO TROVA IL BOTTINO ---
+        function guessBox(boxNum) {
+            const winningBox = Math.floor(Math.random() * 3) + 1;
+            const res = document.getElementById('boxResult');
+            if (boxNum === winningBox) {
+                res.innerText = `CORRETTO! Cassa ${boxNum} piena! +150 Punti!`;
+                addScore(150);
+            } else {
+                res.innerText = `SBAGLIATO! Il bottino era nella cassa ${winningBox}. -200 Punti!`;
+                addScore(-200);
+            }
+        }
+
+        // --- 3. GIOCO REAZIONE FUGA ---
+        let reflexStartTime;
+        let reflexTimeout;
+        function startReflexTest() {
+            const box = document.getElementById('reflexBox');
+            const res = document.getElementById('reflexResult');
+            const btn = document.getElementById('reflexBtn');
+            
+            box.style.background = "red";
+            res.innerText = "Pronto...";
+            btn.onclick = () => {
+                res.innerText = "Troppo presto! Fai ripartire. -200 Punti!";
+                clearTimeout(reflexTimeout);
+                addScore(-200);
+                btn.innerText = "AVVIA FUGA";
+                btn.onclick = startReflexTest;
+            };
+
+            const randomDelay = Math.floor(2000 + Math.random() * 3000);
+            reflexTimeout = setTimeout(() => {
+                box.style.background = "green";
+                res.innerText = "SCAPPA! CLICCA ORA!";
+                reflexStartTime = Date.now();
+                btn.innerText = "SCAPPA!";
+                btn.onclick = () => {
+                    const reactionTime = Date.now() - reflexStartTime;
+                    res.innerText = `Fuga riuscita in ${reactionTime}ms! +100 Punti!`;
+                    addScore(100);
+                    box.style.background = "red";
+                    btn.innerText = "AVVIA FUGA";
+                    btn.onclick = startReflexTest;
+                };
+            }, randomDelay);
+        }
+
+        // --- 4. GIOCO QUIZ RP ---
+        function answerQuiz(isCorrect) {
+            const res = document.getElementById('quizResult');
+            if (isCorrect) {
+                res.innerText = "Esatto! Risposta corretta (+100 Punti).";
+                addScore(100);
+            } else {
+                res.innerText = "Errato! Risposta sbagliata (-200 Punti).";
+                addScore(-200);
             }
         }
 
@@ -398,7 +621,9 @@
             }
         }
         setInterval(updateCountdown, 1000);
+        setInterval(checkWheelCooldown, 60000);
         updateCountdown();
+        checkWheelCooldown();
 
         // --- INVIO RICHIESTA SERVER VIA TELEGRAM BOT ---
         async function handleServerRequest(e) {
@@ -409,7 +634,6 @@
             const contact = document.getElementById('serverContact').value;
             const details = document.getElementById('serverDetails').value;
 
-            // Inserisci qui il tuo Token Bot Telegram e Chat ID per ricevere le notifiche
             const telegramBotToken = 'IL_TUO_BOT_TOKEN_QUI';
             const telegramChatId = 'IL_TUO_CHAT_ID_QUI';
 
@@ -426,12 +650,12 @@
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ chat_id: telegramChatId, text: message, parse_mode: 'Markdown' })
                     });
-                    alert("Richiesta inviata con successo! Guzman ha ricevuto la notifica su Telegram.");
+                    alert("Richiesta inviata con successo!");
                 } catch (error) {
                     alert("Errore nell'invio della richiesta.");
                 }
             } else {
-                alert("Richiesta registrata con successo! (Ricordati di configurare il Bot Telegram con il tuo Token).");
+                alert("Richiesta registrata con successo!");
             }
             document.getElementById('serverForm').reset();
         }
@@ -446,7 +670,7 @@
         });
 
         let commentsList = JSON.parse(localStorage.getItem('guzman_comments')) || [
-            { name: "Franklin", text: "Bellissimi i mini giochi nel sito!" }
+            { name: "Franklin", text: "Ci vediamo su Twitch stasera!" }
         ];
 
         function renderComments() {
@@ -476,6 +700,7 @@
             return str.replace(/[&<>'"]/g, tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag));
         }
 
+        updateLeaderboard();
         renderComments();
     </script>
 </body>
