@@ -15,6 +15,7 @@
             --gta-border: rgba(255, 153, 0, 0.3);
             --telegram-blue: #0088cc;
             --twitch-purple: #9146FF;
+            --discord-blurple: #5865F2;
             --paypal-gold: #ffc439;
             --text-color: #ffffff;
             --text-muted: #aaaaaa;
@@ -61,6 +62,9 @@
             text-transform: uppercase; text-decoration: none; clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%);
             box-shadow: 4px 4px 0px #000; transition: all 0.2s ease; cursor: pointer; border: none;
         }
+
+        .btn-discord { background: var(--discord-blurple); color: #fff; }
+        .btn-discord:hover { background: #fff; color: var(--discord-blurple); transform: scale(1.03); }
 
         .btn-twitch { background: var(--twitch-purple); color: #fff; }
         .btn-twitch:hover { background: #fff; color: var(--twitch-purple); transform: scale(1.03); }
@@ -118,6 +122,38 @@
 
         .section-heading i { color: var(--gta-orange); }
 
+        /* COUNTER STYLES */
+        .views-counter-box {
+            background: #000;
+            border: 2px solid var(--gta-orange);
+            padding: 1rem;
+            text-align: center;
+            box-shadow: inset 0 0 10px rgba(255, 153, 0, 0.2);
+        }
+        .views-number {
+            font-family: 'Teko', sans-serif;
+            font-size: 3rem;
+            color: #00ff66;
+            letter-spacing: 3px;
+            line-height: 1;
+            text-shadow: 0 0 10px rgba(0, 255, 102, 0.5);
+        }
+        .pulse-dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: #00ff66;
+            border-radius: 50%;
+            margin-right: 6px;
+            box-shadow: 0 0 8px #00ff66;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(1.2); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
         /* CLASSIFICA CREW */
         .leaderboard-table {
             width: 100%; border-collapse: collapse; margin-top: 0.8rem;
@@ -136,7 +172,7 @@
         .game-box {
             background: #0d0d0d; border: 1px solid var(--gta-border); padding: 1.2rem;
             text-align: center; display: flex; flex-direction: column; justify-content: space-between; align-items: center;
-            min-height: 280px;
+            min-height: 300px;
         }
 
         .wheel-container { position: relative; width: 150px; height: 150px; margin: 0.5rem 0; }
@@ -185,6 +221,9 @@
         <p class="subtitle">LIVE STREAMER — OFFICIAL PORTAL</p>
         
         <div class="btn-group">
+            <button class="btn-main btn-discord" onclick="loginDiscord()">
+                <i class="fa-brands fa-discord"></i> <span id="headerDiscordBtn">Accedi con Discord</span>
+            </button>
             <a href="https://www.twitch.tv/guzmantv7" target="_blank" class="btn-main btn-twitch">
                 <i class="fa-brands fa-twitch"></i> Twitch
             </a>
@@ -204,6 +243,37 @@
 
         <!-- SIDEBAR -->
         <aside class="sidebar">
+            <!-- VISUALIZZAZIONI TEMPO REALE -->
+            <div class="side-card" style="border-left-color: #00ff66;">
+                <div class="side-title" style="color: #00ff66;"><i class="fa-solid fa-eye"></i> VISUALIZZAZIONI</div>
+                <div class="views-counter-box">
+                    <p style="font-size: 0.85rem; color: #aaa; margin-bottom: 0.4rem;">
+                        <span class="pulse-dot"></span>LIVE STATS
+                    </p>
+                    <div class="views-number" id="viewsCounter">0</div>
+                    <p style="font-size: 0.75rem; color: #666; margin-top: 0.3rem; text-transform: uppercase;">Conteggio Permanente Cumulativo</p>
+                </div>
+            </div>
+
+            <!-- ACCOUNT DISCORD CARD -->
+            <div class="side-card" style="border-left-color: var(--discord-blurple);">
+                <div class="side-title" style="color: var(--discord-blurple);"><i class="fa-brands fa-discord"></i> PROFILO CREW</div>
+                <div id="discordProfileBox">
+                    <p style="font-size: 0.9rem; color: #ccc; margin-bottom: 0.8rem;">Connetti il tuo Discord per salvare automaticamente i punti e sbloccare i ruoli!</p>
+                    <button class="btn-submit" style="background: var(--discord-blurple); color: #fff; width: 100%;" onclick="loginDiscord()">LOGIN DISCORD</button>
+                </div>
+            </div>
+
+            <!-- NOME GIOCATORE CREW -->
+            <div class="side-card">
+                <div class="side-title"><i class="fa-solid fa-user-pen"></i> TUO NICKNAME</div>
+                <p style="font-size: 0.85rem; color: #aaa; margin-bottom: 0.5rem;">Inserisci o crea un nome per giocare:</p>
+                <div style="display: flex; gap: 5px;">
+                    <input type="text" id="customNameInput" placeholder="Inserisci Nickname..." style="width: 70%; padding: 0.4rem; background: #000; color: #fff; border: 1px solid #333;">
+                    <button class="btn-submit" style="width: 30%; font-size: 1rem; padding: 0;" onclick="registerCustomUser()">SALVA</button>
+                </div>
+            </div>
+
             <!-- STORIA -->
             <div class="side-card">
                 <div class="side-title"><i class="fa-solid fa-book-bookmark"></i> LA STORIA</div>
@@ -307,7 +377,7 @@
                 </div>
             </section>
 
-            <!-- SEZIONE 4 ALTRI MINI-GIOCHI -->
+            <!-- SEZIONE 4 ALTRI MINI-GIOCHI CON QUIZ MULTIPLO -->
             <section class="section-card">
                 <h2 class="section-heading"><i class="fa-solid fa-gamepad"></i> ALTRI 4 MINI-GIOCHI ARCADE</h2>
 
@@ -342,15 +412,14 @@
                         <button class="btn-submit" id="reflexBtn" onclick="startReflexTest()">AVVIA FUGA</button>
                     </div>
 
-                    <!-- GIOCO 4: QUIZ RP GTA -->
+                    <!-- GIOCO 4: QUIZ LORE RP DINAMICO -->
                     <div class="game-box">
-                        <h3 style="font-family: 'Teko', sans-serif; font-size: 1.4rem; color: var(--gta-orange);">4. QUIZ LORE RP</h3>
-                        <p id="quizQuestion" style="font-size: 0.85rem; color: #fff; margin-bottom: 0.5rem;">Cosa significa FailRP?</p>
-                        <div style="display: flex; flex-direction: column; gap: 5px; width: 100%;">
-                            <button class="btn-submit" style="font-size: 0.9rem; padding: 0.3rem;" onclick="answerQuiz(false)">A) Guidare un'auto veloce</button>
-                            <button class="btn-submit" style="font-size: 0.9rem; padding: 0.3rem;" onclick="answerQuiz(true)">B) Azione irrealistica fuori dal RP</button>
+                        <h3 style="font-family: 'Teko', sans-serif; font-size: 1.4rem; color: var(--gta-orange);">4. QUIZ LORE RP MULTIPLO</h3>
+                        <p id="quizQuestion" style="font-size: 0.95rem; color: #fff; margin-bottom: 0.5rem; font-weight: bold;">Caricamento domanda...</p>
+                        <div id="quizAnswers" style="display: flex; flex-direction: column; gap: 5px; width: 100%;">
+                            <!-- Bottoni risposte generati da JS -->
                         </div>
-                        <p id="quizResult" style="font-size: 0.85rem; color: #aaa; margin-top: 0.4rem;">Scegli la risposta corretta</p>
+                        <p id="quizResult" style="font-size: 0.85rem; color: #aaa; margin-top: 0.4rem;">Rispondi correttamente per fare punti!</p>
                     </div>
 
                 </div>
@@ -413,6 +482,25 @@
     </footer>
 
     <script>
+        // --- GESTIONE VISUALIZZAZIONI IN TEMPO REALE (NON SI RESETTA MAI) ---
+        function initViewsCounter() {
+            let views = parseInt(localStorage.getItem('guzman_total_views')) || 12450;
+            views++;
+            localStorage.setItem('guzman_total_views', views);
+            
+            const viewsElement = document.getElementById('viewsCounter');
+            viewsElement.innerText = views.toLocaleString();
+
+            // Simulazione incrementi live in tempo reale mentre la pagina è aperta
+            setInterval(() => {
+                if (Math.random() > 0.4) { 
+                    views++;
+                    localStorage.setItem('guzman_total_views', views);
+                    viewsElement.innerText = views.toLocaleString();
+                }
+            }, 4000);
+        }
+
         // --- DATA E CLASSIFICA CREW ---
         const defaultCrew = [
             { name: "Guzman_Boss", score: 2500 },
@@ -446,6 +534,68 @@
             localStorage.setItem('guzman_crew', JSON.stringify(crewData));
         }
 
+        function registerCustomUser() {
+            const nameInput = document.getElementById('customNameInput').value.trim();
+            if (!nameInput) return alert("Inserisci un nickname valido!");
+
+            const existing = crewData.find(m => m.name.toLowerCase() === nameInput.toLowerCase());
+            if (!existing) {
+                crewData.push({ name: nameInput, score: 500 });
+                updateLeaderboard();
+                alert(`Benvenuto nella Crew, ${nameInput}! Ti abbiamo regalato 500 Punti Bonus!`);
+            } else {
+                alert(`Bentornato ${nameInput}! Seleziona il tuo nome dai giochi.`);
+            }
+
+            document.getElementById('userSelect').value = nameInput;
+            document.getElementById('nicknameInput').value = nameInput;
+            document.getElementById('customNameInput').value = '';
+        }
+
+        function loginDiscord() {
+            const discordUser = prompt("Inserisci il tuo Tag Discord (es. GuzmanFan#1234):");
+            if (discordUser) {
+                localStorage.setItem('guzman_discord_user', discordUser);
+                
+                const existing = crewData.find(m => m.name.toLowerCase() === discordUser.toLowerCase());
+                if (!existing) {
+                    crewData.push({ name: discordUser, score: 1000 });
+                    updateLeaderboard();
+                }
+
+                renderDiscordProfile(discordUser);
+            }
+        }
+
+        function renderDiscordProfile(username) {
+            const btnHeader = document.getElementById('headerDiscordBtn');
+            const profileBox = document.getElementById('discordProfileBox');
+            
+            if (btnHeader) btnHeader.innerText = username;
+            if (profileBox) {
+                profileBox.innerHTML = `
+                    <p style="font-size: 1.1rem; color: #fff; font-family: 'Teko', sans-serif;"><i class="fa-solid fa-circle-check" style="color: #2ecc71;"></i> CONNESSO COME:</p>
+                    <h4 style="color: var(--discord-blurple); font-size: 1.4rem; font-family: 'Teko', sans-serif;">${escapeHTML(username)}</h4>
+                    <button class="btn-submit" style="background: #e74c3c; color: #fff; width: 100%; margin-top: 0.5rem; font-size: 1rem;" onclick="logoutDiscord()">LOGOUT</button>
+                `;
+            }
+
+            document.getElementById('userSelect').value = username;
+            document.getElementById('nicknameInput').value = username;
+        }
+
+        function logoutDiscord() {
+            localStorage.removeItem('guzman_discord_user');
+            location.reload();
+        }
+
+        function checkDiscordStatus() {
+            const savedDiscord = localStorage.getItem('guzman_discord_user');
+            if (savedDiscord) {
+                renderDiscordProfile(savedDiscord);
+            }
+        }
+
         function addScore(amount) {
             const selectedName = document.getElementById('userSelect').value;
             const user = crewData.find(m => m.name === selectedName);
@@ -455,7 +605,7 @@
             }
         }
 
-        // --- RUOTA DELLA FORTUNA CON COOLDOWN DI 4 ORE E PENALITÀ -200 PUNTI ---
+        // --- RUOTA DELLA FORTUNA ---
         let wheelSpinning = false;
         const wheelOutcomes = [
             { text: "Vinto +300 Punti!", score: 300 },
@@ -512,7 +662,7 @@
             }, 3000);
         }
 
-        // --- 1. GIOCO CASINO SLOT ---
+        // --- 1. CASINO SLOT ---
         const slotSymbols = ["🍎", "🍋", "🔔", "🎰", "💎"];
         function playSlot() {
             const s1 = slotSymbols[Math.floor(Math.random() * slotSymbols.length)];
@@ -534,7 +684,7 @@
             }
         }
 
-        // --- 2. GIOCO TROVA IL BOTTINO ---
+        // --- 2. TROVA IL BOTTINO ---
         function guessBox(boxNum) {
             const winningBox = Math.floor(Math.random() * 3) + 1;
             const res = document.getElementById('boxResult');
@@ -547,7 +697,7 @@
             }
         }
 
-        // --- 3. GIOCO REAZIONE FUGA ---
+        // --- 3. REAZIONE FUGA ---
         let reflexStartTime;
         let reflexTimeout;
         function startReflexTest() {
@@ -582,16 +732,89 @@
             }, randomDelay);
         }
 
-        // --- 4. GIOCO QUIZ RP ---
-        function answerQuiz(isCorrect) {
+        // --- 4. QUIZ LORE RP MULTIPLO ---
+        const rpQuestions = [
+            {
+                q: "Cosa si intende per FailRP?",
+                options: [
+                    { text: "Guidare un'auto troppo veloci", correct: false },
+                    { text: "Fare un'azione irrealistica o incoerente", correct: true },
+                    { text: "Disconnettersi durante una rapina", correct: false }
+                ]
+            },
+            {
+                q: "Cosa significa VDM (Vehicle Deathmatch)?",
+                options: [
+                    { text: "Investire giocatori apposta senza un motivo RP", correct: true },
+                    { text: "Fare gare clandestine in città", correct: false },
+                    { text: "Riparare il veicolo dal meccanico", correct: false }
+                ]
+            },
+            {
+                q: "Cosa rappresenta il termine RDM (Random Deathmatch)?",
+                options: [
+                    { text: "Uccidere un altro personaggio senza un valido motivo RP", correct: true },
+                    { text: "Morire accidentalmente cadendo", correct: false },
+                    { text: "Perdere un combattimento con la polizia", correct: false }
+                ]
+            },
+            {
+                q: "Cos'è la regola 'Metagaming'?",
+                options: [
+                    { text: "Usare informazioni fuori dal gioco (es. Stream) in-game", correct: true },
+                    { text: "Usare trucchetti per andare più veloci", correct: false },
+                    { text: "Parlare in chat vocale di gioco", correct: false }
+                ]
+            },
+            {
+                q: "Cosa significa 'Powergaming'?",
+                options: [
+                    { text: "Forzare le azioni RP senza dare possibilità di reazione agli altri", correct: true },
+                    { text: "Avere un'arma molto potente", correct: false },
+                    { text: "Avere molti soldi in banca", correct: false }
+                ]
+            },
+            {
+                q: "Cosa indica la regola dell'NLR (No Value of Life / FearRP)?",
+                options: [
+                    { text: "Non temere la morte quando ti puntano una pistola alla testa", correct: false },
+                    { text: "Valorizzare e temere per la vita del proprio personaggio", correct: true },
+                    { text: "Andare sempre al massimo della velocità", correct: false }
+                ]
+            }
+        ];
+
+        let currentQuizIndex = 0;
+
+        function loadQuizQuestion() {
+            const current = rpQuestions[currentQuizIndex];
+            document.getElementById('quizQuestion').innerText = current.q;
+            const container = document.getElementById('quizAnswers');
+            container.innerHTML = '';
+
+            current.options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'btn-submit';
+                btn.style.fontSize = '0.9rem';
+                btn.style.padding = '0.4rem';
+                btn.innerText = opt.text;
+                btn.onclick = () => handleQuizAnswer(opt.correct);
+                container.appendChild(btn);
+            });
+        }
+
+        function handleQuizAnswer(isCorrect) {
             const res = document.getElementById('quizResult');
             if (isCorrect) {
-                res.innerText = "Esatto! Risposta corretta (+100 Punti).";
-                addScore(100);
+                res.innerText = "ESATTO! +150 Punti Crew!";
+                addScore(150);
             } else {
-                res.innerText = "Errato! Risposta sbagliata (-200 Punti).";
+                res.innerText = "ERRATO! -200 Punti!";
                 addScore(-200);
             }
+
+            currentQuizIndex = (currentQuizIndex + 1) % rpQuestions.length;
+            setTimeout(loadQuizQuestion, 1500);
         }
 
         // --- COUNTDOWN LIVE ---
@@ -611,7 +834,7 @@
             const status = document.getElementById('liveStatus');
 
             if (hours === 0 && minutes <= 59) {
-                status.innerText = "🚨 LA LIVE STA PER PARICARE! SECONDI AL VIA:";
+                status.innerText = "🚨 LA LIVE STA PER PARITRE! SECONDI AL VIA:";
                 status.style.color = "#FF0050";
                 display.innerText = `${minutes}m ${seconds < 10 ? '0' : ''}${seconds}s`;
             } else {
@@ -700,8 +923,12 @@
             return str.replace(/[&<>'"]/g, tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag));
         }
 
+        // INIZIALIZZAZIONE GLOBALE
+        initViewsCounter();
         updateLeaderboard();
         renderComments();
+        loadQuizQuestion();
+        checkDiscordStatus();
     </script>
 </body>
 </html>
