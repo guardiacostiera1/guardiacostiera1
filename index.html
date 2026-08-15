@@ -6,8 +6,11 @@
     <style>
         body {
             background-color: #008080; /* Colore di fallback */
-            background-image: url('sfondog.png'); /* Sfondo personalizzato */
-            background-repeat: repeat; /* Effetto mosaico stile anni '90 */
+            background-image: url('sfondog.png'); /* Sfondo personalizzato con la barca */
+            background-repeat: no-repeat; /* Evita la ripetizione a mosaico */
+            background-size: cover; /* Riempie lo schermo con un'immagine unica */
+            background-position: center; /* Centra l'immagine */
+            background-attachment: fixed; /* Mantiene lo sfondo fisso durante lo scorrimento */
             font-family: "MS Sans Serif", Tahoma, sans-serif;
             font-size: 11px;
             margin: 10px;
@@ -187,8 +190,8 @@
         
         <br>
 
-        <!-- Sezione Intro con Logo inserito -->
-        <div class="inset-box" style="text-align: center; background-color: #f5f5f0;">
+        <!-- Sezione Intro con Logo inserito e sfondo color crema -->
+        <div class="inset-box" style="text-align: center; background-color: #fdfbf7;">
             <img src="logo.png" alt="Logo Apulia 90" style="max-width: 280px; height: auto; border: 1px solid #808080; margin-bottom: 8px;">
             <h2 style="margin: 0 0 4px 0; font-size: 14px; color: #000080;">UFFICIO LOCALE MARITTIMO - PORTO CESAREO</h2>
             <b>Terminal Operativo Locale (S.I.T.) - Anno 1994</b><br>
