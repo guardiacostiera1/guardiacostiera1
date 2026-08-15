@@ -18,11 +18,7 @@
             --text-muted: #aaaaaa;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             background-color: var(--gta-dark);
@@ -31,233 +27,110 @@
             background-image: 
                 radial-gradient(circle at center, rgba(0,0,0,0.6) 0%, rgba(8,8,8,0.95) 100%),
                 url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-attachment: fixed;
-            background-position: center;
+            background-size: cover; background-attachment: fixed; background-position: center;
         }
 
-        /* HEADER ELEGANTE GTA */
         header {
-            min-height: 55vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 3rem 1rem;
-            position: relative;
-            border-bottom: 3px solid var(--gta-orange);
+            min-height: 50vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+            padding: 3rem 1rem; position: relative; border-bottom: 3px solid var(--gta-orange);
             background: linear-gradient(180deg, rgba(255, 153, 0, 0.1) 0%, rgba(8, 8, 8, 0.9) 100%);
         }
 
         .avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 8px;
-            border: 3px solid var(--gta-orange);
-            box-shadow: 0 0 20px rgba(255, 153, 0, 0.4);
-            margin-bottom: 1rem;
-            background-color: #111;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Pricedown', sans-serif;
-            font-size: 3rem;
-            color: var(--gta-orange);
-            transform: rotate(-2deg);
+            width: 110px; height: 110px; border-radius: 8px; border: 3px solid var(--gta-orange);
+            box-shadow: 0 0 20px rgba(255, 153, 0, 0.4); margin-bottom: 1rem; background-color: #111;
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Pricedown', sans-serif; font-size: 2.8rem; color: var(--gta-orange); transform: rotate(-2deg);
         }
 
         h1 {
-            font-family: 'Pricedown', sans-serif;
-            font-size: 4rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #fff;
-            text-shadow: 3px 3px 0px #000, -2px -2px 0px var(--gta-orange);
-            line-height: 1;
+            font-family: 'Pricedown', sans-serif; font-size: 3.8rem; letter-spacing: 2px;
+            text-transform: uppercase; color: #fff; text-shadow: 3px 3px 0px #000, -2px -2px 0px var(--gta-orange); line-height: 1;
         }
 
-        .subtitle {
-            font-family: 'Teko', sans-serif;
-            color: var(--gta-orange);
-            font-size: 1.6rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 1.5rem;
-        }
+        .subtitle { font-family: 'Teko', sans-serif; color: var(--gta-orange); font-size: 1.5rem; letter-spacing: 2px; margin-bottom: 1.5rem; }
 
-        .btn-group {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
+        .btn-group { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
 
         .btn-main {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 0.8rem 2rem;
-            font-family: 'Teko', sans-serif;
-            font-size: 1.6rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            text-decoration: none;
-            clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%);
-            box-shadow: 4px 4px 0px #000;
-            transition: all 0.2s ease;
+            display: inline-flex; align-items: center; gap: 10px; padding: 0.8rem 2rem;
+            font-family: 'Teko', sans-serif; font-size: 1.5rem; font-weight: bold;
+            text-transform: uppercase; text-decoration: none; clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%);
+            box-shadow: 4px 4px 0px #000; transition: all 0.2s ease; cursor: pointer; border: none;
         }
 
-        .btn-tiktok {
-            background: linear-gradient(135deg, var(--gta-orange), #d47a00);
-            color: #000;
-        }
+        .btn-tiktok { background: linear-gradient(135deg, var(--gta-orange), #d47a00); color: #000; }
+        .btn-tiktok:hover { background: #fff; color: #000; transform: scale(1.03); }
 
-        .btn-tiktok:hover {
-            background: #fff;
-            color: #000;
-            transform: scale(1.03);
-            box-shadow: 6px 6px 0px var(--gta-orange);
-        }
+        .btn-telegram { background: var(--telegram-blue); color: #fff; }
+        .btn-telegram:hover { background: #fff; color: var(--telegram-blue); transform: scale(1.03); }
 
-        .btn-telegram {
-            background: var(--telegram-blue);
-            color: #fff;
-        }
-
-        .btn-telegram:hover {
-            background: #fff;
-            color: var(--telegram-blue);
-            transform: scale(1.03);
-            box-shadow: 6px 6px 0px var(--telegram-blue);
-        }
-
-        /* LAYOUT GRIGLIA */
         .main-layout {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 3rem 1.5rem;
-            display: grid;
-            grid-template-columns: 320px 1fr;
-            gap: 2rem;
+            max-width: 1200px; margin: 0 auto; padding: 3rem 1.5rem;
+            display: grid; grid-template-columns: 320px 1fr; gap: 2rem;
         }
 
-        @media (max-width: 900px) {
-            .main-layout { grid-template-columns: 1fr; }
-        }
+        @media (max-width: 900px) { .main-layout { grid-template-columns: 1fr; } }
 
-        /* SIDEBAR */
         .sidebar { display: flex; flex-direction: column; gap: 2rem; }
 
         .side-card {
-            background-color: var(--gta-card);
-            border: 1px solid var(--gta-border);
-            border-left: 4px solid var(--gta-orange);
-            padding: 1.2rem;
-            box-shadow: 4px 4px 15px rgba(0,0,0,0.5);
+            background-color: var(--gta-card); border: 1px solid var(--gta-border);
+            border-left: 4px solid var(--gta-orange); padding: 1.2rem; box-shadow: 4px 4px 15px rgba(0,0,0,0.5);
         }
 
         .side-title {
-            font-family: 'Pricedown', sans-serif;
-            font-size: 1.8rem;
-            color: var(--gta-orange);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            font-family: 'Pricedown', sans-serif; font-size: 1.8rem; color: var(--gta-orange);
+            margin-bottom: 1rem; display: flex; align-items: center; gap: 8px;
         }
 
-        .timeline-compact {
-            position: relative;
-            border-left: 2px solid var(--gta-orange);
-            padding-left: 1rem;
-            margin-left: 0.5rem;
-        }
-
+        .timeline-compact { position: relative; border-left: 2px solid var(--gta-orange); padding-left: 1rem; margin-left: 0.5rem; }
         .timeline-item { margin-bottom: 1.2rem; position: relative; }
         .timeline-item::before {
             content: ''; position: absolute; left: -1.35rem; top: 4px;
-            width: 10px; height: 10px; background-color: var(--gta-orange);
-            transform: rotate(45deg);
+            width: 10px; height: 10px; background-color: var(--gta-orange); transform: rotate(45deg);
         }
 
         .timeline-date { font-family: 'Teko', sans-serif; font-size: 1.1rem; color: var(--gta-orange); }
         .timeline-item h4 { font-family: 'Teko', sans-serif; font-size: 1.3rem; color: #fff; }
         .timeline-item p { font-size: 0.88rem; color: #ccc; }
 
-        /* CONTENT AREA */
         .content-area { display: flex; flex-direction: column; gap: 2rem; }
 
         .section-card {
-            background-color: var(--gta-card);
-            border: 1px solid var(--gta-border);
-            padding: 2rem;
-            box-shadow: 5px 5px 20px rgba(0,0,0,0.6);
-            position: relative;
+            background-color: var(--gta-card); border: 1px solid var(--gta-border);
+            padding: 2rem; box-shadow: 5px 5px 20px rgba(0,0,0,0.6); position: relative;
         }
 
         .section-heading {
-            font-family: 'Pricedown', sans-serif;
-            font-size: 2.2rem;
-            color: #fff;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 0px #000;
-            display: flex;
-            align-items: center;
-            gap: 12px;
+            font-family: 'Pricedown', sans-serif; font-size: 2.2rem; color: #fff;
+            margin-bottom: 1rem; text-shadow: 2px 2px 0px #000; display: flex; align-items: center; gap: 12px;
         }
 
         .section-heading i { color: var(--gta-orange); }
 
-        /* COUNTDOWN LIVE */
-        .countdown-container {
-            background: #000;
-            border: 2px solid var(--gta-orange);
-            padding: 1.5rem;
-            text-align: center;
-            margin-top: 1rem;
+        /* MINIGIOCHI STYLES */
+        .minigames-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem; }
+        @media (max-width: 700px) { .minigames-grid { grid-template-columns: 1fr; } }
+
+        .game-box {
+            background: #0d0d0d; border: 1px solid var(--gta-border); padding: 1.2rem;
+            text-align: center; display: flex; flex-direction: column; justify-content: space-between; align-items: center;
         }
 
-        .countdown-timer {
-            font-family: 'Teko', sans-serif;
-            font-size: 3.5rem;
-            color: var(--gta-orange);
-            letter-spacing: 3px;
-            line-height: 1;
-            margin: 0.5rem 0;
-            text-shadow: 0 0 10px rgba(255, 153, 0, 0.5);
+        .wheel-container { position: relative; width: 180px; height: 180px; margin: 1rem 0; }
+        .wheel {
+            width: 100%; height: 100%; border-radius: 50%; border: 4px solid var(--gta-orange);
+            background: conic-gradient(#ff9900 0 60deg, #111 60deg 120deg, #d47a00 120deg 180deg, #222 180deg 240deg, #f1c40f 240deg 300deg, #333 300deg 360deg);
+            transition: transform 3s cubic-bezier(0.15, 0.88, 0.15, 0.98);
+        }
+        .wheel-pointer {
+            position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+            width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-top: 15px solid #fff; z-index: 10;
         }
 
-        .live-status {
-            font-family: 'Teko', sans-serif;
-            font-size: 1.4rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* TELEGRAM BOX */
-        .telegram-card {
-            border-left: 4px solid var(--telegram-blue);
-            background: linear-gradient(135deg, rgba(10, 10, 10, 0.9), rgba(0, 136, 204, 0.15));
-        }
-
-        /* STORE WORK IN PROGRESS */
-        .store-wip {
-            border: 2px dashed var(--gta-orange);
-            text-align: center;
-            padding: 2rem 1.5rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .badge-wip {
-            position: absolute; top: 15px; right: -35px;
-            background: var(--gta-orange); color: #000;
-            font-family: 'Teko', sans-serif; font-size: 1.1rem;
-            font-weight: bold; padding: 3px 40px; transform: rotate(35deg);
-        }
-
-        .store-icon { font-size: 2.5rem; color: var(--gta-orange); margin-bottom: 0.5rem; }
+        .clicker-score { font-family: 'Teko', sans-serif; font-size: 2.5rem; color: var(--gta-orange); margin: 0.5rem 0; }
 
         /* FORM RICHIESTA SERVER */
         .server-form { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
@@ -266,31 +139,23 @@
         .form-group.full-width { grid-column: 1 / -1; }
         .form-group label { font-family: 'Teko', sans-serif; font-size: 1.2rem; color: var(--gta-orange); }
         .form-group input, .form-group textarea, .form-group select {
-            padding: 0.8rem; background-color: #0d0d0d; border: 1px solid #333;
-            color: #fff; font-family: 'Oswald', sans-serif; outline: none;
+            padding: 0.8rem; background-color: #0d0d0d; border: 1px solid #333; color: #fff; font-family: 'Oswald', sans-serif; outline: none;
         }
 
         .btn-submit {
-            background: var(--gta-orange); color: #000;
-            font-family: 'Teko', sans-serif; font-size: 1.6rem; font-weight: bold;
-            border: none; padding: 0.6rem 2rem; cursor: pointer; text-transform: uppercase;
+            background: var(--gta-orange); color: #000; font-family: 'Teko', sans-serif;
+            font-size: 1.5rem; font-weight: bold; border: none; padding: 0.6rem 2rem; cursor: pointer; text-transform: uppercase;
         }
 
-        /* BACHECA COMMENTI */
-        .chat-box {
-            height: 180px; overflow-y: auto; border: 1px solid #222;
-            padding: 1rem; background-color: #0a0a0a; margin-bottom: 1rem;
-            display: flex; flex-direction: column; gap: 10px;
-        }
+        .btn-submit:hover { background: #fff; color: #000; }
+
+        .chat-box { height: 180px; overflow-y: auto; border: 1px solid #222; padding: 1rem; background-color: #0a0a0a; margin-bottom: 1rem; display: flex; flex-direction: column; gap: 10px; }
         .chat-msg { font-size: 0.95rem; padding: 8px; background: #141414; border-left: 3px solid var(--gta-orange); }
         .chat-msg .user { font-family: 'Teko', sans-serif; font-size: 1.2rem; color: var(--gta-orange); margin-right: 6px; }
         .chat-inputs { display: flex; gap: 10px; }
         .chat-inputs input { padding: 0.7rem; background: #0a0a0a; border: 1px solid #333; color: #fff; font-family: 'Oswald', sans-serif; }
 
-        footer {
-            text-align: center; padding: 2rem; border-top: 1px solid var(--gta-border);
-            color: var(--text-muted); font-size: 0.9rem; background-color: #050505;
-        }
+        footer { text-align: center; padding: 2rem; border-top: 1px solid var(--gta-border); color: var(--text-muted); font-size: 0.9rem; background-color: #050505; }
     </style>
 </head>
 <body>
@@ -314,11 +179,8 @@
 
         <!-- SIDEBAR -->
         <aside class="sidebar">
-            
             <div class="side-card">
-                <div class="side-title">
-                    <i class="fa-solid fa-book-bookmark"></i> LA STORIA
-                </div>
+                <div class="side-title"><i class="fa-solid fa-book-bookmark"></i> LA STORIA</div>
                 <div class="timeline-compact">
                     <div class="timeline-item">
                         <div class="timeline-date">2024</div>
@@ -339,64 +201,74 @@
             </div>
 
             <div class="side-card">
-                <div class="side-title">
-                    <i class="fa-solid fa-shield-halved"></i> COMMUNITY
-                </div>
+                <div class="side-title"><i class="fa-solid fa-shield-halved"></i> COMMUNITY</div>
                 <p style="font-size: 0.9rem; color: #bbb;">Supporta il canale lasciando il tuo rispetto virtuale.</p>
                 <div style="display: flex; align-items: center; justify-content: space-between; background: #0d0d0d; padding: 0.8rem; margin-top: 0.8rem; border: 1px solid var(--gta-border);">
                     <span id="likeCount" style="font-family: 'Teko', sans-serif; font-size: 1.8rem; color: #fff;">1500</span>
                     <button id="likeBtn" style="background: transparent; color: var(--gta-orange); border: 2px solid var(--gta-orange); padding: 0.3rem 1.2rem; font-family: 'Teko', sans-serif; font-size: 1.3rem; cursor: pointer;"><i class="fa-solid fa-thumbs-up"></i> +1</button>
                 </div>
             </div>
-
         </aside>
 
         <!-- CONTENT AREA -->
         <main class="content-area">
 
-            <!-- COUNTDOWN PROGRAMMAZIONE LIVE -->
+            <!-- PROSSIMA LIVE COUNTDOWN -->
             <section class="section-card">
                 <h2 class="section-heading"><i class="fa-solid fa-clock"></i> PROSSIMA LIVE</h2>
                 <p style="color: #ccc;">Le dirette partono ogni sera alle ore 21:00!</p>
-                
-                <div class="countdown-container">
-                    <div class="live-status" id="liveStatus" style="color: var(--gta-orange);">TEMPO ALLA PROSSIMA LIVE</div>
-                    <div class="countdown-timer" id="countdown">00h 00m 00s</div>
+                <div style="background: #000; border: 2px solid var(--gta-orange); padding: 1.2rem; text-align: center; margin-top: 1rem;">
+                    <div id="liveStatus" style="font-family: 'Teko', sans-serif; font-size: 1.3rem; color: var(--gta-orange); text-transform: uppercase;">TEMPO ALLA PROSSIMA LIVE</div>
+                    <div id="countdown" style="font-family: 'Teko', sans-serif; font-size: 3.2rem; color: var(--gta-orange); letter-spacing: 2px;">00h 00m 00s</div>
                 </div>
             </section>
 
-            <!-- TELEGRAM COMMUNITY BOX -->
-            <section class="section-card telegram-card">
-                <h2 class="section-heading" style="color: var(--telegram-blue);"><i class="fa-brands fa-telegram"></i> GRUPPO TELEGRAM UFFICIALE</h2>
-                <p style="color: #ccc; margin-bottom: 1rem;">
-                    Rimani aggiornato in tempo reale prima di ogni diretta, voti i sondaggi per i giochi RP ed entra nella chat privata della crew.
-                </p>
-                <a href="https://t.me/+EnU_g0nYS5Q5YjA8" target="_blank" class="btn-main btn-telegram" style="display: inline-flex;">
-                    Unisciti al Gruppo Telegram
-                </a>
+            <!-- SEZIONE MINI-GIOCHI ARCADES -->
+            <section class="section-card">
+                <h2 class="section-heading"><i class="fa-solid fa-gamepad"></i> MINI-GIOCHI COMMUNITY</h2>
+                <p style="color: #ccc; font-size: 0.95rem;">Divertiti con i minigiochi ufficiali della Guzman TV Crew mentre aspetti la diretta!</p>
+
+                <div class="minigames-grid">
+                    <!-- GIOCO 1: RUOTA DELLA FORTUNA -->
+                    <div class="game-box">
+                        <h3 style="font-family: 'Teko', sans-serif; font-size: 1.5rem; color: var(--gta-orange);">RUOTA DEL FORTUNATO</h3>
+                        <div class="wheel-container">
+                            <div class="wheel-pointer"></div>
+                            <div class="wheel" id="wheel"></div>
+                        </div>
+                        <p id="wheelResult" style="font-size: 0.9rem; min-height: 24px; color: #fff;">Gira la ruota per un premio!</p>
+                        <button class="btn-submit" onclick="spinWheel()" style="margin-top: 0.5rem; padding: 0.4rem 1rem;">GIRA LA RUOTA</button>
+                    </div>
+
+                    <!-- GIOCO 2: HACKER CLICKER RP -->
+                    <div class="game-box">
+                        <h3 style="font-family: 'Teko', sans-serif; font-size: 1.5rem; color: var(--gta-orange);">HACKER CLICKER RP</h3>
+                        <p style="font-size: 0.85rem; color: #aaa;">Hackera il database del server prima che scada il tempo!</p>
+                        <div class="clicker-score" id="clickScore">0 GB</div>
+                        <p id="clickTimer" style="color: #fff; font-size: 0.9rem;">Tempo: 10s</p>
+                        <button class="btn-submit" id="hackBtn" onclick="hackClick()" style="margin-top: 0.5rem; padding: 0.4rem 1rem;">HACKERA SISTEMA</button>
+                    </div>
+                </div>
             </section>
 
             <!-- STORE WORK IN PROGRESS -->
-            <section class="section-card store-wip">
-                <div class="badge-wip">SOON</div>
-                <i class="fa-solid fa-gears store-icon"></i>
+            <section class="section-card" style="border: 2px dashed var(--gta-orange); text-align: center; padding: 2rem 1.5rem;">
+                <i class="fa-solid fa-gears" style="font-size: 2.5rem; color: var(--gta-orange); margin-bottom: 0.5rem;"></i>
                 <h2 class="section-heading" style="justify-content: center;">GUZMAN STORE</h2>
-                <p style="color: var(--gta-orange); font-family: 'Teko', sans-serif; font-size: 1.4rem;">
-                    LAVORI IN CORSO / UNDER CONSTRUCTION
-                </p>
+                <p style="color: var(--gta-orange); font-family: 'Teko', sans-serif; font-size: 1.4rem;">LAVORI IN CORSO / UNDER CONSTRUCTION</p>
             </section>
 
-            <!-- RICHIESTA SERVER -->
+            <!-- RICHIESTA PRESENZA SERVER -->
             <section class="section-card">
                 <h2 class="section-heading"><i class="fa-solid fa-server"></i> RICHIESTA PRESENZA SERVER</h2>
                 <form class="server-form" id="serverForm" onsubmit="handleServerRequest(event)">
                     <div class="form-group">
                         <label>NOME SERVER / PROGETTO</label>
-                        <input type="text" placeholder="Es. Los Santos Roleplay" required>
+                        <input type="text" id="serverName" placeholder="Es. Los Santos Roleplay" required>
                     </div>
                     <div class="form-group">
                         <label>PIATTAFORMA</label>
-                        <select>
+                        <select id="serverPlatform">
                             <option>FiveM (GTA RP)</option>
                             <option>RedM (Red Dead RP)</option>
                             <option>Discord / Evento Community</option>
@@ -404,10 +276,14 @@
                     </div>
                     <div class="form-group full-width">
                         <label>CONTATTO REFERENTE (Discord / Telegram)</label>
-                        <input type="text" placeholder="Es. @username o Telegram" required>
+                        <input type="text" id="serverContact" placeholder="Es. @username o Telegram" required>
                     </div>
                     <div class="form-group full-width">
-                        <button type="submit" class="btn-submit">INVIA RICHIESTA</button>
+                        <label>DETTAGLI E PROPOSTA</label>
+                        <textarea id="serverDetails" rows="3" placeholder="Descrivi brevemente la tua proposta..." required></textarea>
+                    </div>
+                    <div class="form-group full-width">
+                        <button type="submit" class="btn-submit">INVIA RICHIESTA SU TELEGRAM</button>
                     </div>
                 </form>
             </section>
@@ -432,21 +308,78 @@
     </footer>
 
     <script>
-        // --- COUNTDOWN INTELLIGENTE ---
+        // --- LOGICA MINI-GIOCO 1: RUOTA DELLA FORTUNA ---
+        let wheelSpinning = false;
+        const rewards = [
+            "+500 Rispetto Crew!",
+            "Accesso al VIP Lounge RP!",
+            "Bannato per 5 Minuti (Scherzo!)",
+            "Sconto sullo Store In Arrivo!",
+            "Shoutout Live in Chat TikTok!",
+            "Tiro Sfortunato! Riprova!"
+        ];
+
+        function spinWheel() {
+            if (wheelSpinning) return;
+            wheelSpinning = true;
+            
+            const wheel = document.getElementById('wheel');
+            const resultText = document.getElementById('wheelResult');
+            resultText.innerText = "Giro in corso...";
+
+            const randomDeg = Math.floor(1800 + Math.random() * 360);
+            wheel.style.transform = `rotate(${randomDeg}deg)`;
+
+            setTimeout(() => {
+                wheelSpinning = false;
+                const rewardIndex = Math.floor(Math.random() * rewards.length);
+                resultText.innerText = "🏆 Risultato: " + rewards[rewardIndex];
+            }, 3000);
+        }
+
+        // --- LOGICA MINI-GIOCO 2: HACKER CLICKER RP ---
+        let hackCount = 0;
+        let timeLeft = 10;
+        let gameActive = false;
+        let timerInterval = null;
+
+        function hackClick() {
+            const btn = document.getElementById('hackBtn');
+            const scoreDisplay = document.getElementById('clickScore');
+            const timerDisplay = document.getElementById('clickTimer');
+
+            if (!gameActive && timeLeft === 10) {
+                gameActive = true;
+                btn.innerText = "CLICCA VELOCE!";
+                timerInterval = setInterval(() => {
+                    timeLeft--;
+                    timerDisplay.innerText = `Tempo: ${timeLeft}s`;
+                    if (timeLeft <= 0) {
+                        clearInterval(timerInterval);
+                        gameActive = false;
+                        btn.innerText = "GIOCA ANCORA";
+                        alert(`Hacking Completato! Hai scaricato ${hackCount} GB di dati!`);
+                        hackCount = 0;
+                        timeLeft = 10;
+                    }
+                }, 1000);
+            }
+
+            if (gameActive) {
+                hackCount += 2;
+                scoreDisplay.innerText = `${hackCount} GB`;
+            }
+        }
+
+        // --- COUNTDOWN LIVE ---
         function updateCountdown() {
             const now = new Date();
             let target = new Date();
-            
-            // Imposta orario della live di oggi alle 21:00
             target.setHours(21, 0, 0, 0);
 
-            // Se sono già passate le 21:00, imposta la live per domani alle 21:00
-            if (now > target) {
-                target.setDate(target.getDate() + 1);
-            }
+            if (now > target) target.setDate(target.getDate() + 1);
 
             const diff = target - now;
-            
             const hours = Math.floor(diff / (1000 * 60 * 60));
             const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((diff % (1000 * 60)) / 1000);
@@ -454,7 +387,6 @@
             const display = document.getElementById('countdown');
             const status = document.getElementById('liveStatus');
 
-            // Se manca meno di un'ora alla live (oppure la live è appena iniziata)
             if (hours === 0 && minutes <= 59) {
                 status.innerText = "🚨 LA LIVE STA PER PARICARE! SECONDI AL VIA:";
                 status.style.color = "#FF0050";
@@ -465,11 +397,46 @@
                 display.innerText = `${hours}h ${minutes}m ${seconds < 10 ? '0' : ''}${seconds}s`;
             }
         }
-
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // --- GESTIONE LIKE & COMMENTI PERMANENTI ---
+        // --- INVIO RICHIESTA SERVER VIA TELEGRAM BOT ---
+        async function handleServerRequest(e) {
+            e.preventDefault();
+            
+            const serverName = document.getElementById('serverName').value;
+            const platform = document.getElementById('serverPlatform').value;
+            const contact = document.getElementById('serverContact').value;
+            const details = document.getElementById('serverDetails').value;
+
+            // Inserisci qui il tuo Token Bot Telegram e Chat ID per ricevere le notifiche
+            const telegramBotToken = 'IL_TUO_BOT_TOKEN_QUI';
+            const telegramChatId = 'IL_TUO_CHAT_ID_QUI';
+
+            const message = `🚨 *NUOVA RICHIESTA SERVER GUZMAN TV* 🚨\n\n` +
+                            `🎮 *Server:* ${serverName}\n` +
+                            `💻 *Piattaforma:* ${platform}\n` +
+                            `👤 *Contatto:* ${contact}\n` +
+                            `📝 *Dettagli:* ${details}`;
+
+            if (telegramBotToken !== 'IL_TUO_BOT_TOKEN_QUI') {
+                try {
+                    await fetch(`https://api.telegram.org/bot${telegramBotToken}/sendMessage`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ chat_id: telegramChatId, text: message, parse_mode: 'Markdown' })
+                    });
+                    alert("Richiesta inviata con successo! Guzman ha ricevuto la notifica su Telegram.");
+                } catch (error) {
+                    alert("Errore nell'invio della richiesta.");
+                }
+            } else {
+                alert("Richiesta registrata con successo! (Ricordati di configurare il Bot Telegram con il tuo Token).");
+            }
+            document.getElementById('serverForm').reset();
+        }
+
+        // --- LIKE & COMMENTI PERMANENTI ---
         let count = parseInt(localStorage.getItem('guzman_likes')) || 1500;
         document.getElementById('likeCount').innerText = count;
         document.getElementById('likeBtn').addEventListener('click', () => {
@@ -479,7 +446,7 @@
         });
 
         let commentsList = JSON.parse(localStorage.getItem('guzman_comments')) || [
-            { name: "Franklin", text: "Guzman ci vediamo in chat Telegram!" }
+            { name: "Franklin", text: "Bellissimi i mini giochi nel sito!" }
         ];
 
         function renderComments() {
@@ -507,12 +474,6 @@
 
         function escapeHTML(str) {
             return str.replace(/[&<>'"]/g, tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag));
-        }
-
-        function handleServerRequest(e) {
-            e.preventDefault();
-            alert("Richiesta inviata con successo!");
-            document.getElementById('serverForm').reset();
         }
 
         renderComments();
