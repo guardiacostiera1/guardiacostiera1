@@ -1,185 +1,357 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
+<!DOCTYPE html>
+<html lang="it">
 <head>
-    <title>Guardia Costiera - Xª Zona Marittima (Puglia) - Anno 1994</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <title>Guardia Costiera - Porto Cesareo (v1.994)</title>
+    <style>
+        body {
+            background-color: #008080; /* Teal classico Windows 95 */
+            font-family: "MS Sans Serif", Tahoma, sans-serif;
+            font-size: 11px;
+            margin: 10px;
+        }
+
+        /* Finestra Stile Windows */
+        .window {
+            background-color: #c0c0c0;
+            border-top: 2px solid #ffffff;
+            border-left: 2px solid #ffffff;
+            border-right: 2px solid #000000;
+            border-bottom: 2px solid #000000;
+            width: 820px;
+            margin: 0 auto;
+            padding: 2px;
+            box-shadow: 3px 3px 0px #000;
+        }
+
+        .title-bar {
+            background: linear-gradient(90deg, #000080, #1084d0);
+            padding: 3px;
+            color: white;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .title-btn {
+            background-color: #c0c0c0;
+            border-top: 1px solid #fff;
+            border-left: 1px solid #fff;
+            border-right: 1px solid #000;
+            border-bottom: 1px solid #000;
+            width: 16px;
+            height: 14px;
+            font-size: 9px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 12px;
+            cursor: pointer;
+        }
+
+        .menu-bar {
+            background-color: #c0c0c0;
+            padding: 2px 5px;
+            border-bottom: 1px solid #808080;
+        }
+
+        .menu-bar span {
+            margin-right: 10px;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .content {
+            padding: 10px;
+            background-color: #c0c0c0;
+        }
+
+        /* Riquadro interno scavato */
+        .inset-box {
+            background-color: #ffffff;
+            border-top: 2px solid #808080;
+            border-left: 2px solid #808080;
+            border-right: 2px solid #ffffff;
+            border-bottom: 2px solid #ffffff;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+
+        /* Form e Pulsanti */
+        fieldset {
+            border: 2px groove #ffffff;
+            margin-bottom: 10px;
+            padding: 8px;
+        }
+
+        legend {
+            font-weight: bold;
+        }
+
+        input[type="text"], select, textarea {
+            border-top: 2px solid #808080;
+            border-left: 2px solid #808080;
+            border-right: 2px solid #ffffff;
+            border-bottom: 2px solid #ffffff;
+            background-color: #fff;
+            font-family: "Courier New", monospace;
+            font-size: 11px;
+            padding: 2px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .btn-win {
+            background-color: #c0c0c0;
+            border-top: 2px solid #ffffff;
+            border-left: 2px solid #ffffff;
+            border-right: 2px solid #000000;
+            border-bottom: 2px solid #000000;
+            padding: 3px 10px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .btn-win:active {
+            border-top: 2px solid #000000;
+            border-left: 2px solid #000000;
+            border-right: 2px solid #ffffff;
+            border-bottom: 2px solid #ffffff;
+        }
+
+        /* Tabella Anni '90 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11px;
+        }
+
+        th, td {
+            border: 1px solid #808080;
+            padding: 4px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #c0c0c0;
+            border-top: 1px solid #fff;
+            border-left: 1px solid #fff;
+        }
+
+        /* Effetti retrò */
+        marquee {
+            background-color: #000080;
+            color: #00ff00;
+            font-family: "Courier New", monospace;
+            padding: 2px;
+            font-weight: bold;
+        }
+
+        .status-bar {
+            border-top: 2px solid #808080;
+            padding: 2px 5px;
+            background-color: #c0c0c0;
+            font-size: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
 </head>
-<body bgcolor="#000066" text="#FFFFFF" link="#FFFF00" vlink="#FF00FF" alink="#FF0000">
+<body>
 
-    <!-- INTESTAZIONE PRINCIPALE -->
-    <div align="center">
-        <table border="3" cellpadding="5" cellspacing="0" bgcolor="#000099" bordercolor="#CCCCCC" width="80%">
-            <tr>
-                <td align="center">
-                    <font size="6" color="#FFCC00"><b>REPUBBLICA ITALIANA</b></font><br>
-                    <font size="5" color="#FFFFFF"><b>MINISTERO DELLA DIFESA - MARINA MILITARE</b></font><br>
-                    <font size="4" color="#00FFFF"><i>CORPO DELLE CAPITANERIE DI PORTO - GUARDIA COSTIERA</i></font><br>
-                    <font size="3" color="#FF3333"><b>Compartimento Marittimo di Puglia / Sezione Operativa 1994</b></font>
-                </td>
-            </tr>
-        </table>
+<div class="window">
+    <!-- Barra del titolo -->
+    <div class="title-bar">
+        <span>C:\GUARDIA_COSTIERA_PORTO_CESAREO\SITO_UFFICIALE.EXE</span>
+        <div style="display:flex; gap:2px;">
+            <div class="title-btn">_</div>
+            <div class="title-btn">□</div>
+            <div class="title-btn" onclick="alert('Impossibile chiudere il sistema di sorveglianza marittima!')">X</div>
+        </div>
+    </div>
 
+    <!-- Barra Menu -->
+    <div class="menu-bar">
+        <span><u>F</u>ile</span>
+        <span><u>Z</u>ona Marittima</span>
+        <span><u>B</u>andi</span>
+        <span><u>U</u>niformi</span>
+        <span><u>S</u>occorso</span>
+    </div>
+
+    <div class="content">
+        <!-- Testo scorrevole e Contatore -->
+        <marquee>+++ UFFICIO LOCALE MARITTIMO PORTO CESAREO (PUGLIA) - EMERGENZA MARE: CANALE 16 VHF / NUMERO BLU 1530 - ESTATE 1994 +++</marquee>
+        
         <br>
 
-        <!-- BARRA NOTIZIE / MARQUEE -->
-        <table border="1" width="80%" bgcolor="#990000" bordercolor="#FFFF00">
-            <tr>
-                <td align="center">
-                    <font color="#FFFFFF" size="3"><b>[BOLLETTINO METEO MARE]</b> 
-                    <marquee behavior="scroll" direction="left" scrollamount="4">
-                        ⚠️ Avviso di burrasca per il basso Adriatico e Jonio. Vento da Nord-Ovest forza 6. Obbligo di rientro nei porti per la piccola pesca. Canale di soccorso VHF 16 sempre in ascolto.
-                    </marquee>
-                    </font>
-                </td>
-            </tr>
-        </table>
+        <!-- Sezione Intro con Logo inserito -->
+        <div class="inset-box" style="text-align: center; background-color: #f5f5f0;">
+            <img src="logo.png" alt="Logo Apulia 90" style="max-width: 280px; height: auto; border: 1px solid #808080; margin-bottom: 8px;">
+            <h2 style="margin: 0 0 4px 0; font-size: 14px; color: #000080;">UFFICIO LOCALE MARITTIMO - PORTO CESAREO</h2>
+            <b>Terminal Operativo Locale (S.I.T.) - Anno 1994</b><br>
+            <i>Sede operativa attiva sul litorale ionico salentino. Ottimizzato per modem 56k.</i>
+        </div>
+
+        <!-- Sezione 1: Bandi e Concorsi -->
+        <fieldset>
+            <legend>📁 Bandi e Arruolamenti (Porto Cesareo '94)</legend>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Codice Sede</th>
+                        <th>Profilo / Unità Navale</th>
+                        <th>Scadenza</th>
+                        <th>Stato</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>CESAREO-94-01</td>
+                        <td>Imbarco su Motovedetta Litoranea SAR</td>
+                        <td>30/08/1994</td>
+                        <td><font color="red"><b>APERTO</b></font></td>
+                    </tr>
+                    <tr>
+                        <td>CESAREO-94-02</td>
+                        <td>Personale per Controllo Area Marina Protetta</td>
+                        <td>15/09/1994</td>
+                        <td>SELEZIONE</td>
+                    </tr>
+                </tbody>
+            </table>
+        </fieldset>
+
+        <!-- Sezione 2: Flotta Navale Locale -->
+        <fieldset>
+            <legend>🛥️ Mezzi Navali in Servizio a Porto Cesareo</legend>
+            <div class="inset-box" style="background-color: #e0e0e0; margin-bottom:0;">
+                <ul>
+                    <li><b>CP 842 (Porto Cesareo):</b> Motovedetta costiera per la vigilanza della secca e delle acque ioniche locali.</li>
+                    <li><b>G.C. Battello Pneumatico Veloce:</b> Per interventi rapidi sotto costa e soccorso bagnanti.</li>
+                </ul>
+            </div>
+        </fieldset>
+
+        <!-- Sezione 3: Modulo Candidatura -->
+        <fieldset>
+            <legend>📝 Modulo Candidatura / Arruolamento - Porto Cesareo</legend>
+            <form id="candidaturaForm">
+                <table border="0" style="border:none;">
+                    <tr>
+                        <td style="border:none; width:30%;"><b>Nome Cognome:</b></td>
+                        <td style="border:none; width:70%;"><input type="text" id="nomeCognome" placeholder="Es. Mario Rossi" required></td>
+                    </tr>
+                    <tr>
+                        <td style="border:none;"><b>Età:</b></td>
+                        <td style="border:none;"><input type="text" id="eta" placeholder="Es. 25" required></td>
+                    </tr>
+                    <tr>
+                        <td style="border:none;"><b>Diploma di scuola superiore o titolo equivalente:</b></td>
+                        <td style="border:none;"><input type="text" id="titoloStudio" placeholder="Es. Diploma di Maturità Scientifica" required></td>
+                    </tr>
+                    <tr>
+                        <td style="border:none;"><b>Esperienze:</b></td>
+                        <td style="border:none;"><textarea id="esperienze" rows="2" placeholder="Descrivi le tue esperienze pregresse..."></textarea></td>
+                    </tr>
+                    <tr>
+                        <td style="border:none;"><b>Sei propenso a prendere il porto d’armi?</b></td>
+                        <td style="border:none;">
+                            <select id="portoArmi">
+                                <option value="Sì">Sì</option>
+                                <option value="No">No</option>
+                                <option value="Già in possesso">Già in possesso</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border:none;" colspan="2">
+                            <br><b>Serietà, disciplina e capacità di lavorare in squadra:</b><br>
+                            <textarea id="disciplina" rows="2" placeholder="Esprimi brevemente il tuo impegno su questi valori..." required></textarea>
+                        </td>
+                    </tr>
+                </table>
+                <br>
+                <button type="submit" class="btn-win" id="submitBtn">📤 Trasmetti Candidatura via Teleax</button>
+                <button type="reset" class="btn-win">❌ Annulla</button>
+            </form>
+        </fieldset>
+
     </div>
 
-    <br>
-
-    <!-- MENU DI NAVIGAZIONE A TABELLA -->
-    <div align="center">
-        <table border="2" bgcolor="#000033" bordercolor="#FFCC00" cellpadding="4" cellspacing="2" width="80%">
-            <tr align="center">
-                <td><b><a href="#home">🏠 HOME</a></b></td>
-                <td><b><a href="#compiti">⚓ COMPITI D'ISTITUTO</a></b></td>
-                <td><b><a href="#flotta">🛥️ MEZZI NAVALI</a></b></td>
-                <td><b><a href="#meteo">📡 EMERGENZE VHF</a></b></td>
-                <td><b><a href="#albo">📋 ALBO COMANDANTE</a></b></td>
-            </tr>
-        </table>
+    <!-- Barra di Stato -->
+    <div class="status-bar">
+        <span>Connesso a: Nodo Porto Cesareo (Delegazione di Spiaggia)</span>
+        <span>Visitatori N°: <b>002491</b></span>
     </div>
+</div>
 
-    <br>
+<!-- Script per inviare i dati al Webhook Discord -->
+<script>
+    const webhookURL = "https://discord.com/api/webhooks/1538187596004593736/TgLbwTwNDrbbp10iBPgm4Hle-w6_i4R8WAI6vQDYitQdQPohhj3ta48M920-_4o5Dg8X";
 
-    <!-- CORPO CENTRALE (STRUTTURA A 2 COLONNE) -->
-    <div align="center">
-        <table width="80%" border="0" cellpadding="10" cellspacing="0">
-            <tr>
-                <!-- COLONNA SINISTRA: CONTENUTO -->
-                <td width="70%" valign="top" bgcolor="#000044">
-                    
-                    <a name="home"></a>
-                    <h2><font color="#FFCC00">Benvenuti nel Posto di Guardia Costiera</font></h2>
-                    <hr color="#FFCC00">
-                    <p align="justify">
-                        <font size="2">
-                        Dal cuore delle coste pugliesi, da Bari a Taranto, passando per Brindisi, Otranto e Gallipoli, la Guardia Costiera vigila 24 ore su 24 sulla sicurezza della navigazione, la salvaguardia della vita umana in mare e la tutela dell'ambiente marino. 
-                        <br><br>
-                        In questo terminale di rete, aggiornato alla tecnologia analogica dell'<b>estate 1994</b>, è possibile consultare i bollettini meteomarittimi, i ruoli del personale e le frequenze di soccorso attive lungo tutto il perimetro costiero della regione Puglia.
-                        </font>
-                    </p>
+    document.getElementById("candidaturaForm").addEventListener("submit", function(e) {
+        e.preventDefault();
 
-                    <br>
-                    <a name="compiti"></a>
-                    <h3><font color="#00FFFF">⚓ I Nostri Compiti Principali</font></h3>
-                    <hr color="#00FFFF">
-                    <ul>
-                        <li><b>SAR (Search and Rescue):</b> Coordinamento delle operazioni di ricerca e soccorso in mare entro i limiti delle 50 miglia dalla costa pugliese.</li>
-                        <li><b>Polizia Marittima:</b> Controllo del traffico mercantile, della flotta peschereccia regionale e della sicurezza nei porti.</li>
-                        <li><b>Tutela Ambientale:</b> Prevenzione e repressione dell'inquinamento marino da idrocarburi e scarichi abusivi lungo il litorale adriatico e ionico.</li>
-                    </ul>
+        const btn = document.getElementById("submitBtn");
+        btn.innerText = "Invio in corso via modem...";
+        btn.disabled = true;
 
-                    <br>
-                    <a name="flotta"></a>
-                    <h3><font color="#FFCC00">🛥️ La Flotta in Dotazione (Classe '94)</font></h3>
-                    <hr color="#FFCC00">
-                    <table border="1" cellpadding="4" cellspacing="0" bordercolor="#CCCCCC" width="100%">
-                        <tr bgcolor="#000088">
-                            <th><font color="#FFFFFF">Unità / Motovedetta</font></th>
-                            <th><font color="#FFFFFF">Classe</font></th>
-                            <th><font color="#FFFFFF">Sede Assegnata</font></th>
-                        </tr>
-                        <tr>
-                            <td><b>CP 301</b></td>
-                            <td>SAR d'altura</td>
-                            <td>Bari</td>
-                        </tr>
-                        <tr>
-                            <td><b>CP 809</b></td>
-                            <td>Guardia Costiera Litoranea</td>
-                            <td>Brindisi</td>
-                        </tr>
-                        <tr>
-                            <td><b>CP 502</b></td>
-                            <td>Vedetta veloce anti-inquinamento</td>
-                            <td>Gallipoli</td>
-                        </tr>
-                    </table>
+        const nomeCognome = document.getElementById("nomeCognome").value;
+        const eta = document.getElementById("eta").value;
+        const titoloStudio = document.getElementById("titoloStudio").value;
+        const esperienze = document.getElementById("esperienze").value || "Nessuna esperienza specificata.";
+        const portoArmi = document.getElementById("portoArmi").value;
+        const disciplina = document.getElementById("disciplina").value;
 
-                </td>
+        // Creazione del payload per Discord in stile Embed
+        const payload = {
+            content: "🚨 **NUOVA CANDIDATURA - GUARDIA COSTIERA PORTO CESAREO ('94)** 🚨",
+            embeds: [
+                {
+                    title: "Dettagli Arruolamento / Porto Cesareo",
+                    color: 3447003, // Blu scuro
+                    fields: [
+                        { name: "👤 Nome e Cognome", value: nomeCognome, inline: true },
+                        { name: "📅 Età", value: eta, inline: true },
+                        { name: "🎓 Titolo di Studio", value: titoloStudio, inline: false },
+                        { name: "📜 Esperienze", value: esperienze, inline: false },
+                        { name: "🔫 Porto d'armi", value: portoArmi, inline: true },
+                        { name: "🛡️ Serietà, Disciplina e Teamwork", value: disciplina, inline: false }
+                    ],
+                    footer: {
+                        text: "Ufficio Locale Marittimo Porto Cesareo - Anno 1994"
+                    },
+                    timestamp: new Date().toISOString()
+                }
+            ]
+        };
 
-                <!-- COLONNA DESTRA: LINK UTILI / CONTATORE -->
-                <td width="30%" valign="top" bgcolor="#000055">
-                    <table border="1" width="100%" bordercolor="#FFCC00" cellpadding="5">
-                        <tr bgcolor="#000088">
-                            <td align="center"><font color="#FFFF00"><b>📞 SEGNALAZIONI EMERGENZA</b></font></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <font size="2">
-                                Per qualsiasi pericolo in mare o avvistamento relitti alla deriva lungo la costa pugliese:<br><br>
-                                <b>Canale Radio VHF:</b> Canale 16<br>
-                                <b>Telefono di Soccorso:</b> 1530 (Numero Blu gratuito attivo giorno e notte)<br>
-                                <b>Linea Diretta Compartimento:</b> 080-XXXXXX
-                                </font>
-                            </td>
-                        </tr>
-                    </table>
-
-                    <br>
-
-                    <table border="1" width="100%" bordercolor="#00FFFF" cellpadding="5">
-                        <tr bgcolor="#000077">
-                            <td align="center"><font color="#00FFFF"><b>🌐 LINK CONSIGLIATI</b></font></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <font size="2">
-                                🔗 <a href="#">Ministero della Marina Mercantile</a><br>
-                                🔗 <a href="#">Capitaneria di Porto di Roma</a><br>
-                                🔗 <a href="#">Centro Meteorologico Aeronautica Militare</a><br>
-                                🔗 <a href="#">Radiomarittima Bari</a>
-                                </font>
-                            </td>
-                        </tr>
-                    </table>
-
-                    <br>
-
-                    <!-- CONTATORE VISITE ANNI '90 -->
-                    <div align="center">
-                        <table border="1" bgcolor="#000000" bordercolor="#FF0000" cellpadding="3">
-                            <tr>
-                                <td align="center">
-                                    <font size="1" color="#FF3333"><b>VISITE AL TERMINALE:</b></font><br>
-                                    <font size="4" color="#00FF00" face="Courier New"><b>0 0 4 8 9 2</b></font>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-
-                </td>
-            </tr>
-        </table>
-    </div>
-
-    <br>
-
-    <!-- PIÈ DI PAGINA -->
-    <div align="center">
-        <table width="80%" border="0">
-            <tr>
-                <td align="center">
-                    <hr color="#FFCC00">
-                    <font size="2" color="#CCCCCC">
-                        Sito ottimizzato per Netscape Navigator 2.0+ e Microsoft Internet Explorer 3.0<br>
-                        Risoluzione consigliata 800x600 pixels — © 1994 Comando Generale del Corpo delle Capitanerie di Porto.
-                    </font>
-                </td>
-            </tr>
-        </table>
-    </div>
+        fetch(webhookURL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(payload)
+        })
+        .then(response => {
+            if (response.ok) {
+                alert("Trasmissione completata con successo! La candidatura è stata inoltrata al Comando di Porto Cesareo su Discord.");
+                document.getElementById("candidaturaForm").reset();
+            } else {
+                alert("Errore durante la trasmissione dati via linea analogica. Riprovare.");
+            }
+        })
+        .catch(error => {
+            console.error("Errore:", error);
+            alert("Impossibile contattare il server remoto.");
+        })
+        .finally(() => {
+            btn.innerText = "📤 Trasmetti Candidatura via Teleax";
+            btn.disabled = false;
+        });
+    });
+</script>
 
 </body>
 </html>
