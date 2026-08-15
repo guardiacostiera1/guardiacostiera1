@@ -2,838 +2,485 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>Guardia Costiera - Porto Cesareo (v1.994)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guzman TV Live - Official Website</title>
+    <!-- FontAwesome per le icone -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* SCHERMATA DI BOOT / AVVIO PC */
-        #boot-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: #000000;
-            color: #00ff00;
-            font-family: "Courier New", monospace;
-            z-index: 9999;
+        :root {
+            --bg-color: #0d0d0d;
+            --card-bg: #1a1a1a;
+            --accent-pink: #FF0050;
+            --accent-cyan: #00F2FE;
+            --text-color: #FFFFFF;
+            --text-muted: #A0A0A0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* HEADER & HERO */
+        header {
+            min-height: 75vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            transition: opacity 0.8s ease, visibility 0.8s ease;
-        }
-
-        .boot-box {
-            border: 2px solid #00ff00;
-            padding: 25px;
-            background-color: #001100;
-            box-shadow: 0 0 15px rgba(0, 255, 0, 0.4);
-            max-width: 650px;
-            width: 85%;
-        }
-
-        /* Testo lampeggiante PRESS ENTER */
-        .blink-text {
-            animation: blinker 1s linear infinite;
-            color: #ffff00;
-            font-weight: bold;
-            margin-top: 15px;
-        }
-
-        @keyframes blinker {
-            50% { opacity: 0; }
-        }
-
-        .boot-btn {
-            background-color: #00ff00;
-            color: #000000;
-            border: none;
-            padding: 12px 24px;
-            font-family: "Courier New", monospace;
-            font-weight: bold;
-            font-size: 14px;
-            cursor: pointer;
-            margin-top: 15px;
-            box-shadow: 3px 3px 0px #ffffff;
-        }
-
-        .boot-btn:hover {
-            background-color: #ffffff;
-            color: #000000;
-        }
-
-        /* Sfondo Marittimo con Logo Transparente */
-        body {
-            background-color: #001a33;
-            background-image: 
-                /* Pattern Salvagente Vettoriale */
-                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='35' fill='none' stroke='rgba(255,255,255,0.05)' stroke-width='14'/%3E%3Ccircle cx='50' cy='50' r='35' fill='none' stroke='rgba(217,38,28,0.1)' stroke-width='14' stroke-dasharray='22 33'/%3E%3Ccircle cx='50' cy='50' r='28' fill='none' stroke='rgba(0,43,73,0.2)' stroke-width='2'/%3E%3C/svg%3E"),
-                /* Pattern Ancora Vettoriale */
-                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='25' r='6' fill='none' stroke='rgba(241,171,0,0.08)' stroke-width='3'/%3E%3Cline x1='50' y1='31' x2='50' y2='75' stroke='rgba(241,171,0,0.08)' stroke-width='5'/%3E%3Cline x1='35' y1='45' x2='65' y2='45' stroke='rgba(241,171,0,0.08)' stroke-width='5'/%3E%3Cpath d='M 25 60 C 25 80 75 80 75 60' fill='none' stroke='rgba(241,171,0,0.08)' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E"),
-                /* Sfondo a righe retro */
-                repeating-linear-gradient(-45deg, #001a33 0px, #001a33 30px, #001224 30px, #001224 60px);
-            background-position: 0 0, 60px 60px, 0 0;
-            background-repeat: repeat, repeat, repeat;
-            background-attachment: fixed;
-            font-family: "MS Sans Serif", Tahoma, sans-serif;
-            font-size: 11px;
-            margin: 15px;
+            padding: 2rem;
+            background: radial-gradient(circle at center, rgba(255, 0, 80, 0.2) 0%, rgba(13, 13, 13, 1) 75%);
+            border-bottom: 1px solid #222;
             position: relative;
         }
 
-        /* Immagine di sfondo trasparente in filigrana */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 700px;
-            height: 700px;
-            max-width: 90vw;
-            max-height: 90vh;
-            background-image: url("logo.jpg");
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: contain;
-            opacity: 0.15;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* Finestra Stile Windows 95 - Dimensione Ingrandita (1100px) */
-        .window {
-            position: relative;
-            z-index: 1;
-            background-color: #c0c0c0;
-            border-top: 2px solid #ffffff;
-            border-left: 2px solid #ffffff;
-            border-right: 2px solid #000000;
-            border-bottom: 2px solid #000000;
-            width: 1100px;
-            max-width: 95%;
-            margin: 0 auto;
-            padding: 2px;
-            box-shadow: 6px 6px 15px rgba(0,0,0,0.7);
-        }
-
-        .title-bar {
-            background: linear-gradient(90deg, #002B49 0%, #D9261C 100%);
-            padding: 5px 8px;
-            color: white;
-            font-weight: bold;
+        .avatar {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 3px solid var(--accent-cyan);
+            box-shadow: 0 0 25px rgba(0, 242, 254, 0.5);
+            margin-bottom: 1.5rem;
+            background-color: #222;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            letter-spacing: 0.5px;
-            font-size: 12px;
-        }
-
-        .title-btn {
-            background-color: #c0c0c0;
-            border-top: 1px solid #fff;
-            border-left: 1px solid #fff;
-            border-right: 1px solid #000;
-            border-bottom: 1px solid #000;
-            width: 16px;
-            height: 14px;
-            font-size: 9px;
+            justify-content: center;
+            font-size: 2.5rem;
             font-weight: bold;
-            text-align: center;
-            line-height: 12px;
-            cursor: pointer;
-            color: #000;
+            animation: pulse 2s infinite alternate;
         }
 
-        .menu-bar {
-            background-color: #c0c0c0;
-            padding: 3px 8px;
-            border-bottom: 1px solid #808080;
+        @keyframes pulse {
+            0% { box-shadow: 0 0 15px rgba(0, 242, 254, 0.4); }
+            100% { box-shadow: 0 0 30px rgba(255, 0, 80, 0.8); }
         }
 
-        .menu-bar span {
-            margin-right: 15px;
-            text-decoration: underline;
-            cursor: pointer;
-            color: #002B49;
-            font-weight: bold;
+        h1 {
+            font-size: 3.2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            text-shadow: -2px -2px 0 var(--accent-pink), 2px 2px 0 var(--accent-cyan);
         }
 
-        .content {
-            padding: 12px;
-            background-color: #c0c0c0;
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
         }
 
-        .inset-box {
-            background-color: #ffffff;
-            border-top: 2px solid #808080;
-            border-left: 2px solid #808080;
-            border-right: 2px solid #ffffff;
-            border-bottom: 2px solid #ffffff;
-            padding: 10px;
-            margin-bottom: 12px;
-        }
-
-        fieldset {
-            border: 2px groove #002B49;
-            margin-bottom: 12px;
-            padding: 10px;
-            background-color: #d4d0c8;
-        }
-
-        legend {
-            font-weight: bold;
-            color: #002B49;
-            background-color: #c0c0c0;
-            padding: 0 6px;
-            font-size: 12px;
-        }
-
-        input[type="text"], input[type="date"], input[type="time"], select, textarea {
-            border-top: 2px solid #808080;
-            border-left: 2px solid #808080;
-            border-right: 2px solid #ffffff;
-            border-bottom: 2px solid #ffffff;
-            background-color: #fff;
-            font-family: "Courier New", monospace;
-            font-size: 12px;
-            padding: 3px;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        .btn-win {
-            background-color: #c0c0c0;
-            border-top: 2px solid #ffffff;
-            border-left: 2px solid #ffffff;
-            border-right: 2px solid #000000;
-            border-bottom: 2px solid #000000;
-            padding: 5px 15px;
-            font-weight: bold;
-            color: #002B49;
-            cursor: pointer;
-            font-size: 11px;
-            margin-right: 5px;
-        }
-
-        .btn-win:active {
-            border-top: 2px solid #000000;
-            border-left: 2px solid #000000;
-            border-right: 2px solid #ffffff;
-            border-bottom: 2px solid #ffffff;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 11px;
-        }
-
-        th, td {
-            border: 1px solid #808080;
-            padding: 6px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #002B49;
-            color: #ffffff;
-            border-top: 1px solid #fff;
-            border-left: 1px solid #fff;
-        }
-
-        marquee {
-            background-color: #002B49;
-            color: #F1AB00;
-            font-family: "Courier New", monospace;
-            padding: 4px;
-            font-weight: bold;
-            border: 1px solid #000;
-            font-size: 12px;
-        }
-
-        .status-bar {
-            border-top: 2px solid #808080;
-            padding: 3px 8px;
-            background-color: #c0c0c0;
-            font-size: 11px;
+        .btn-group {
             display: flex;
-            justify-content: space-between;
-            color: #002B49;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
-        .logo-container {
-            margin: 5px auto 10px auto;
-            width: 130px;
-            height: 130px;
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.9rem 2rem;
+            font-size: 1.05rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-tiktok {
+            background: linear-gradient(45deg, var(--accent-pink), var(--accent-cyan));
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(255, 0, 80, 0.4);
+        }
+
+        .btn-tiktok:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(0, 242, 254, 0.7);
+        }
+
+        .btn-youtube {
+            background: #FF0000;
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
+        }
+
+        .btn-youtube:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(255, 0, 0, 0.7);
+        }
+
+        /* CONTAINER GENERAL */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 2.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-pink), var(--accent-cyan));
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* TIMELINE */
+        .timeline {
+            position: relative;
+            border-left: 2px solid #333;
+            padding-left: 2rem;
+            margin-left: 1rem;
+        }
+
+        .timeline-event {
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .timeline-event::before {
+            content: '';
+            position: absolute;
+            left: -2.55rem;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: var(--accent-cyan);
+            box-shadow: 0 0 10px var(--accent-cyan);
+        }
+
+        .timeline-year {
+            font-size: 0.95rem;
+            font-weight: bold;
+            color: var(--accent-pink);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-card {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid #2a2a2a;
+        }
+
+        /* VIDEO CLIPS (YOUTUBE) */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .video-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #2a2a2a;
+            transition: transform 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-pink);
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .video-info {
+            padding: 1rem;
+        }
+
+        .video-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* INTERACTIVITIES & STATS */
+        .interactive-box {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid #2a2a2a;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .like-button-container {
+            margin-top: 1rem;
+        }
+
+        .btn-like {
+            background: #222;
+            color: #fff;
+            border: 2px solid var(--accent-pink);
+            padding: 0.8rem 2rem;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-like:hover {
+            background: var(--accent-pink);
+            box-shadow: 0 0 15px rgba(255, 0, 80, 0.6);
+        }
+
+        .btn-like i {
+            color: var(--accent-pink);
+        }
+
+        .btn-like:hover i {
+            color: #fff;
+        }
+
+        /* COMMUNITY CHAT SIMULATOR */
+        .chat-section {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid #2a2a2a;
+            margin-top: 3rem;
+        }
+
+        .chat-box {
+            height: 200px;
+            overflow-y: auto;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 1rem;
+            background-color: #0d0d0d;
+            margin-bottom: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .chat-msg {
+            font-size: 0.95rem;
+        }
+
+        .chat-msg .user {
+            font-weight: bold;
+            color: var(--accent-cyan);
+        }
+
+        .chat-input-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .chat-input-group input {
+            flex: 1;
+            padding: 0.8rem;
+            border-radius: 8px;
+            border: 1px solid #333;
+            background-color: #111;
+            color: #fff;
+            outline: none;
+        }
+
+        .chat-input-group button {
+            background: var(--accent-cyan);
+            color: #000;
+            font-weight: bold;
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid #222;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 4rem;
         }
     </style>
 </head>
 <body>
 
-<!-- SCHERMATA DI APERTURA DEL PC (BOOT SCREEN BLOCANTE) -->
-<div id="boot-screen">
-    <div class="boot-box">
-        <pre style="font-size: 10px; color: #00ff00;">
-=====================================================
- GUARDIA COSTIERA - TERMINAL OPERATIVO S.I.T. (1994)
- DELEGAZIONE DI SPIAGGIA - PORTO CESAREO (LE)
-=====================================================
-        </pre>
-        <p>BIOS Version 1.09 - MS-DOS 6.22 Loading...</p>
-        <p>Memory Test: 16384 KB OK</p>
-        <p>Modem 56k V.90: Connected to Node #1530</p>
-        <p style="color: #00ff00;">[STATUS]: ACCESSO AUTORIZZATO AL SISTEMA</p>
+    <!-- HEADER / HERO SECTION -->
+    <header>
+        <div class="avatar">GTV</div>
+        <h1>Guzman TV</h1>
+        <p class="subtitle">Streamer & Content Creator — Live su TikTok & Youtube</p>
         
-        <p class="blink-text">>>> PREMI IL TASTO [ENTER] PER PROSEGUIRE <<<</p>
-        <button class="boot-btn" onclick="chiudiBoot()">⌨️ PREMI ENTER PER AVVIARE IL SITO</button>
-    </div>
-</div>
-
-<div class="window">
-    <div class="title-bar">
-        <span>⚓ C:\GUARDIA_COSTIERA_PORTO_CESAREO\SITO_UFFICIALE.EXE</span>
-        <div style="display:flex; gap:2px;">
-            <div class="title-btn">_</div>
-            <div class="title-btn">□</div>
-            <div class="title-btn" onclick="alert('Impossibile chiudere il sistema di sorveglianza marittima!')">X</div>
+        <div class="btn-group">
+            <a href="https://www.tiktok.com/@guzman_tv_?_r=1&_t=ZN-98uIXC6cmIA" target="_blank" class="btn btn-tiktok">
+                <i class="fa-brands fa-tiktok"></i> Segui su TikTok
+            </a>
+            <a href="#clips" class="btn btn-youtube">
+                <i class="fa-brands fa-youtube"></i> Guarda Clip YouTube
+            </a>
         </div>
-    </div>
+    </header>
 
-    <div class="menu-bar">
-        <span><u>F</u>ile</span>
-        <span><u>Z</u>ona Marittima</span>
-        <span><u>B</u>andi</span>
-        <span><u>A</u>rmeria</span>
-        <span><u>P</u>resenze</span>
-        <span><u>D</u>isciplina</span>
-    </div>
+    <main class="container">
 
-    <div class="content">
-        <marquee>+++ UFFICIO LOCALE MARITTIMO PORTO CESAREO (PUGLIA) - EMERGENZA MARE: CANALE 16 VHF / NUMERO BLU 1530 - ESTATE 1994 +++</marquee>
-        
-        <br>
+        <!-- SEZIONE STORIA -->
+        <section>
+            <h2 class="section-title">La Storia del Canale</h2>
+            <div class="timeline">
+                <div class="timeline-event">
+                    <div class="timeline-year">2024 — Il Debutto</div>
+                    <div class="timeline-card">
+                        <h3>L'Inizio del Viaggio</h3>
+                        <p>Nel 2024, Guzman TV fa il suo ingresso su TikTok. Fin da subito propone dirette coinvolgenti, basate sull'interazione diretta e spontanea con gli spettatori.</p>
+                    </div>
+                </div>
 
-        <div class="inset-box" style="text-align: center; background-color: #f7f9fa;">
-            <div class="logo-container">
-                <svg viewBox="0 0 200 200" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M 100 10 L 170 40 L 170 110 C 170 155 100 185 100 185 C 100 185 30 155 30 110 L 30 40 Z" fill="#002B49" stroke="#F1AB00" stroke-width="4"/>
-                    <path d="M 100 18 L 162 45 L 162 108 C 162 148 100 175 100 175 C 100 175 38 148 38 108 L 38 45 Z" fill="none" stroke="#F1AB00" stroke-width="2"/>
-                    <path d="M 50 40 L 110 40 L 150 160 L 90 160 Z" fill="#D9261C" />
-                    <path d="M 115 40 L 125 40 L 165 160 L 155 160 Z" fill="#FFFFFF" />
-                    <circle cx="100" cy="70" r="8" fill="none" stroke="#F1AB00" stroke-width="4"/>
-                    <line x1="100" y1="78" x2="100" y2="135" stroke="#F1AB00" stroke-width="6"/>
-                    <line x1="80" y1="92" x2="120" y2="92" stroke="#F1AB00" stroke-width="6"/>
-                    <path d="M 72 115 C 72 140 128 140 128 115" fill="none" stroke="#F1AB00" stroke-width="6" stroke-linecap="round"/>
-                    <path d="M 68 110 L 76 117 L 65 122 Z" fill="#F1AB00"/>
-                    <path d="M 132 110 L 124 117 L 135 122 Z" fill="#F1AB00"/>
-                </svg>
+                <div class="timeline-event">
+                    <div class="timeline-year">2024/2025 — La Crescita</div>
+                    <div class="timeline-card">
+                        <h3>I Primi Traguardi e Multi-Platform</h3>
+                        <p>Il canale si espande rapidamente, portando contenuti anche su YouTube con video highlights, reazioni e migliori momenti estratti dalle live serali.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-event">
+                    <div class="timeline-year">Oggi</div>
+                    <div class="timeline-card">
+                        <h3>Community Consolidata</h3>
+                        <p>Un punto di riferimento per l'intrattenimento quotidiano: dirette TikTok, clip esclusive e una community sempre pronta a supportare lo streamer.</p>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <h2 style="margin: 0 0 4px 0; font-size: 16px; color: #002B49; text-transform: uppercase;">Ufficio Locale Marittimo - Porto Cesareo</h2>
-            <b style="color: #D9261C;">Terminal Operativo Locale (S.I.T.) - Anno 1994</b><br>
-            <i style="color: #555;">Sede operativa attiva sul litorale ionico salentino. Ottimizzato per modem 56k.</i>
+        <!-- SEZIONE CLIP YOUTUBE (Sostituisci i link embed con le tue clip) -->
+        <section id="clips" style="margin-top: 4rem;">
+            <h2 class="section-title">Highlights & Clip YouTube</h2>
+            <div class="video-grid">
+                
+                <!-- Video Clip 1 -->
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <!-- Inserisci l'ID del video YouTube al posto di M7lc1UVf-VE -->
+                        <iframe src="https://www.youtube.com/embed/M7lc1UVf-VE" title="Guzman TV Highlight 1" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Migliori Momenti in Live #1</h3>
+                        <p style="color: var(--text-muted); font-size: 0.85rem;">Estratto dalle ultime dirette TikTok.</p>
+                    </div>
+                </div>
+
+                <!-- Video Clip 2 -->
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <!-- Inserisci l'ID di un altro video -->
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Guzman TV Highlight 2" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Reazioni e Momenti Divertenti</h3>
+                        <p style="color: var(--text-muted); font-size: 0.85rem;">Spettatori in chat e momenti top.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- INTERAZIONE: PULSANTE LIKE LIVE -->
+        <div class="interactive-box">
+            <h3>Supporta la Live di Guzman TV</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">Lascia un "Cuore" virtuale per mostrare il tuo supporto!</p>
+            <div class="like-button-container">
+                <button class="btn-like" id="likeBtn">
+                    <i class="fa-solid fa-heart"></i> <span id="likeCount">1,420</span> Like
+                </button>
+            </div>
         </div>
 
-        <!-- Bandi e Concorsi -->
-        <fieldset>
-            <legend>📁 Bandi, Concorsi e Arruolamenti (Porto Cesareo '94)</legend>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Profilo / Profilo Concorso</th>
-                        <th>Requisiti Minimi</th>
-                        <th>Modalità di Accesso</th>
-                        <th>Stato</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><b>1. VFI e VFT (Volontari)</b></td>
-                        <td>Licenza media, età 18-25 anni</td>
-                        <td>Concorsi Marina Militare (Capitanerie di Porto - Nocchieri di Porto)</td>
-                        <td><font color="#D9261C"><b>APERTO</b></font></td>
-                    </tr>
-                    <tr>
-                        <td><b>2. Allievi Marescialli</b></td>
-                        <td>Diploma di scuola superiore, età 17-26 anni</td>
-                        <td>Concorso pubblico per ammissione corso biennale Sottufficiali</td>
-                        <td><font color="#D9261C"><b>APERTO</b></font></td>
-                    </tr>
-                    <tr>
-                        <td><b>3. Allievi Ufficiali</b></td>
-                        <td>Diploma (Accademia Navale) / Laurea specifica (Ruoli speciali)</td>
-                        <td>Concorsi per la formazione degli Ufficiali</td>
-                        <td>SELEZIONE</td>
-                    </tr>
-                    <tr>
-                        <td><b>4. Concorsi Interni</b></td>
-                        <td>Personale già in servizio nella Forza Armata</td>
-                        <td>Bandi riservati per l'avanzamento di carriera</td>
-                        <td>RISERVATO</td>
-                    </tr>
-                </tbody>
-            </table>
-        </fieldset>
+        <!-- SEZIONE CHAT COMMUNITY -->
+        <section class="chat-section">
+            <h3 style="margin-bottom: 1rem;"><i class="fa-solid fa-comments"></i> Bacheca Community</h3>
+            <div class="chat-box" id="chatBox">
+                <div class="chat-msg"><span class="user">Marco99:</span> Guzman quando vai in live stasera?</div>
+                <div class="chat-msg"><span class="user">Luca_Stream:</span> Le clip su YouTube spaccano! 🔥</div>
+                <div class="chat-msg"><span class="user">Sara_G:</span> Presente in ogni live!</div>
+            </div>
+            <div class="chat-input-group">
+                <input type="text" id="chatInput" placeholder="Scrivi un messaggio alla community...">
+                <button onclick="sendMessage()">Invia</button>
+            </div>
+        </section>
 
-        <!-- Modulo Candidatura -->
-        <fieldset>
-            <legend>📝 Modulo Candidatura / Arruolamento - Porto Cesareo</legend>
-            <form id="candidaturaForm">
-                <table border="0" style="border:none;">
-                    <tr>
-                        <td style="border:none; width:30%;"><b>Tipologia Concorso / Profilo:</b></td>
-                        <td style="border:none; width:70%;">
-                            <select id="tipoConcorso" required>
-                                <option value="1. VFI e VFT (Volontari) - [Licenza media, 18-25 anni]">1. VFI e VFT (Volontari) - Licenza media, 18-25 anni</option>
-                                <option value="2. Allievi Marescialli - [Diploma, 17-26 anni]">2. Allievi Marescialli - Diploma, 17-26 anni</option>
-                                <option value="3. Allievi Ufficiali - [Diploma / Laurea specifica]">3. Allievi Ufficiali - Diploma / Laurea specifica</option>
-                                <option value="4. Concorsi Interni - [Già in servizio]">4. Concorsi Interni - Personale già in servizio</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="border:none;"><b>Nome e Cognome:</b></td>
-                        <td style="border:none;"><input type="text" id="nomeCognome" placeholder="Es. Mario Rossi" required></td>
-                    </tr>
-                    <tr>
-                        <td style="border:none;"><b>Età:</b></td>
-                        <td style="border:none;"><input type="text" id="eta" placeholder="Es. 20" required></td>
-                    </tr>
-                    <tr>
-                        <td style="border:none;"><b>Titolo di Studio Posseduto:</b></td>
-                        <td style="border:none;"><input type="text" id="titoloStudio" placeholder="Es. Licenza Media / Diploma di Maturità / Laurea" required></td>
-                    </tr>
-                    <tr>
-                        <td style="border:none;"><b>Esperienze Pregresse:</b></td>
-                        <td style="border:none;"><textarea id="esperienze" rows="2" placeholder="Descrivi le tue esperienze marittime o lavorative..."></textarea></td>
-                    </tr>
-                    <tr>
-                        <td style="border:none;"><b>Sei propenso a prendere il porto d’armi?</b></td>
-                        <td style="border:none;">
-                            <select id="portoArmi">
-                                <option value="Sì">Sì</option>
-                                <option value="No">No</option>
-                                <option value="Già in possesso">Già in possesso</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="border:none;" colspan="2">
-                            <br><b>Serietà, disciplina e capacità di lavorare in squadra:</b><br>
-                            <textarea id="disciplina" rows="2" placeholder="Esprimi brevemente il tuo impegno su questi valori..." required></textarea>
-                        </td>
-                    </tr>
-                </table>
-                <br>
-                <button type="submit" class="btn-win" id="submitBtn">📤 Trasmetti Candidatura via Telefax</button>
-                <button type="reset" class="btn-win">❌ Annulla</button>
-            </form>
-        </fieldset>
+    </main>
 
-        <!-- SEZIONE ASSUNTI: RIFORNIMENTO ARMAMENTO -->
-        <fieldset style="border-color: #002B49;">
-            <legend style="color: #002B49;">🔫 SEZIONE ASSUNTI - Modulo Richiesta Rifornimento Armamento</legend>
-            <form id="rifornimentoForm">
-                <table border="0" style="border:none;">
-                    <tr>
-                        <td style="border:none; width:25%;"><b>Nome Cognome Militare:</b></td>
-                        <td style="border:none; width:75%;"><input type="text" id="militareNome" placeholder="Es. Sottufficiale Giuseppe Verde" required></td>
-                    </tr>
-                    <tr>
-                        <td style="border:none;"><b>Grado / Matricola:</b></td>
-                        <td style="border:none;"><input type="text" id="matricola" placeholder="Es. GC-94821" required></td>
-                    </tr>
-                    <tr>
-                        <td style="border:none;"><b>Tipologia Rifornimento:</b></td>
-                        <td style="border:none;">
-                            <select id="tipoRifornimento" required>
-                                <option value="Opzione 1: Munizione (Caricatori di Riserva 9x19mm)">Opzione 1: Munizione (Caricatori 9x19mm PARABELLUM)</option>
-                                <option value="Opzione 2: Pistola (Sostituzione/Assegnazione Arma di Ordinanza)">Opzione 2: Pistola (Pistola d'Ordinanza Beretta 92FS / APX)</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="border:none;"><b>Motivo del Rifornimento:</b></td>
-                        <td style="border:none;">
-                            <select id="motivoRifornimento" required>
-                                <option value="Esaurimento munizioni in esercitazione/pattugliamento">Esaurimento munizioni in esercitazione/pattugliamento</option>
-                                <option value="Danneggiamento / Malfunzionamento equipaggiamento">Danneggiamento / Malfunzionamento equipaggiamento</option>
-                                <option value="Nuovo imbarco / Turno di guardia straordinario">Nuovo imbarco / Turno di guardia straordinario</option>
-                                <option value="Integrazione dotazione per servizio di Pubblica Sicurezza">Integrazione dotazione per servizio di Pubblica Sicurezza</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="border:none;" colspan="2">
-                            <br><b>Dettagli Aggiuntivi / Note Operative:</b><br>
-                            <textarea id="noteRifornimento" rows="2" placeholder="Inserisci eventuali dettagli aggiuntivi sulla richiesta..."></textarea>
-                        </td>
-                    </tr>
-                </table>
-                <br>
-                <button type="submit" class="btn-win" id="submitArmiBtn">🔫 Richiedi Rifornimento Armeria</button>
-                <button type="reset" class="btn-win">❌ Annulla</button>
-            </form>
-        </fieldset>
+    <footer>
+        <p>&copy; Guzman TV Live. Tutti i diritti riservati.</p>
+    </footer>
 
-        <!-- TIMBRO CARTELLINO ENTRATA/USCITA -->
-        <fieldset style="border-color: #005580;">
-            <legend style="color: #005580;">⏰ TIMBRO CARTELLINO - Registro Presenze Servizio</legend>
-            <form id="cartellinoForm">
-                <table border="0" style="border:none;">
-                    <tr>
-                        <td style="border:none; width:25%;"><b>Militare in Servizio:</b></td>
-                        <td style="border:none; width:75%;"><input type="text" id="cartellinoMilitare" placeholder="Es. Capo di 1ª Classe Marco Bianchi" required></td>
-                    </tr>
-                    <tr>
-                        <td style="border:none;"><b>Matricola:</b></td>
-                        <td style="border:none;"><input type="text" id="cartellinoMatricola" placeholder="Es. GC-77401" required></td>
-                    </tr>
-                    <tr>
-                        <td style="border:none;"><b>Azione Cartellino:</b></td>
-                        <td style="border:none;">
-                            <select id="cartellinoTipo" required>
-                                <option value="🟢 ENTRATA IN SERVIZIO">🟢 ENTRATA IN SERVIZIO</option>
-                                <option value="🔴 USCITA DAL SERVIZIO">🔴 USCITA DAL SERVIZIO</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="border:none;"><b>Ora Timbro:</b></td>
-                        <td style="border:none;"><input type="time" id="cartellinoOra" required></td>
-                    </tr>
-                    <tr>
-                        <td style="border:none;"><b>Turno / Reparto:</b></td>
-                        <td style="border:none;">
-                            <select id="cartellinoTurno">
-                                <option value="Turno Mattina (08:00 - 14:00)">Turno Mattina (08:00 - 14:00)</option>
-                                <option value="Turno Pomeriggio (14:00 - 20:00)">Turno Pomeriggio (14:00 - 20:00)</option>
-                                <option value="Turno Notturno (20:00 - 08:00)">Turno Notturno (20:00 - 08:00)</option>
-                                <option value="Pattugliamento SAR Motovedetta">Pattugliamento SAR Motovedetta</option>
-                                <option value="Servizio di Guardia di Porto">Servizio di Guardia di Porto</option>
-                            </select>
-                        </td>
-                    </tr>
-                </table>
-                <br>
-                <button type="submit" class="btn-win" id="submitCartellinoBtn" style="color: #005580;">⏱️ Timbra Cartellino Digitale</button>
-                <button type="reset" class="btn-win">❌ Annulla</button>
-            </form>
-        </fieldset>
+    <!-- JAVASCRIPT PER LE INTERAZIONI -->
+    <script>
+        // Gestione dei Like
+        let count = 1420;
+        const likeBtn = document.getElementById('likeBtn');
+        const likeCount = document.getElementById('likeCount');
 
-        <!-- RICHIESTA FERIE -->
-        <fieldset style="border-color: #2b7810;">
-            <legend style="color: #2b7810;">📅 SEZIONE ASSUNTI - Modulo Richiesta Ferie e Congedi</legend>
-            <form id="ferieForm">
-                <table border="0" style="border:none;">
-                    <tr>
-                        <td style="border:none; width:25%;"><b>Nome Cognome Militare:</b></td>
-                        <td style="border:none; width:75%;"><input type="text" id="ferieMilitare" placeholder="Es. Sergente Luca Neri" required></td>
-                    </tr>
-                    <tr>
-                        <td style="border:none;"><b>Matricola:</b></td>
-                        <td style="border:none;"><input type="text" id="ferieMatricola" placeholder="Es. GC-88320" required></td>
-                    </tr>
-                    <tr>
-                        <td style="border:none;"><b>Dal Giorno:</b></td>
-                        <td style="border:none;"><input type="date" id="ferieDal" required></td>
-                    </tr>
-                    <tr>
-                        <td style="border:none;"><b>Al Giorno:</b></td>
-                        <td style="border:none;"><input type="date" id="ferieAl" required></td>
-                    </tr>
-                    <tr>
-                        <td style="border:none;"><b>Tipo di Licenza/Congedo:</b></td>
-                        <td style="border:none;">
-                            <select id="ferieTipo" required>
-                                <option value="Licenza Ordinaria (Ferie Annue)">Licenza Ordinaria (Ferie Annue)</option>
-                                <option value="Licenza Straordinaria per Motivi Personali/Familiari">Licenza Straordinaria per Motivi Personali/Familiari</option>
-                                <option value="Congedo di Malattia / Convalescenza">Congedo di Malattia / Convalescenza</option>
-                                <option value="Riposo Compensativo Straordinari">Riposo Compensativo Straordinari</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="border:none;"><b>Militare Sostituto in Servizio:</b></td>
-                        <td style="border:none;"><input type="text" id="ferieSostituto" placeholder="Es. Capo Franco Russo (facoltativo)"></td>
-                    </tr>
-                    <tr>
-                        <td style="border:none;" colspan="2">
-                            <br><b>Motivazione / Note Permesso:</b><br>
-                            <textarea id="ferieMotivo" rows="2" placeholder="Specificare i dettagli o recapito per reperibilità..." required></textarea>
-                        </td>
-                    </tr>
-                </table>
-                <br>
-                <button type="submit" class="btn-win" id="submitFerieBtn" style="color: #2b7810;">🏖️ Invia Richiesta Ferie</button>
-                <button type="reset" class="btn-win">❌ Annulla</button>
-            </form>
-        </fieldset>
-
-        <!-- RAPPORTO DISCIPLINARE -->
-        <fieldset style="border-color: #D9261C;">
-            <legend style="color: #D9261C;">⚠️ UFFICIO DISCIPLINARE - Rapporto e Richiami Disciplinari</legend>
-            <form id="disciplinareForm">
-                <table border="0" style="border:none;">
-                    <tr>
-                        <td style="border:none; width:25%;"><b>Ufficiale / Segnalante:</b></td>
-                        <td style="border:none; width:75%;"><input type="text" id="discSegnalante" placeholder="Es. Comandante in Seconda A. Rossi" required></td>
-                    </tr>
-                    <tr>
-                        <td style="border:none;"><b>Militare Segnalato/Infrattore:</b></td>
-                        <td style="border:none;"><input type="text" id="discInfrattore" placeholder="Es. Marinaio Giovanni Doe" required></td>
-                    </tr>
-                    <tr>
-                        <td style="border:none;"><b>Matricola Infrattore:</b></td>
-                        <td style="border:none;"><input type="text" id="discMatricola" placeholder="Es. GC-11203" required></td>
-                    </tr>
-                    <tr>
-                        <td style="border:none;"><b>Tipo di Richiamo / Provvedimento:</b></td>
-                        <td style="border:none;">
-                            <select id="discTipo" required>
-                                <option value="Richiamo Verbale Formalizzato">Richiamo Verbale Formalizzato</option>
-                                <option value="Rimprovero Scritto (Monito Disciplinare)">Rimprovero Scritto (Monito Disciplinare)</option>
-                                <option value="Rapporto per Insubordinazione o Mancanza Grave">Rapporto per Insubordinazione o Mancanza Grave</option>
-                                <option value="Segnalazione Ritardo / Assenza Ingiustificata">Segnalazione Ritardo / Assenza Ingiustificata</option>
-                                <option value="Inosservanza Regolamento Divisa / Dotazione">Inosservanza Regolamento Divisa / Dotazione</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="border:none;"><b>Gravità Infrazione:</b></td>
-                        <td style="border:none;">
-                            <select id="discGravita">
-                                <option value="Lieve">Lieve (Primo richiamo)</option>
-                                <option value="Media">Media (Recidiva)</option>
-                                <option value="Grave">Grave (Apertura procedimento disciplinare)</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="border:none;" colspan="2">
-                            <br><b>Descrizione Dettagliata dei Fatti Contestati:</b><br>
-                            <textarea id="discDescrizione" rows="3" placeholder="Includere data, ora, luogo ed eventuali testimoni dell'accaduto..." required></textarea>
-                        </td>
-                    </tr>
-                </table>
-                <br>
-                <button type="submit" class="btn-win" id="submitDiscBtn" style="color: #D9261C;">🚨 Trasmetti Rapporto Disciplinare al Comando</button>
-                <button type="reset" class="btn-win">❌ Annulla</button>
-            </form>
-        </fieldset>
-
-    </div>
-
-    <!-- Barra di Stato -->
-    <div class="status-bar">
-        <span>Connesso a: Nodo Porto Cesareo (Delegazione di Spiaggia)</span>
-        <span>Visitatori N°: <b>002491</b></span>
-    </div>
-</div>
-
-<!-- Script Gestione Webhook Multipli -->
-<script>
-    // SOSTITUISCI QUESTI LINK CON I VARI URL DEI WEBHOOK CREATI NEI RISPETTIVI CANALI DISCORD
-    const webhooks = {
-        candidatura: "https://discord.com/api/webhooks/1538187596004593736/TgLbwTwNDrbbp10iBPgm4Hle-w6_i4R8WAI6vQDYitQdQPohhj3ta48M920-_4o5Dg8X",
-        rifornimento: "https://discord.com/api/webhooks/1538211774829170899/Y46UR3iC-lLzqA_2RcOR9BxHjpZU3MpvRWiK4YiNBWeALkZORjzVcXIWgW4Zq5nC8cr6",
-        cartellino: "https://discord.com/api/webhooks/1538212088684486716/ujoJvJ98clrHtCMbIflQygtgEYahvMEDs_S8Hwns-vXQY49Fh8AA3PmKNh6ndt6eyMET",
-        ferie: "https://discord.com/api/webhooks/1538211622831661147/fUWbTWgAOc_iP_5_QhWZ__RdPcDHKkFnLpJp_Rae14-7L3X1PFDtrfARP5hraCTEf2J4",
-        disciplina: "https://discord.com/api/webhooks/1538212413696909403/sp3qZCruIp0Q6j16VMBu4Uf5sRUx_9tHxpRw-cO4WbCV0PyewtYUbiit2QkXys97lSzV"
-    };
-
-    // Chiusura Boot Screen
-    let bootAperto = true;
-    function chiudiBoot() {
-        if (!bootAperto) return;
-        bootAperto = false;
-        
-        const bootScreen = document.getElementById("boot-screen");
-        bootScreen.style.opacity = "0";
-        setTimeout(() => {
-            bootScreen.style.display = "none";
-        }, 800);
-    }
-
-    document.addEventListener("keydown", function(event) {
-        if (event.key === "Enter" && bootAperto) {
-            chiudiBoot();
-        }
-    });
-
-    // Imposta orario di default per il cartellino
-    const now = new Date();
-    const hours = String(now.getHours()).padStart(2, '0');
-    const minutes = String(now.getMinutes()).padStart(2, '0');
-    document.getElementById("cartellinoOra").value = `${hours}:${minutes}`;
-
-    // 1. Modulo Candidatura -> Canale Candidatura
-    document.getElementById("candidaturaForm").addEventListener("submit", function(e) {
-        e.preventDefault();
-        const btn = document.getElementById("submitBtn");
-        btn.innerText = "Invio in corso via modem...";
-        btn.disabled = true;
-
-        const payload = {
-            content: "🚨 **NUOVA CANDIDATURA - GUARDIA COSTIERA PORTO CESAREO ('94)** 🚨",
-            embeds: [{
-                title: "Dettagli Arruolamento / Concorso Selezionato",
-                color: 115881,
-                fields: [
-                    { name: "📋 Tipo Concorso", value: document.getElementById("tipoConcorso").value, inline: false },
-                    { name: "👤 Nome e Cognome", value: document.getElementById("nomeCognome").value, inline: true },
-                    { name: "📅 Età", value: document.getElementById("eta").value, inline: true },
-                    { name: "🎓 Titolo di Studio", value: document.getElementById("titoloStudio").value, inline: false },
-                    { name: "📜 Esperienze", value: document.getElementById("esperienze").value || "Nessuna.", inline: false },
-                    { name: "🔫 Porto d'armi", value: document.getElementById("portoArmi").value, inline: true },
-                    { name: "🛡️ Serietà e Teamwork", value: document.getElementById("disciplina").value, inline: false }
-                ],
-                footer: { text: "Ufficio Locale Marittimo Porto Cesareo - Anno 1994" },
-                timestamp: new Date().toISOString()
-            }]
-        };
-
-        inviaWebhook(webhooks.candidatura, payload, btn, "📤 Trasmetti Candidatura via Telefax", "Candidatura inoltrata con successo!");
-    });
-
-    // 2. Modulo Rifornimento Armamento -> Canale Richieste Rifornimento
-    document.getElementById("rifornimentoForm").addEventListener("submit", function(e) {
-        e.preventDefault();
-        const btn = document.getElementById("submitArmiBtn");
-        btn.innerText = "Trasmissione in corso...";
-        btn.disabled = true;
-
-        const payload = {
-            content: "🔫 **RICHIESTA RIFORNIMENTO ARMAMENTO** 🔫",
-            embeds: [{
-                title: "Richiesta Materiale Armeria / Guardia Costiera",
-                color: 14231068,
-                fields: [
-                    { name: "🎖️ Militare Richiedente", value: document.getElementById("militareNome").value, inline: true },
-                    { name: "🪪 Grado / Matricola", value: document.getElementById("matricola").value, inline: true },
-                    { name: "📦 Rifornimento Richiesto", value: document.getElementById("tipoRifornimento").value, inline: false },
-                    { name: "📋 Motivo del Rifornimento", value: document.getElementById("motivoRifornimento").value, inline: false },
-                    { name: "📝 Note Operative", value: document.getElementById("noteRifornimento").value || "Nessuna nota.", inline: false }
-                ],
-                footer: { text: "Comando Armeria - Ufficio Locale Marittimo Porto Cesareo" },
-                timestamp: new Date().toISOString()
-            }]
-        };
-
-        inviaWebhook(webhooks.rifornimento, payload, btn, "🔫 Richiedi Rifornimento Armeria", "Richiesta armeria trasmessa con successo!");
-    });
-
-    // 3. Modulo Timbro Cartellino -> Canale Timbro Cartellino
-    document.getElementById("cartellinoForm").addEventListener("submit", function(e) {
-        e.preventDefault();
-        const btn = document.getElementById("submitCartellinoBtn");
-        btn.innerText = "Registrazione timbro...";
-        btn.disabled = true;
-
-        const azione = document.getElementById("cartellinoTipo").value;
-        const color = azione.includes("ENTRATA") ? 3066993 : 15158332;
-
-        const payload = {
-            content: `⏱️ **TIMBRO CARTELLINO: ${azione}**`,
-            embeds: [{
-                title: "Registro Presenze Servizio Marittimo",
-                color: color,
-                fields: [
-                    { name: "🎖️ Militare", value: document.getElementById("cartellinoMilitare").value, inline: true },
-                    { name: "🪪 Matricola", value: document.getElementById("cartellinoMatricola").value, inline: true },
-                    { name: "⏰ Ora Timbro", value: document.getElementById("cartellinoOra").value, inline: true },
-                    { name: "📌 Tipo Operazione", value: azione, inline: true },
-                    { name: "🚤 Turno / Reparto", value: document.getElementById("cartellinoTurno").value, inline: false }
-                ],
-                footer: { text: "Registro Presenze - Porto Cesareo" },
-                timestamp: new Date().toISOString()
-            }]
-        };
-
-        inviaWebhook(webhooks.cartellino, payload, btn, "⏱️ Timbra Cartellino Digitale", "Timbro cartellino registrato nel sistema!");
-    });
-
-    // 4. Modulo Richiesta Ferie -> Canale Assenze
-    document.getElementById("ferieForm").addEventListener("submit", function(e) {
-        e.preventDefault();
-        const btn = document.getElementById("submitFerieBtn");
-        btn.innerText = "Invio richiesta ferie...";
-        btn.disabled = true;
-
-        const payload = {
-            content: "📅 **RICHIESTA LICENZA / FERIE PERSONALE** 📅",
-            embeds: [{
-                title: "Domanda di Licenza e Congedo Operativo",
-                color: 2848784,
-                fields: [
-                    { name: "🎖️ Militare Richiedente", value: document.getElementById("ferieMilitare").value, inline: true },
-                    { name: "🪪 Matricola", value: document.getElementById("ferieMatricola").value, inline: true },
-                    { name: "🗓️ PERIODO RICHIESTO", value: `**Dal:** ${document.getElementById("ferieDal").value}\n**Al:** ${document.getElementById("ferieAl").value}`, inline: false },
-                    { name: "📋 Tipo Licenza", value: document.getElementById("ferieTipo").value, inline: true },
-                    { name: "🔄 Sostituto Designato", value: document.getElementById("ferieSostituto").value || "Nessun sostituto indicato", inline: true },
-                    { name: "📝 Motivazione / Note", value: document.getElementById("ferieMotivo").value, inline: false }
-                ],
-                footer: { text: "Ufficio Personale e Congedi - Porto Cesareo" },
-                timestamp: new Date().toISOString()
-            }]
-        };
-
-        inviaWebhook(webhooks.ferie, payload, btn, "🏖️ Invia Richiesta Ferie", "Domanda di ferie trasmessa al Comando per l'approvazione!");
-    });
-
-    // 5. Modulo Rapporto Disciplinare -> Canale Segnalazioni
-    document.getElementById("disciplinareForm").addEventListener("submit", function(e) {
-        e.preventDefault();
-        const btn = document.getElementById("submitDiscBtn");
-        btn.innerText = "Inoltro rapporto al Comando...";
-        btn.disabled = true;
-
-        const payload = {
-            content: "⚠️ **RAPPORTO / RICHIAMO DISCIPLINARE TRANSMESSO** ⚠️",
-            embeds: [{
-                title: "Segnalazione Inosservanza Disciplinare",
-                color: 14231068,
-                fields: [
-                    { name: "👮 Segnalante / Ufficiale", value: document.getElementById("discSegnalante").value, inline: true },
-                    { name: "⚠️ Militare Contestato", value: document.getElementById("discInfrattore").value, inline: true },
-                    { name: "🪪 Matricola", value: document.getElementById("discMatricola").value, inline: true },
-                    { name: "📌 Tipo Provvedimento", value: document.getElementById("discTipo").value, inline: false },
-                    { name: "🚨 Livello Gravità", value: document.getElementById("discGravita").value, inline: true },
-                    { name: "📄 Dettagli Contestate Violazioni", value: document.getElementById("discDescrizione").value, inline: false }
-                ],
-                footer: { text: "Ufficio Disciplina e Regolamento - Porto Cesareo" },
-                timestamp: new Date().toISOString()
-            }]
-        };
-
-        inviaWebhook(webhooks.disciplina, payload, btn, "🚨 Trasmetti Rapporto Disciplinare al Comando", "Rapporto disciplinare inviato riservatamente al Comando!");
-    });
-
-    function inviaWebhook(url, payload, btn, testoOriginale, messaggioSuccesso) {
-        fetch(url, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload)
-        })
-        .then(response => {
-            if (response.ok) {
-                alert(messaggioSuccesso);
-                btn.form.reset();
-            } else {
-                alert("Errore nella trasmissione dati via modem analogico.");
-            }
-        })
-        .catch(error => {
-            console.error("Errore:", error);
-            alert("Impossibile contattare il server remoto.");
-        })
-        .finally(() => {
-            btn.innerText = testoOriginale;
-            btn.disabled = false;
+        likeBtn.addEventListener('click', () => {
+            count++;
+            likeCount.innerText = count.toLocaleString();
+            likeBtn.style.transform = 'scale(1.1)';
+            setTimeout(() => likeBtn.style.transform = 'scale(1)', 150);
         });
-    }
-</script>
 
+        // Gestione Invio Messaggi Chat
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const chatBox = document.getElementById('chatBox');
+
+            if (input.value.trim() !== "") {
+                const newMsg = document.createElement('div');
+                newMsg.className = 'chat-msg';
+                newMsg.innerHTML = `<span class="user">Tu:</span> ${input.value}`;
+                chatBox.appendChild(newMsg);
+                input.value = "";
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }
+        }
+    </script>
 </body>
 </html>
