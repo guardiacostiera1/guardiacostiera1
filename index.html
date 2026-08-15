@@ -3,153 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guzman TV Live - Official Website</title>
+    <title>GUZMAN TV LIVE - GTA V STYLE</title>
     <!-- FontAwesome per le icone -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Font stile GTA / Poster -->
+    <link href="https://fonts.googleapis.com/css2?family=Pricedown&family=Teko:wght@600;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    
     <style>
+        /* FONT IMPORTATO STILE GTA */
+        @import url('https://fonts.cdnfonts.com/css/pricedown');
+
         :root {
-            --bg-color: #0d0d0d;
-            --card-bg: #1a1a1a;
-            --accent-pink: #FF0050;
-            --accent-cyan: #00F2FE;
-            --text-color: #FFFFFF;
-            --text-muted: #A0A0A0;
+            --gta-orange: #ff9900;
+            --gta-yellow: #f1c40f;
+            --gta-dark: #0a0a0a;
+            --gta-card: #151515;
+            --gta-border: #2a2a2a;
+            --text-color: #ffffff;
+            --text-muted: #aaaaaa;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
         body {
-            background-color: var(--bg-color);
+            background-color: var(--gta-dark);
             color: var(--text-color);
-            line-height: 1.6;
-            scroll-behavior: smooth;
+            font-family: 'Oswald', sans-serif;
+            background-image: 
+                linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.95)),
+                url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
         }
 
-        /* HEADER & HERO */
+        /* HEADER STILE LOS SANTOS */
         header {
-            min-height: 75vh;
+            min-height: 80vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             padding: 2rem;
-            background: radial-gradient(circle at center, rgba(255, 0, 80, 0.2) 0%, rgba(13, 13, 13, 1) 75%);
-            border-bottom: 1px solid #222;
             position: relative;
+            border-bottom: 5px solid var(--gta-orange);
+            background: radial-gradient(circle at center, rgba(255, 153, 0, 0.15) 0%, rgba(10, 10, 10, 0.9) 80%);
         }
 
         .avatar {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            border: 3px solid var(--accent-cyan);
-            box-shadow: 0 0 25px rgba(0, 242, 254, 0.5);
+            width: 150px;
+            height: 150px;
+            border-radius: 10px;
+            border: 4px solid var(--gta-orange);
+            box-shadow: 0 0 25px rgba(255, 153, 0, 0.6), inset 0 0 15px rgba(0,0,0,0.8);
             margin-bottom: 1.5rem;
-            background-color: #222;
+            background-color: #111;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.5rem;
-            font-weight: bold;
-            animation: pulse 2s infinite alternate;
+            font-family: 'Pricedown', 'Teko', sans-serif;
+            font-size: 3.5rem;
+            color: var(--gta-orange);
+            transform: rotate(-3deg);
+            transition: transform 0.3s ease;
         }
 
-        @keyframes pulse {
-            0% { box-shadow: 0 0 15px rgba(0, 242, 254, 0.4); }
-            100% { box-shadow: 0 0 30px rgba(255, 0, 80, 0.8); }
+        .avatar:hover {
+            transform: rotate(0deg) scale(1.05);
         }
 
         h1 {
-            font-size: 3.2rem;
-            letter-spacing: 2px;
+            font-family: 'Pricedown', sans-serif;
+            font-size: 4.5rem;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            margin-bottom: 0.5rem;
-            text-shadow: -2px -2px 0 var(--accent-pink), 2px 2px 0 var(--accent-cyan);
+            color: #fff;
+            text-shadow: 4px 4px 0px #000, -2px -2px 0px var(--gta-orange);
+            margin-bottom: 0.2rem;
+            line-height: 1;
         }
 
         .subtitle {
-            color: var(--text-muted);
-            font-size: 1.2rem;
+            font-family: 'Teko', sans-serif;
+            color: var(--gta-orange);
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
             margin-bottom: 2rem;
+            text-shadow: 2px 2px 0px #000;
         }
 
-        .btn-group {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .btn {
+        /* BOTTONE TIKTOK STILE GTA */
+        .btn-tiktok {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            padding: 0.9rem 2rem;
-            font-size: 1.05rem;
+            gap: 12px;
+            background: linear-gradient(135deg, var(--gta-orange), #d47a00);
+            color: #000;
+            padding: 1rem 3rem;
+            font-family: 'Teko', sans-serif;
+            font-size: 1.8rem;
             font-weight: bold;
+            text-transform: uppercase;
             text-decoration: none;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-tiktok {
-            background: linear-gradient(45deg, var(--accent-pink), var(--accent-cyan));
-            color: #fff;
-            box-shadow: 0 4px 15px rgba(255, 0, 80, 0.4);
+            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+            box-shadow: 5px 5px 0px #000;
+            transition: all 0.2s ease;
+            letter-spacing: 1px;
         }
 
         .btn-tiktok:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 25px rgba(0, 242, 254, 0.7);
+            background: #fff;
+            color: #000;
+            transform: scale(1.05) rotate(-1deg);
+            box-shadow: 8px 8px 0px var(--gta-orange);
         }
 
-        .btn-youtube {
-            background: #FF0000;
-            color: #fff;
-            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
-        }
-
-        .btn-youtube:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 25px rgba(255, 0, 0, 0.7);
-        }
-
-        /* CONTAINER GENERAL */
+        /* CONTAINER PRINCIPALE */
         .container {
-            max-width: 1000px;
+            max-width: 950px;
             margin: 0 auto;
             padding: 4rem 1.5rem;
         }
 
         .section-title {
-            font-size: 2.2rem;
+            font-family: 'Pricedown', sans-serif;
+            font-size: 3rem;
             margin-bottom: 2.5rem;
             text-align: center;
-            position: relative;
+            color: #fff;
+            text-shadow: 3px 3px 0px #000, -1px -1px 0px var(--gta-orange);
+            letter-spacing: 2px;
         }
 
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 70px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent-pink), var(--accent-cyan));
-            margin: 0.5rem auto 0;
-            border-radius: 2px;
-        }
-
-        /* TIMELINE */
+        /* TIMELINE STILE MISSIONI GTA */
         .timeline {
             position: relative;
-            border-left: 2px solid #333;
+            border-left: 4px solid var(--gta-orange);
             padding-left: 2rem;
             margin-left: 1rem;
         }
@@ -162,325 +157,351 @@
         .timeline-event::before {
             content: '';
             position: absolute;
-            left: -2.55rem;
+            left: -2.65rem;
             top: 5px;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background-color: var(--accent-cyan);
-            box-shadow: 0 0 10px var(--accent-cyan);
+            width: 18px;
+            height: 18px;
+            background-color: var(--gta-orange);
+            border: 3px solid #000;
+            transform: rotate(45deg);
+            box-shadow: 0 0 10px var(--gta-orange);
         }
 
         .timeline-year {
-            font-size: 0.95rem;
+            font-family: 'Teko', sans-serif;
+            font-size: 1.5rem;
             font-weight: bold;
-            color: var(--accent-pink);
+            color: var(--gta-orange);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .timeline-card {
+            background-color: rgba(21, 21, 21, 0.95);
+            padding: 1.5rem;
+            border: 2px solid var(--gta-border);
+            border-left: 5px solid var(--gta-orange);
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.8);
+        }
+
+        .timeline-card h3 {
+            font-family: 'Teko', sans-serif;
+            font-size: 1.8rem;
+            color: #fff;
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 0.3rem;
         }
 
-        .timeline-card {
-            background-color: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: 12px;
-            border: 1px solid #2a2a2a;
-        }
-
-        /* VIDEO CLIPS (YOUTUBE) */
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 1.5rem;
-        }
-
-        .video-card {
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid #2a2a2a;
-            transition: transform 0.3s ease;
-        }
-
-        .video-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-pink);
-        }
-
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            height: 0;
-            overflow: hidden;
-        }
-
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
-        .video-info {
-            padding: 1rem;
-        }
-
-        .video-info h3 {
+        .timeline-card p {
+            color: #ccc;
             font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        /* INTERATTIVITÀ & LIKE */
+        .interactive-box {
+            background-color: rgba(21, 21, 21, 0.95);
+            border: 2px solid var(--gta-orange);
+            padding: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+            box-shadow: 8px 8px 0px #000;
+        }
+
+        .interactive-box h3 {
+            font-family: 'Pricedown', sans-serif;
+            font-size: 2.2rem;
+            letter-spacing: 1px;
             margin-bottom: 0.5rem;
         }
 
-        /* INTERACTIVITIES & STATS */
-        .interactive-box {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 2rem;
-            border: 1px solid #2a2a2a;
-            margin-top: 3rem;
-            text-align: center;
-        }
-
-        .like-button-container {
-            margin-top: 1rem;
-        }
-
         .btn-like {
-            background: #222;
-            color: #fff;
-            border: 2px solid var(--accent-pink);
-            padding: 0.8rem 2rem;
-            font-size: 1.2rem;
-            border-radius: 50px;
+            background: #000;
+            color: var(--gta-orange);
+            border: 2px solid var(--gta-orange);
+            padding: 0.8rem 2.5rem;
+            font-family: 'Teko', sans-serif;
+            font-size: 1.8rem;
             cursor: pointer;
             transition: all 0.2s ease;
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            margin-top: 1rem;
+            text-transform: uppercase;
         }
 
         .btn-like:hover {
-            background: var(--accent-pink);
-            box-shadow: 0 0 15px rgba(255, 0, 80, 0.6);
+            background: var(--gta-orange);
+            color: #000;
+            box-shadow: 0 0 15px var(--gta-orange);
         }
 
-        .btn-like i {
-            color: var(--accent-pink);
-        }
-
-        .btn-like:hover i {
-            color: #fff;
-        }
-
-        /* COMMUNITY CHAT SIMULATOR */
+        /* BACHECA COMMENTI PERMANENTE */
         .chat-section {
-            background-color: var(--card-bg);
-            border-radius: 12px;
+            background-color: rgba(21, 21, 21, 0.95);
+            border: 2px solid var(--gta-border);
+            border-top: 4px solid var(--gta-orange);
             padding: 1.5rem;
-            border: 1px solid #2a2a2a;
             margin-top: 3rem;
+            box-shadow: 8px 8px 0px #000;
+        }
+
+        .chat-section h3 {
+            font-family: 'Pricedown', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .chat-box {
-            height: 200px;
+            height: 250px;
             overflow-y: auto;
-            border: 1px solid #333;
-            border-radius: 8px;
+            border: 2px solid #333;
             padding: 1rem;
-            background-color: #0d0d0d;
+            background-color: #0a0a0a;
             margin-bottom: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .chat-msg {
+            font-size: 1.1rem;
+            padding: 8px 12px;
+            background: #181818;
+            border-left: 3px solid var(--gta-orange);
+            word-break: break-word;
+        }
+
+        .chat-msg .user {
+            font-family: 'Teko', sans-serif;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--gta-orange);
+            margin-right: 8px;
+        }
+
+        .chat-input-container {
             display: flex;
             flex-direction: column;
             gap: 10px;
         }
 
-        .chat-msg {
-            font-size: 0.95rem;
-        }
-
-        .chat-msg .user {
-            font-weight: bold;
-            color: var(--accent-cyan);
-        }
-
-        .chat-input-group {
+        .chat-inputs {
             display: flex;
             gap: 10px;
         }
 
-        .chat-input-group input {
-            flex: 1;
+        .chat-inputs input {
             padding: 0.8rem;
-            border-radius: 8px;
-            border: 1px solid #333;
+            border: 2px solid #333;
             background-color: #111;
             color: #fff;
             outline: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1rem;
         }
 
-        .chat-input-group button {
-            background: var(--accent-cyan);
+        .chat-inputs input#nicknameInput {
+            width: 30%;
+        }
+
+        .chat-inputs input#chatInput {
+            width: 70%;
+        }
+
+        .chat-inputs input:focus {
+            border-color: var(--gta-orange);
+        }
+
+        .btn-send {
+            background: var(--gta-orange);
             color: #000;
+            font-family: 'Teko', sans-serif;
+            font-size: 1.5rem;
             font-weight: bold;
             border: none;
-            padding: 0 1.5rem;
-            border-radius: 8px;
+            padding: 0.6rem 2rem;
             cursor: pointer;
+            text-transform: uppercase;
+            transition: all 0.2s ease;
+        }
+
+        .btn-send:hover {
+            background: #fff;
+            color: #000;
         }
 
         footer {
             text-align: center;
             padding: 2rem;
-            border-top: 1px solid #222;
+            border-top: 2px solid var(--gta-border);
             color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 1rem;
             margin-top: 4rem;
+            background-color: #050505;
         }
     </style>
 </head>
 <body>
 
-    <!-- HEADER / HERO SECTION -->
+    <!-- HEADER STILE GTA V -->
     <header>
         <div class="avatar">GTV</div>
-        <h1>Guzman TV</h1>
-        <p class="subtitle">Streamer & Content Creator — Live su TikTok & Youtube</p>
+        <h1>GUZMAN TV</h1>
+        <p class="subtitle">LIVE STREAMER ON TIKTOK — LOS SANTOS EDITION</p>
         
-        <div class="btn-group">
-            <a href="https://www.tiktok.com/@guzman_tv_?_r=1&_t=ZN-98uIXC6cmIA" target="_blank" class="btn btn-tiktok">
-                <i class="fa-brands fa-tiktok"></i> Segui su TikTok
-            </a>
-            <a href="#clips" class="btn btn-youtube">
-                <i class="fa-brands fa-youtube"></i> Guarda Clip YouTube
-            </a>
-        </div>
+        <a href="https://www.tiktok.com/@guzman_tv_?_r=1&_t=ZN-98uIXC6cmIA" target="_blank" class="btn-tiktok">
+            <i class="fa-brands fa-tiktok"></i> Entra In Live TikTok
+        </a>
     </header>
 
     <main class="container">
 
-        <!-- SEZIONE STORIA -->
+        <!-- LA STORIA DEL CANALE -->
         <section>
-            <h2 class="section-title">La Storia del Canale</h2>
+            <h2 class="section-title">LA STORIA DEL CANALE</h2>
             <div class="timeline">
                 <div class="timeline-event">
-                    <div class="timeline-year">2024 — Il Debutto</div>
+                    <div class="timeline-year">2024 — IL DEBUTTO</div>
                     <div class="timeline-card">
-                        <h3>L'Inizio del Viaggio</h3>
-                        <p>Nel 2024, Guzman TV fa il suo ingresso su TikTok. Fin da subito propone dirette coinvolgenti, basate sull'interazione diretta e spontanea con gli spettatori.</p>
+                        <h3>MISSIONE 1: INIZIO DEL VIAGGIO</h3>
+                        <p>Nel 2024, Guzman TV sbarca ufficialmente su TikTok. Fin dai primi minuti in streaming impone uno stile di intrattenimento diretto, senza filtri e focalizzato sul contatto diretto con chi segue la live.</p>
                     </div>
                 </div>
 
                 <div class="timeline-event">
-                    <div class="timeline-year">2024/2025 — La Crescita</div>
+                    <div class="timeline-year">2024 / 2025 — L'ESPANSIONE</div>
                     <div class="timeline-card">
-                        <h3>I Primi Traguardi e Multi-Platform</h3>
-                        <p>Il canale si espande rapidamente, portando contenuti anche su YouTube con video highlights, reazioni e migliori momenti estratti dalle live serali.</p>
+                        <h3>MISSIONE 2: CONQUISTA DELLA COMMUNITY</h3>
+                        <p>Le dirette diventano un appuntamento fisso. La community cresce costantemente, trasformando le serate in streaming in veri e propri raduni dal vivo su TikTok con record di spettatori simultanei.</p>
                     </div>
                 </div>
 
                 <div class="timeline-event">
-                    <div class="timeline-year">Oggi</div>
+                    <div class="timeline-year">OGGI</div>
                     <div class="timeline-card">
-                        <h3>Community Consolidata</h3>
-                        <p>Un punto di riferimento per l'intrattenimento quotidiano: dirette TikTok, clip esclusive e una community sempre pronta a supportare lo streamer.</p>
+                        <h3>MISSIONE COMPLETA: REGNO DELLE LIVE</h3>
+                        <p>Guzman TV è un punto di riferimento assoluto per chi cerca intrattenimento spontaneo, risate e discussioni live ogni giorno.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SEZIONE CLIP YOUTUBE (Sostituisci i link embed con le tue clip) -->
-        <section id="clips" style="margin-top: 4rem;">
-            <h2 class="section-title">Highlights & Clip YouTube</h2>
-            <div class="video-grid">
-                
-                <!-- Video Clip 1 -->
-                <div class="video-card">
-                    <div class="video-wrapper">
-                        <!-- Inserisci l'ID del video YouTube al posto di M7lc1UVf-VE -->
-                        <iframe src="https://www.youtube.com/embed/M7lc1UVf-VE" title="Guzman TV Highlight 1" allowfullscreen></iframe>
-                    </div>
-                    <div class="video-info">
-                        <h3>Migliori Momenti in Live #1</h3>
-                        <p style="color: var(--text-muted); font-size: 0.85rem;">Estratto dalle ultime dirette TikTok.</p>
-                    </div>
-                </div>
-
-                <!-- Video Clip 2 -->
-                <div class="video-card">
-                    <div class="video-wrapper">
-                        <!-- Inserisci l'ID di un altro video -->
-                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Guzman TV Highlight 2" allowfullscreen></iframe>
-                    </div>
-                    <div class="video-info">
-                        <h3>Reazioni e Momenti Divertenti</h3>
-                        <p style="color: var(--text-muted); font-size: 0.85rem;">Spettatori in chat e momenti top.</p>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- INTERAZIONE: PULSANTE LIKE LIVE -->
+        <!-- SEZIONE LIKE INTERATTIVI -->
         <div class="interactive-box">
-            <h3>Supporta la Live di Guzman TV</h3>
-            <p style="color: var(--text-muted); font-size: 0.95rem;">Lascia un "Cuore" virtuale per mostrare il tuo supporto!</p>
-            <div class="like-button-container">
-                <button class="btn-like" id="likeBtn">
-                    <i class="fa-solid fa-heart"></i> <span id="likeCount">1,420</span> Like
-                </button>
-            </div>
+            <h3>RISPETTO PER LA CREW</h3>
+            <p style="color: #aaa; font-size: 1.1rem;">Lascia un "Like" per aumentare il rispetto del canale!</p>
+            <button class="btn-like" id="likeBtn">
+                <i class="fa-solid fa-thumbs-up"></i> <span id="likeCount">1500</span> RISPETTO
+            </button>
         </div>
 
-        <!-- SEZIONE CHAT COMMUNITY -->
+        <!-- BACHECA COMMENTI PERMANENTE (PERMUTATA IN LOCALSTORAGE) -->
         <section class="chat-section">
-            <h3 style="margin-bottom: 1rem;"><i class="fa-solid fa-comments"></i> Bacheca Community</h3>
+            <h3><i class="fa-solid fa-bullhorn" style="color: var(--gta-orange);"></i> BACHECA COMMUNITY</h3>
             <div class="chat-box" id="chatBox">
-                <div class="chat-msg"><span class="user">Marco99:</span> Guzman quando vai in live stasera?</div>
-                <div class="chat-msg"><span class="user">Luca_Stream:</span> Le clip su YouTube spaccano! 🔥</div>
-                <div class="chat-msg"><span class="user">Sara_G:</span> Presente in ogni live!</div>
+                <!-- I commenti verranno caricati qui tramite Javascript -->
             </div>
-            <div class="chat-input-group">
-                <input type="text" id="chatInput" placeholder="Scrivi un messaggio alla community...">
-                <button onclick="sendMessage()">Invia</button>
+            
+            <div class="chat-input-container">
+                <div class="chat-inputs">
+                    <input type="text" id="nicknameInput" placeholder="Nome / Nickname...">
+                    <input type="text" id="chatInput" placeholder="Scrivi un messaggio permanente...">
+                </div>
+                <button class="btn-send" onclick="sendMessage()">PUBBLICA MESSAGGIO</button>
             </div>
         </section>
 
     </main>
 
     <footer>
-        <p>&copy; Guzman TV Live. Tutti i diritti riservati.</p>
+        <p>&copy; GUZMAN TV LIVE. ALL RIGHTS RESERVED — GRAND THEFT AUTO STYLE WEBSITE.</p>
     </footer>
 
-    <!-- JAVASCRIPT PER LE INTERAZIONI -->
     <script>
-        // Gestione dei Like
-        let count = 1420;
+        // --- 1. GESTIONE DEI LIKE CON PERSISTENZA (LOCALSTORAGE) ---
+        let count = parseInt(localStorage.getItem('guzman_likes')) || 1500;
         const likeBtn = document.getElementById('likeBtn');
         const likeCount = document.getElementById('likeCount');
+
+        likeCount.innerText = count.toLocaleString();
 
         likeBtn.addEventListener('click', () => {
             count++;
             likeCount.innerText = count.toLocaleString();
-            likeBtn.style.transform = 'scale(1.1)';
+            localStorage.setItem('guzman_likes', count); // Salva nel browser
+            
+            likeBtn.style.transform = 'scale(1.08)';
             setTimeout(() => likeBtn.style.transform = 'scale(1)', 150);
         });
 
-        // Gestione Invio Messaggi Chat
-        function sendMessage() {
-            const input = document.getElementById('chatInput');
-            const chatBox = document.getElementById('chatBox');
+        // --- 2. GESTIONE COMMENTI PERMANENTI (LOCALSTORAGE) ---
+        // Commenti predefiniti se la bacheca è nuova
+        const defaultComments = [
+            { name: "Franklin", text: "Guzman quando vai in live stasera?" },
+            { name: "Trevor", text: "Spacca tutto in live su TikTok! 🔥" },
+            { name: "Michael", text: "Presente sempre in ogni diretta." }
+        ];
 
-            if (input.value.trim() !== "") {
-                const newMsg = document.createElement('div');
-                newMsg.className = 'chat-msg';
-                newMsg.innerHTML = `<span class="user">Tu:</span> ${input.value}`;
-                chatBox.appendChild(newMsg);
-                input.value = "";
-                chatBox.scrollTop = chatBox.scrollHeight;
+        // Carica i commenti salvati o carica quelli di default
+        let commentsList = JSON.parse(localStorage.getItem('guzman_comments')) || defaultComments;
+
+        function renderComments() {
+            const chatBox = document.getElementById('chatBox');
+            chatBox.innerHTML = ''; // Pulisce il box prima di ricaricare
+
+            commentsList.forEach(comment => {
+                const msgDiv = document.createElement('div');
+                msgDiv.className = 'chat-msg';
+                msgDiv.innerHTML = `<span class="user">${escapeHTML(comment.name)}:</span> ${escapeHTML(comment.text)}`;
+                chatBox.appendChild(msgDiv);
+            });
+
+            chatBox.scrollTop = chatBox.scrollHeight; // Scroll automatico in fondo
+        }
+
+        function sendMessage() {
+            const nameInput = document.getElementById('nicknameInput');
+            const textInput = document.getElementById('chatInput');
+
+            const name = nameInput.value.trim() || 'Anonimo';
+            const text = textInput.value.trim();
+
+            if (text !== "") {
+                // Aggiunge il nuovo commento all'array
+                commentsList.push({ name: name, text: text });
+
+                // Salva nel LocalStorage in modo che NON si cancelli al refresh
+                localStorage.setItem('guzman_comments', JSON.stringify(commentsList));
+
+                // Svuota gli input e aggiorna la bacheca
+                textInput.value = "";
+                renderComments();
             }
         }
+
+        // Funzione di sicurezza per evitare codice malevolo nei commenti
+        function escapeHTML(str) {
+            return str.replace(/[&<>'"]/g, 
+                tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+            );
+        }
+
+        // Permetti l'invio premendo "Invio" sulla tastiera
+        document.getElementById('chatInput').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Avvio iniziale: renderizza tutti i commenti salvati
+        renderComments();
     </script>
 </body>
 </html>
