@@ -3,932 +3,550 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GUZMAN TV LIVE - OFFICIAL GTA EDITION</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Pricedown&family=Teko:wght@600;700&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
-    
+    <title>ARCADE_90S.TV - Ultimate Retro Gaming Hub 1080p</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
     <style>
         :root {
-            --gta-orange: #ff9900;
-            --gta-dark: #080808;
-            --gta-card: rgba(18, 18, 18, 0.95);
-            --gta-border: rgba(255, 153, 0, 0.3);
-            --telegram-blue: #0088cc;
-            --twitch-purple: #9146FF;
-            --discord-blurple: #5865F2;
-            --paypal-gold: #ffc439;
-            --text-color: #ffffff;
-            --text-muted: #aaaaaa;
+            --bg-color: #12161a;
+            --panel-bg: #1f2833;
+            --border-color: #c5a880;
+            --accent-teal: #45a29e;
+            --accent-orange: #f05454;
+            --window-top: #2c353d;
+            --text-color: #c7d5e0;
         }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background-color: var(--gta-dark);
-            color: var(--text-color);
-            font-family: 'Oswald', sans-serif;
+            background-color: var(--bg-color);
             background-image: 
-                radial-gradient(circle at center, rgba(0,0,0,0.6) 0%, rgba(8,8,8,0.95) 100%),
-                url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1350&q=80');
-            background-size: cover; background-attachment: fixed; background-position: center;
+                linear-gradient(rgba(18, 22, 26, 0.8) 50%, rgba(0, 0, 0, 0.8) 50%),
+                linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            background-size: 100% 4px, 6px 100%;
+            font-family: 'VT323', monospace;
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            font-size: 22px;
         }
 
+        .container {
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+
+        /* HEADER */
         header {
-            min-height: 45vh; display: flex; flex-direction: column;
-            justify-content: center; align-items: center; text-align: center;
-            padding: 2.5rem 1rem; position: relative; border-bottom: 3px solid var(--gta-orange);
-            background: linear-gradient(180deg, rgba(255, 153, 0, 0.1) 0%, rgba(8, 8, 8, 0.9) 100%);
-        }
-
-        .avatar {
-            width: 100px; height: 100px; border-radius: 8px; border: 3px solid var(--gta-orange);
-            box-shadow: 0 0 20px rgba(255, 153, 0, 0.4); margin-bottom: 1rem; background-color: #111;
-            display: flex; align-items: center; justify-content: center;
-            font-family: 'Pricedown', sans-serif; font-size: 2.5rem; color: var(--gta-orange); transform: rotate(-2deg);
-        }
-
-        h1 {
-            font-family: 'Pricedown', sans-serif; font-size: 3.5rem; letter-spacing: 2px;
-            text-transform: uppercase; color: #fff; text-shadow: 3px 3px 0px #000, -2px -2px 0px var(--gta-orange); line-height: 1;
-        }
-
-        .subtitle { font-family: 'Teko', sans-serif; color: var(--gta-orange); font-size: 1.4rem; letter-spacing: 2px; margin-bottom: 1.5rem; }
-
-        .btn-group { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
-
-        .btn-main {
-            display: inline-flex; align-items: center; gap: 10px; padding: 0.8rem 1.8rem;
-            font-family: 'Teko', sans-serif; font-size: 1.4rem; font-weight: bold;
-            text-transform: uppercase; text-decoration: none; clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%);
-            box-shadow: 4px 4px 0px #000; transition: all 0.2s ease; cursor: pointer; border: none;
-        }
-
-        .btn-discord { background: var(--discord-blurple); color: #fff; }
-        .btn-discord:hover { background: #fff; color: var(--discord-blurple); transform: scale(1.03); }
-
-        .btn-twitch { background: var(--twitch-purple); color: #fff; }
-        .btn-twitch:hover { background: #fff; color: var(--twitch-purple); transform: scale(1.03); }
-
-        .btn-tiktok { background: linear-gradient(135deg, var(--gta-orange), #d47a00); color: #000; }
-        .btn-tiktok:hover { background: #fff; color: #000; transform: scale(1.03); }
-
-        .btn-telegram { background: var(--telegram-blue); color: #fff; }
-        .btn-telegram:hover { background: #fff; color: var(--telegram-blue); transform: scale(1.03); }
-
-        .btn-donate { background: var(--paypal-gold); color: #000; }
-        .btn-donate:hover { background: #fff; color: #000; transform: scale(1.03); }
-
-        .main-layout {
-            max-width: 1200px; margin: 0 auto; padding: 2.5rem 1.5rem;
-            display: grid; grid-template-columns: 320px 1fr; gap: 2rem;
-        }
-
-        @media (max-width: 900px) { .main-layout { grid-template-columns: 1fr; } }
-
-        .sidebar { display: flex; flex-direction: column; gap: 2rem; }
-
-        .side-card {
-            background-color: var(--gta-card); border: 1px solid var(--gta-border);
-            border-left: 4px solid var(--gta-orange); padding: 1.2rem; box-shadow: 4px 4px 15px rgba(0,0,0,0.5);
-        }
-
-        .side-title {
-            font-family: 'Pricedown', sans-serif; font-size: 1.8rem; color: var(--gta-orange);
-            margin-bottom: 1rem; display: flex; align-items: center; gap: 8px;
-        }
-
-        .timeline-compact { position: relative; border-left: 2px solid var(--gta-orange); padding-left: 1rem; margin-left: 0.5rem; }
-        .timeline-item { margin-bottom: 1.2rem; position: relative; }
-        .timeline-item::before {
-            content: ''; position: absolute; left: -1.35rem; top: 4px;
-            width: 10px; height: 10px; background-color: var(--gta-orange); transform: rotate(45deg);
-        }
-
-        .timeline-date { font-family: 'Teko', sans-serif; font-size: 1.1rem; color: var(--gta-orange); }
-        .timeline-item h4 { font-family: 'Teko', sans-serif; font-size: 1.3rem; color: #fff; }
-        .timeline-item p { font-size: 0.88rem; color: #ccc; }
-
-        .content-area { display: flex; flex-direction: column; gap: 2rem; }
-
-        .section-card {
-            background-color: var(--gta-card); border: 1px solid var(--gta-border);
-            padding: 2rem; box-shadow: 5px 5px 20px rgba(0,0,0,0.6); position: relative;
-        }
-
-        .section-heading {
-            font-family: 'Pricedown', sans-serif; font-size: 2.2rem; color: #fff;
-            margin-bottom: 1rem; text-shadow: 2px 2px 0px #000; display: flex; align-items: center; gap: 12px;
-        }
-
-        .section-heading i { color: var(--gta-orange); }
-
-        /* COUNTER STYLES */
-        .views-counter-box {
-            background: #000;
-            border: 2px solid var(--gta-orange);
-            padding: 1rem;
             text-align: center;
-            box-shadow: inset 0 0 10px rgba(255, 153, 0, 0.2);
+            border: 4px solid var(--border-color);
+            background-color: var(--panel-bg);
+            padding: 20px;
+            box-shadow: 8px 8px 0px var(--border-color);
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .views-number {
-            font-family: 'Teko', sans-serif;
-            font-size: 3rem;
-            color: #00ff66;
+
+        .logo {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 36px;
+            color: var(--accent-orange);
+            text-shadow: 4px 4px 0px #000;
+        }
+
+        .nav-links {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 11px;
+            word-spacing: 20px;
+        }
+
+        .nav-links a {
+            color: var(--accent-teal);
+            text-decoration: none;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-orange);
+            text-decoration: underline;
+        }
+
+        /* LAYOUT PRINCIPALE 1080P: GRIGLIA A 3 COLONNE */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 350px 1fr 380px;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .win95-window {
+            background-color: var(--panel-bg);
+            border: 3px solid var(--border-color);
+            box-shadow: 6px 6px 0px var(--border-color);
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        .win95-titlebar {
+            background-color: var(--window-top);
+            color: white;
+            padding: 6px 10px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .win95-buttons span {
+            border: 1px solid white;
+            padding: 0 5px;
+            background: #c0c0c0;
+            color: black;
+            font-size: 9px;
+            cursor: pointer;
+        }
+
+        .win95-content {
+            padding: 15px;
+            flex-grow: 1;
+        }
+
+        /* AREA GIOCO CENTRALE (EMULATORE / CANVAS) */
+        .arcade-cabinet {
+            background: #000;
+            border: 4px inset var(--border-color);
+            text-align: center;
+            position: relative;
+            height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #game-canvas {
+            background: #111;
+            border: 2px solid var(--accent-teal);
+            max-width: 100%;
+            height: auto;
+            image-rendering: pixelated;
+        }
+
+        .arcade-controls {
+            margin-top: 10px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 9px;
+            color: #fff;
+        }
+
+        /* LISTA GIOCHI SELEZIONABILI */
+        .game-list-item {
+            background: #12161a;
+            border: 2px solid var(--border-color);
+            padding: 8px 12px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: 0.2s;
+        }
+
+        .game-list-item:hover, .game-list-item.active {
+            background: var(--accent-teal);
+            color: #000;
+            border-color: #fff;
+        }
+
+        /* BOTTONI RETRO */
+        button.retro-btn {
+            background-color: var(--accent-orange);
+            border: 2px solid var(--border-color);
+            font-family: 'Press Start 2P', cursive;
+            font-size: 9px;
+            padding: 8px 12px;
+            color: white;
+            cursor: pointer;
+            box-shadow: 3px 3px 0px #000;
+            width: 100%;
+            margin-top: 5px;
+        }
+
+        button.retro-btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: none;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 6px;
+            border: 2px solid var(--border-color);
+            font-family: 'VT323', monospace;
+            font-size: 20px;
+            background: #0b0f12;
+            color: #fff;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--panel-bg);
+            border: 4px solid var(--border-color);
+            padding: 15px 25px;
+            text-align: center;
+            box-shadow: 8px 8px 0px var(--border-color);
+            font-size: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hit-counter {
+            background: black;
+            color: #00ff00;
+            padding: 4px 12px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 12px;
             letter-spacing: 3px;
-            line-height: 1;
-            text-shadow: 0 0 10px rgba(0, 255, 102, 0.5);
+            border: 2px inset #00ff00;
         }
-        .pulse-dot {
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            background-color: #00ff66;
-            border-radius: 50%;
-            margin-right: 6px;
-            box-shadow: 0 0 8px #00ff66;
-            animation: pulse 1.5s infinite;
-        }
-        @keyframes pulse {
-            0% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.4; transform: scale(1.2); }
-            100% { opacity: 1; transform: scale(1); }
-        }
-
-        /* CLASSIFICA CREW */
-        .leaderboard-table {
-            width: 100%; border-collapse: collapse; margin-top: 0.8rem;
-        }
-        .leaderboard-table th, .leaderboard-table td {
-            padding: 8px 12px; text-align: left; border-bottom: 1px solid #222;
-        }
-        .leaderboard-table th { color: var(--gta-orange); font-family: 'Teko', sans-serif; font-size: 1.2rem; }
-        .leaderboard-table td { font-size: 0.95rem; }
-        .leaderboard-table tr:first-child td { color: #f1c40f; font-weight: bold; }
-
-        /* MINIGIOCHI STYLES */
-        .minigames-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem; }
-        @media (max-width: 700px) { .minigames-grid { grid-template-columns: 1fr; } }
-
-        .game-box {
-            background: #0d0d0d; border: 1px solid var(--gta-border); padding: 1.2rem;
-            text-align: center; display: flex; flex-direction: column; justify-content: space-between; align-items: center;
-            min-height: 300px;
-        }
-
-        .wheel-container { position: relative; width: 150px; height: 150px; margin: 0.5rem 0; }
-        .wheel {
-            width: 100%; height: 100%; border-radius: 50%; border: 4px solid var(--gta-orange);
-            background: conic-gradient(#ff9900 0 60deg, #111 60deg 120deg, #d47a00 120deg 180deg, #222 180deg 240deg, #f1c40f 240deg 300deg, #333 300deg 360deg);
-            transition: transform 3s cubic-bezier(0.15, 0.88, 0.15, 0.98);
-        }
-        .wheel-pointer {
-            position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
-            width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 12px solid #fff; z-index: 10;
-        }
-
-        /* FORM RICHIESTA SERVER */
-        .server-form { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
-        @media (max-width: 600px) { .server-form { grid-template-columns: 1fr; } }
-        .form-group { display: flex; flex-direction: column; gap: 5px; }
-        .form-group.full-width { grid-column: 1 / -1; }
-        .form-group label { font-family: 'Teko', sans-serif; font-size: 1.2rem; color: var(--gta-orange); }
-        .form-group input, .form-group textarea, .form-group select {
-            padding: 0.8rem; background-color: #0d0d0d; border: 1px solid #333; color: #fff; font-family: 'Oswald', sans-serif; outline: none;
-        }
-
-        .btn-submit {
-            background: var(--gta-orange); color: #000; font-family: 'Teko', sans-serif;
-            font-size: 1.4rem; font-weight: bold; border: none; padding: 0.5rem 1.5rem; cursor: pointer; text-transform: uppercase;
-        }
-
-        .btn-submit:hover { background: #fff; color: #000; }
-        .btn-submit:disabled { background: #444; color: #888; cursor: not-allowed; }
-
-        .chat-box { height: 180px; overflow-y: auto; border: 1px solid #222; padding: 1rem; background-color: #0a0a0a; margin-bottom: 1rem; display: flex; flex-direction: column; gap: 10px; }
-        .chat-msg { font-size: 0.95rem; padding: 8px; background: #141414; border-left: 3px solid var(--gta-orange); }
-        .chat-msg .user { font-family: 'Teko', sans-serif; font-size: 1.2rem; color: var(--gta-orange); margin-right: 6px; }
-        .chat-inputs { display: flex; gap: 10px; }
-        .chat-inputs input { padding: 0.7rem; background: #0a0a0a; border: 1px solid #333; color: #fff; font-family: 'Oswald', sans-serif; }
-
-        footer { text-align: center; padding: 2rem; border-top: 1px solid var(--gta-border); color: var(--text-muted); font-size: 0.9rem; background-color: #050505; }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="avatar">GTV</div>
-        <h1>GUZMAN TV</h1>
-        <p class="subtitle">LIVE STREAMER — OFFICIAL PORTAL</p>
-        
-        <div class="btn-group">
-            <button class="btn-main btn-discord" onclick="loginDiscord()">
-                <i class="fa-brands fa-discord"></i> <span id="headerDiscordBtn">Accedi con Discord</span>
-            </button>
-            <a href="https://www.twitch.tv/guzmantv7" target="_blank" class="btn-main btn-twitch">
-                <i class="fa-brands fa-twitch"></i> Twitch
-            </a>
-            <a href="https://www.tiktok.com/@guzman_tv_?_r=1&_t=ZN-98uIXC6cmIA" target="_blank" class="btn-main btn-tiktok">
-                <i class="fa-brands fa-tiktok"></i> TikTok Live
-            </a>
-            <a href="https://t.me/+EnU_g0nYS5Q5YjA8" target="_blank" class="btn-main btn-telegram">
-                <i class="fa-brands fa-telegram"></i> Telegram
-            </a>
-            <a href="https://www.paypal.me/FrancescoFerrara175" target="_blank" class="btn-main btn-donate">
-                <i class="fa-brands fa-paypal"></i> Donazioni
-            </a>
+    <div class="container">
+        <!-- HEADER -->
+        <header>
+            <div class="logo">🕹️ ARCADE_90S.TV // 1080P HUB</div>
+            <div class="nav-links">
+                <a href="#" onclick="switchGame('snake')">[SNAKE ARCADE]</a> 
+                <a href="#" onclick="switchGame('pong')">[RETRO PONG]</a> 
+                <a href="#" onclick="alert('Inserisci un gettone virtuale!')">[INSERT COIN]</a> 
+                <a href="#">[HI-SCORES]</a>
+            </div>
+        </header>
+
+        <!-- GRIGLIA PRINCIPALE 1080P -->
+        <div class="main-grid">
+            
+            <!-- COLONNA SINISTRA: SELETTORE GIOCHI & ROMS -->
+            <div>
+                <div class="win95-window">
+                    <div class="win95-titlebar">
+                        <span>💾 SELEZIONA CABINET</span>
+                        <div class="win95-buttons"><span>_</span><span>X</span></div>
+                    </div>
+                    <div class="win95-content">
+                        <div class="game-list-item active" onclick="switchGame('snake')">
+                            <span>🐍 Snake 90s Edition</span>
+                            <span>[READY]</span>
+                        </div>
+                        <div class="game-list-item" onclick="switchGame('pong')">
+                            <span>🏓 Classic Pong 1972</span>
+                            <span>[READY]</span>
+                        </div>
+                        <div class="game-list-item" onclick="alert('Impossibile caricare: Richiede BIOS NeoGeo mancante!')">
+                            <span>🥊 Metal Slug (ROM)</span>
+                            <span>[LOCKED]</span>
+                        </div>
+                        <div class="game-list-item" onclick="alert('Impossibile caricare: Richiede emulatore CPS2!')">
+                            <span>🥋 Street Fighter II</span>
+                            <span>[LOCKED]</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="win95-window">
+                    <div class="win95-titlebar">
+                        <span>📊 SONDAGGIO SALAGIOCHI</span>
+                        <div class="win95-buttons"><span>_</span><span>X</span></div>
+                    </div>
+                    <div class="win95-content">
+                        <p style="margin-top:0;">Quale cabinato ti prosciugava più gettoni?</p>
+                        <button class="retro-btn" onclick="vote('Metal Slug')">1. METAL SLUG</button>
+                        <button class="retro-btn" onclick="vote('Street Fighter')">2. STREET FIGHTER II</button>
+                        <button class="retro-btn" onclick="vote('Puzzle Bobble')">3. PUZZLE BOBBLE</button>
+                        <p id="vote-result" style="margin-top:10px; color:var(--accent-teal); font-size:18px;"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COLONNA CENTRALE: CABINATO ARCADE INTERATTIVO -->
+            <div>
+                <div class="win95-window" style="height: 100%;">
+                    <div class="win95-titlebar">
+                        <span>📺 ARCADE_CABINET_MONITOR.exe - <span id="current-game-title">SNAKE</span></span>
+                        <div class="win95-buttons"><span>_</span><span>X</span></div>
+                    </div>
+                    <div class="win95-content" style="display:flex; flex-direction:column; justify-content:center; align-items:center;">
+                        <div class="arcade-cabinet">
+                            <!-- CANVAS DEL GIOCO FUNZIONANTE -->
+                            <canvas id="game-canvas" width="480" height="360"></canvas>
+                            <div class="arcade-controls" id="controls-text">
+                                USA I FRECCE DIREZIONALI PER GIOCARE
+                            </div>
+                        </div>
+                        <button class="retro-btn" style="margin-top: 15px; width: 250px;" onclick="startGame()">▶ RIAVVIA PARTITA</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COLONNA DESTRA: RADIO, GUESTBOOK & STATS -->
+            <div>
+                <div class="win95-window">
+                    <div class="win95-titlebar">
+                        <span>🎵 CHIPTUNE_RADIO.fm</span>
+                        <div class="win95-buttons"><span>_</span><span>X</span></div>
+                    </div>
+                    <div class="win95-content" style="text-align: center;">
+                        <p style="margin-top:0;">Stazione FM: 98.5 Arcade Sound</p>
+                        <audio controls style="width: 100%; margin-bottom: 10px;">
+                            <source src="https://commondatastorage.googleapis.com/codesign-demos/chiptune.mp3" type="audio/mpeg">
+                            Il tuo browser non supporta l'audio.
+                        </audio>
+                        <p style="font-size: 16px; margin:0; color:var(--accent-teal);">Stile: FM Synthesis / YM2612</p>
+                    </div>
+                </div>
+
+                <div class="win95-window">
+                    <div class="win95-titlebar">
+                        <span>✍️ GUESTBOOK DEL BAR</span>
+                        <div class="win95-buttons"><span>_</span><span>X</span></div>
+                    </div>
+                    <div class="win95-content">
+                        <label for="gb">Lascia un messaggio ai player:</label>
+                        <input type="text" id="gb" placeholder="Tuo Nickname / Punteggio...">
+                        <button class="retro-btn" onclick="signGuestbook()">PUBBLICA NEL WALL</button>
+                        <div id="guestbook-wall" style="margin-top: 10px; font-size:18px; max-height: 100px; overflow-y: auto; border: 1px dashed var(--border-color); padding: 5px;">
+                            <div><b>Player1:</b> 50000 pt - GG!</div>
+                            <div><b>NeoGeoBoy:</b> ChiCercaTrova i gettoni!</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-    </header>
 
-    <div class="main-layout">
-
-        <!-- SIDEBAR -->
-        <aside class="sidebar">
-            <!-- VISUALIZZAZIONI TEMPO REALE -->
-            <div class="side-card" style="border-left-color: #00ff66;">
-                <div class="side-title" style="color: #00ff66;"><i class="fa-solid fa-eye"></i> VISUALIZZAZIONI</div>
-                <div class="views-counter-box">
-                    <p style="font-size: 0.85rem; color: #aaa; margin-bottom: 0.4rem;">
-                        <span class="pulse-dot"></span>LIVE STATS
-                    </p>
-                    <div class="views-number" id="viewsCounter">0</div>
-                    <p style="font-size: 0.75rem; color: #666; margin-top: 0.3rem; text-transform: uppercase;">Conteggio Permanente Cumulativo</p>
-                </div>
-            </div>
-
-            <!-- ACCOUNT DISCORD CARD -->
-            <div class="side-card" style="border-left-color: var(--discord-blurple);">
-                <div class="side-title" style="color: var(--discord-blurple);"><i class="fa-brands fa-discord"></i> PROFILO CREW</div>
-                <div id="discordProfileBox">
-                    <p style="font-size: 0.9rem; color: #ccc; margin-bottom: 0.8rem;">Connetti il tuo Discord per salvare automaticamente i punti e sbloccare i ruoli!</p>
-                    <button class="btn-submit" style="background: var(--discord-blurple); color: #fff; width: 100%;" onclick="loginDiscord()">LOGIN DISCORD</button>
-                </div>
-            </div>
-
-            <!-- NOME GIOCATORE CREW -->
-            <div class="side-card">
-                <div class="side-title"><i class="fa-solid fa-user-pen"></i> TUO NICKNAME</div>
-                <p style="font-size: 0.85rem; color: #aaa; margin-bottom: 0.5rem;">Inserisci o crea un nome per giocare:</p>
-                <div style="display: flex; gap: 5px;">
-                    <input type="text" id="customNameInput" placeholder="Inserisci Nickname..." style="width: 70%; padding: 0.4rem; background: #000; color: #fff; border: 1px solid #333;">
-                    <button class="btn-submit" style="width: 30%; font-size: 1rem; padding: 0;" onclick="registerCustomUser()">SALVA</button>
-                </div>
-            </div>
-
-            <!-- STORIA -->
-            <div class="side-card">
-                <div class="side-title"><i class="fa-solid fa-book-bookmark"></i> LA STORIA</div>
-                <div class="timeline-compact">
-                    <div class="timeline-item">
-                        <div class="timeline-date">2024</div>
-                        <h4>IL DEBUTTO</h4>
-                        <p>Inizio delle trasmissioni live su TikTok e primi contatti con la community.</p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">2024 - 2025</div>
-                        <h4>CRESCITA</h4>
-                        <p>Format consolidati e appuntamenti serali fissi seguiti da centinaia di spettatori.</p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">OGGI</div>
-                        <h4>AFFERMAZIONE</h4>
-                        <p>Punto di riferimento quotidiano per l'intrattenimento in diretta.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- CLASSIFICA CREW -->
-            <div class="side-card">
-                <div class="side-title"><i class="fa-solid fa-trophy"></i> CLASSIFICA CREW</div>
-                <p style="font-size: 0.85rem; color: #aaa;">Punteggio aggiornato tramite i giochi!</p>
-                <table class="leaderboard-table">
-                    <thead>
-                        <tr><th>#</th><th>MEMBRO</th><th>PUNTI</th></tr>
-                    </thead>
-                    <tbody id="leaderboardBody">
-                        <!-- Generato da JS -->
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- RISPETTO -->
-            <div class="side-card">
-                <div class="side-title"><i class="fa-solid fa-shield-halved"></i> COMMUNITY</div>
-                <p style="font-size: 0.9rem; color: #bbb;">Supporta il canale lasciando il tuo rispetto virtuale.</p>
-                <div style="display: flex; align-items: center; justify-content: space-between; background: #0d0d0d; padding: 0.8rem; margin-top: 0.8rem; border: 1px solid var(--gta-border);">
-                    <span id="likeCount" style="font-family: 'Teko', sans-serif; font-size: 1.8rem; color: #fff;">1500</span>
-                    <button id="likeBtn" style="background: transparent; color: var(--gta-orange); border: 2px solid var(--gta-orange); padding: 0.3rem 1.2rem; font-family: 'Teko', sans-serif; font-size: 1.3rem; cursor: pointer;"><i class="fa-solid fa-thumbs-up"></i> +1</button>
-                </div>
-            </div>
-        </aside>
-
-        <!-- CONTENT AREA -->
-        <main class="content-area">
-
-            <!-- SCHEDA CANALE TWITCH -->
-            <section class="section-card" style="border-color: var(--twitch-purple); background: linear-gradient(135deg, rgba(145, 70, 255, 0.08) 0%, rgba(18, 18, 18, 0.95) 100%);">
-                <h2 class="section-heading" style="color: #fff;"><i class="fa-brands fa-twitch" style="color: var(--twitch-purple);"></i> CANALE UFFICIALE TWITCH</h2>
-                <p style="color: #ccc; font-size: 1rem;">Segui le dirette in alta definizione, interagisci in chat ed entra a far parte della community su Twitch!</p>
-                <div style="margin-top: 1.2rem; text-align: center;">
-                    <a href="https://www.twitch.tv/guzmantv7" target="_blank" class="btn-main btn-twitch" style="font-size: 1.6rem; padding: 0.8rem 2.5rem;">
-                        <i class="fa-brands fa-twitch"></i> VAI AL CANALE TWITCH
-                    </a>
-                </div>
-            </section>
-
-            <!-- PROSSIMA LIVE COUNTDOWN -->
-            <section class="section-card">
-                <h2 class="section-heading"><i class="fa-solid fa-clock"></i> PROSSIMA LIVE</h2>
-                <p style="color: #ccc;">Le dirette partono ogni sera alle ore 21:00!</p>
-                <div style="background: #000; border: 2px solid var(--gta-orange); padding: 1.2rem; text-align: center; margin-top: 1rem;">
-                    <div id="liveStatus" style="font-family: 'Teko', sans-serif; font-size: 1.3rem; color: var(--gta-orange); text-transform: uppercase;">TEMPO ALLA PROSSIMA LIVE</div>
-                    <div id="countdown" style="font-family: 'Teko', sans-serif; font-size: 3.2rem; color: var(--gta-orange); letter-spacing: 2px;">00h 00m 00s</div>
-                </div>
-            </section>
-
-            <!-- SUPPORTA LO STREAMER -->
-            <section class="section-card" style="border-color: var(--paypal-gold); background: linear-gradient(135deg, rgba(255, 196, 57, 0.05) 0%, rgba(18, 18, 18, 0.95) 100%);">
-                <h2 class="section-heading" style="color: var(--paypal-gold);"><i class="fa-solid fa-hand-holding-dollar" style="color: var(--paypal-gold);"></i> SUPPORTA GUZMAN TV</h2>
-                <p style="color: #ccc; font-size: 1rem;">Vuoi sostenere la crescita del canale e contribuire al miglioramento delle live? Fai una donazione spontanea via PayPal!</p>
-                <div style="margin-top: 1.2rem; text-align: center;">
-                    <a href="https://www.paypal.me/FrancescoFerrara175" target="_blank" class="btn-main btn-donate" style="font-size: 1.6rem; padding: 0.8rem 2.5rem;">
-                        <i class="fa-brands fa-paypal"></i> DONA CON PAYPAL
-                    </a>
-                </div>
-            </section>
-
-            <!-- SEZIONE RUOTA DELLA FORTUNA CON TIMER 4 ORE E -200 PUNTI PERDITA -->
-            <section class="section-card">
-                <h2 class="section-heading"><i class="fa-solid fa-dharmachakra"></i> RUOTA DELLA FORTUNA (4H COOLDOWN)</h2>
-                <p style="color: #ccc; font-size: 0.95rem;">Gira la ruota per guadagnare punti Crew o rischia di perderne 200! Scegli il tuo nome prima di girare.</p>
-                
-                <div style="margin-top: 1rem; display: flex; gap: 10px; align-items: center; justify-content: center; flex-wrap: wrap;">
-                    <label style="font-family: 'Teko', sans-serif; font-size: 1.3rem; color: var(--gta-orange);">IL TUO NICKNAME CREW:</label>
-                    <select id="userSelect" style="padding: 0.5rem; background: #0d0d0d; color: #fff; border: 1px solid #333; font-family: 'Oswald', sans-serif;"></select>
-                </div>
-
-                <div style="display: flex; flex-direction: column; align-items: center; margin-top: 1rem;">
-                    <div class="wheel-container">
-                        <div class="wheel-pointer"></div>
-                        <div class="wheel" id="wheel"></div>
-                    </div>
-                    <p id="wheelResult" style="font-size: 1.1rem; color: #fff; margin: 0.5rem 0; font-family: 'Teko', sans-serif; font-size: 1.4rem;">Fai il tuo giro!</p>
-                    <p id="wheelTimer" style="color: var(--gta-orange); font-size: 0.9rem; margin-bottom: 0.5rem;"></p>
-                    <button class="btn-submit" id="spinBtn" onclick="spinWheel()">GIRA LA RUOTA</button>
-                </div>
-            </section>
-
-            <!-- SEZIONE 4 ALTRI MINI-GIOCHI CON QUIZ MULTIPLO -->
-            <section class="section-card">
-                <h2 class="section-heading"><i class="fa-solid fa-gamepad"></i> ALTRI 4 MINI-GIOCHI ARCADE</h2>
-
-                <div class="minigames-grid">
-                    
-                    <!-- GIOCO 1: CASINO SLOT MACHINE -->
-                    <div class="game-box">
-                        <h3 style="font-family: 'Teko', sans-serif; font-size: 1.4rem; color: var(--gta-orange);">1. CASINO SLOT MACHINE</h3>
-                        <div id="slotDisplay" style="font-size: 2.5rem; letter-spacing: 10px; margin: 0.5rem 0;">🎰 🎰 🎰</div>
-                        <p id="slotResult" style="font-size: 0.9rem; color: #aaa;">Tenta la fortuna!</p>
-                        <button class="btn-submit" onclick="playSlot()">GIOCA SLOT (+200 / -200)</button>
-                    </div>
-
-                    <!-- GIOCO 2: INDOVINA LA COPERTURA -->
-                    <div class="game-box">
-                        <h3 style="font-family: 'Teko', sans-serif; font-size: 1.4rem; color: var(--gta-orange);">2. TROVA IL BOTTINO</h3>
-                        <p style="font-size: 0.85rem; color: #aaa;">Trova quale cassa contiene il bottino!</p>
-                        <div style="display: flex; gap: 10px; margin: 1rem 0;">
-                            <button class="btn-submit" onclick="guessBox(1)">📦 1</button>
-                            <button class="btn-submit" onclick="guessBox(2)">📦 2</button>
-                            <button class="btn-submit" onclick="guessBox(3)">📦 3</button>
-                        </div>
-                        <p id="boxResult" style="font-size: 0.9rem; color: #aaa;">Scegli una cassa...</p>
-                    </div>
-
-                    <!-- GIOCO 3: REAZIONE FUGA POLIZIA -->
-                    <div class="game-box">
-                        <h3 style="font-family: 'Teko', sans-serif; font-size: 1.4rem; color: var(--gta-orange);">3. FUGA DALLA POLIZIA</h3>
-                        <p style="font-size: 0.85rem; color: #aaa;">Clicca "SCAPPA!" appena la spia diventa VERDE!</p>
-                        <div id="reflexBox" style="width: 80px; height: 80px; background: red; margin: 0.5rem 0; border-radius: 50%;"></div>
-                        <p id="reflexResult" style="font-size: 0.9rem; color: #aaa;">Premi avvia...</p>
-                        <button class="btn-submit" id="reflexBtn" onclick="startReflexTest()">AVVIA FUGA</button>
-                    </div>
-
-                    <!-- GIOCO 4: QUIZ LORE RP DINAMICO -->
-                    <div class="game-box">
-                        <h3 style="font-family: 'Teko', sans-serif; font-size: 1.4rem; color: var(--gta-orange);">4. QUIZ LORE RP MULTIPLO</h3>
-                        <p id="quizQuestion" style="font-size: 0.95rem; color: #fff; margin-bottom: 0.5rem; font-weight: bold;">Caricamento domanda...</p>
-                        <div id="quizAnswers" style="display: flex; flex-direction: column; gap: 5px; width: 100%;">
-                            <!-- Bottoni risposte generati da JS -->
-                        </div>
-                        <p id="quizResult" style="font-size: 0.85rem; color: #aaa; margin-top: 0.4rem;">Rispondi correttamente per fare punti!</p>
-                    </div>
-
-                </div>
-            </section>
-
-            <!-- STORE WORK IN PROGRESS -->
-            <section class="section-card" style="border: 2px dashed var(--gta-orange); text-align: center; padding: 2rem 1.5rem;">
-                <i class="fa-solid fa-gears" style="font-size: 2.5rem; color: var(--gta-orange); margin-bottom: 0.5rem;"></i>
-                <h2 class="section-heading" style="justify-content: center;">GUZMAN STORE</h2>
-                <p style="color: var(--gta-orange); font-family: 'Teko', sans-serif; font-size: 1.4rem;">LAVORI IN CORSO / UNDER CONSTRUCTION</p>
-            </section>
-
-            <!-- RICHIESTA PRESENZA SERVER -->
-            <section class="section-card">
-                <h2 class="section-heading"><i class="fa-solid fa-server"></i> RICHIESTA PRESENZA SERVER</h2>
-                <form class="server-form" id="serverForm" onsubmit="handleServerRequest(event)">
-                    <div class="form-group">
-                        <label>NOME SERVER / PROGETTO</label>
-                        <input type="text" id="serverName" placeholder="Es. Los Santos Roleplay" required>
-                    </div>
-                    <div class="form-group">
-                        <label>PIATTAFORMA</label>
-                        <select id="serverPlatform">
-                            <option>FiveM (GTA RP)</option>
-                            <option>RedM (Red Dead RP)</option>
-                            <option>Discord / Evento Community</option>
-                        </select>
-                    </div>
-                    <div class="form-group full-width">
-                        <label>CONTATTO REFERENTE (Discord / Telegram)</label>
-                        <input type="text" id="serverContact" placeholder="Es. @username o Telegram" required>
-                    </div>
-                    <div class="form-group full-width">
-                        <label>DETTAGLI E PROPOSTA</label>
-                        <textarea id="serverDetails" rows="3" placeholder="Descrivi brevemente la tua proposta..." required></textarea>
-                    </div>
-                    <div class="form-group full-width">
-                        <button type="submit" class="btn-submit">INVIA RICHIESTA SU TELEGRAM</button>
-                    </div>
-                </form>
-            </section>
-
-            <!-- BACHECA COMMENTI -->
-            <section class="section-card">
-                <h2 class="section-heading"><i class="fa-solid fa-comments"></i> BACHECA COMMUNITY</h2>
-                <div class="chat-box" id="chatBox"></div>
-                <div class="chat-inputs">
-                    <input type="text" id="nicknameInput" placeholder="Nick..." style="width: 30%;">
-                    <input type="text" id="chatInput" placeholder="Scrivi messaggio..." style="width: 70%;">
-                    <button class="btn-submit" onclick="sendMessage()" style="padding: 0.5rem 1rem; font-size: 1.2rem;">INVIA</button>
-                </div>
-            </section>
-
-        </main>
-
+        <!-- FOOTER -->
+        <footer>
+            <div>💻 Risoluzione Nativa 1920x1080 | Emulatore Web Canvas Attivo</div>
+            <div class="hit-counter">092,415 Hits</div>
+        </footer>
     </div>
 
-    <footer>
-        <p>&copy; GUZMAN TV LIVE. OFFICIAL WEBSITE.</p>
-    </footer>
-
+    <!-- SCRIPT JAVASCRIPT PER I GIOCHI FUNZIONANTI -->
     <script>
-        // --- GESTIONE VISUALIZZAZIONI IN TEMPO REALE (NON SI RESETTA MAI) ---
-        function initViewsCounter() {
-            let views = parseInt(localStorage.getItem('guzman_total_views')) || 12450;
-            views++;
-            localStorage.setItem('guzman_total_views', views);
-            
-            const viewsElement = document.getElementById('viewsCounter');
-            viewsElement.innerText = views.toLocaleString();
+        const canvas = document.getElementById("game-canvas");
+        const ctx = canvas.getContext("2d");
+        let currentGame = "snake";
+        let gameInterval = null;
 
-            // Simulazione incrementi live in tempo reale mentre la pagina è aperta
-            setInterval(() => {
-                if (Math.random() > 0.4) { 
-                    views++;
-                    localStorage.setItem('guzman_total_views', views);
-                    viewsElement.innerText = views.toLocaleString();
-                }
-            }, 4000);
+        // --- GIOCO 1: SNAKE ---
+        let snake = [];
+        let food = {};
+        let dx = 20;
+        let dy = 0;
+        let score = 0;
+
+        function initSnake() {
+            snake = [
+                {x: 160, y: 160},
+                {x: 140, y: 160},
+                {x: 120, y: 160}
+            ];
+            score = 0;
+            createFood();
+            dx = 20;
+            dy = 0;
         }
 
-        // --- DATA E CLASSIFICA CREW ---
-        const defaultCrew = [
-            { name: "Guzman_Boss", score: 2500 },
-            { name: "Franklin_99", score: 1800 },
-            { name: "Trevor_RP", score: 1400 },
-            { name: "Michael_GT", score: 1100 },
-            { name: "User_Guest", score: 800 }
-        ];
-
-        let crewData = JSON.parse(localStorage.getItem('guzman_crew')) || defaultCrew;
-
-        function updateLeaderboard() {
-            crewData.sort((a, b) => b.score - a.score);
-            const body = document.getElementById('leaderboardBody');
-            const select = document.getElementById('userSelect');
-            
-            body.innerHTML = '';
-            select.innerHTML = '';
-
-            crewData.forEach((member, index) => {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `<td>${index + 1}</td><td>${escapeHTML(member.name)}</td><td>${member.score} pts</td>`;
-                body.appendChild(tr);
-
-                const option = document.createElement('option');
-                option.value = member.name;
-                option.innerText = member.name;
-                select.appendChild(option);
-            });
-
-            localStorage.setItem('guzman_crew', JSON.stringify(crewData));
-        }
-
-        function registerCustomUser() {
-            const nameInput = document.getElementById('customNameInput').value.trim();
-            if (!nameInput) return alert("Inserisci un nickname valido!");
-
-            const existing = crewData.find(m => m.name.toLowerCase() === nameInput.toLowerCase());
-            if (!existing) {
-                crewData.push({ name: nameInput, score: 500 });
-                updateLeaderboard();
-                alert(`Benvenuto nella Crew, ${nameInput}! Ti abbiamo regalato 500 Punti Bonus!`);
-            } else {
-                alert(`Bentornato ${nameInput}! Seleziona il tuo nome dai giochi.`);
-            }
-
-            document.getElementById('userSelect').value = nameInput;
-            document.getElementById('nicknameInput').value = nameInput;
-            document.getElementById('customNameInput').value = '';
-        }
-
-        function loginDiscord() {
-            const discordUser = prompt("Inserisci il tuo Tag Discord (es. GuzmanFan#1234):");
-            if (discordUser) {
-                localStorage.setItem('guzman_discord_user', discordUser);
-                
-                const existing = crewData.find(m => m.name.toLowerCase() === discordUser.toLowerCase());
-                if (!existing) {
-                    crewData.push({ name: discordUser, score: 1000 });
-                    updateLeaderboard();
-                }
-
-                renderDiscordProfile(discordUser);
-            }
-        }
-
-        function renderDiscordProfile(username) {
-            const btnHeader = document.getElementById('headerDiscordBtn');
-            const profileBox = document.getElementById('discordProfileBox');
-            
-            if (btnHeader) btnHeader.innerText = username;
-            if (profileBox) {
-                profileBox.innerHTML = `
-                    <p style="font-size: 1.1rem; color: #fff; font-family: 'Teko', sans-serif;"><i class="fa-solid fa-circle-check" style="color: #2ecc71;"></i> CONNESSO COME:</p>
-                    <h4 style="color: var(--discord-blurple); font-size: 1.4rem; font-family: 'Teko', sans-serif;">${escapeHTML(username)}</h4>
-                    <button class="btn-submit" style="background: #e74c3c; color: #fff; width: 100%; margin-top: 0.5rem; font-size: 1rem;" onclick="logoutDiscord()">LOGOUT</button>
-                `;
-            }
-
-            document.getElementById('userSelect').value = username;
-            document.getElementById('nicknameInput').value = username;
-        }
-
-        function logoutDiscord() {
-            localStorage.removeItem('guzman_discord_user');
-            location.reload();
-        }
-
-        function checkDiscordStatus() {
-            const savedDiscord = localStorage.getItem('guzman_discord_user');
-            if (savedDiscord) {
-                renderDiscordProfile(savedDiscord);
-            }
-        }
-
-        function addScore(amount) {
-            const selectedName = document.getElementById('userSelect').value;
-            const user = crewData.find(m => m.name === selectedName);
-            if (user) {
-                user.score += amount;
-                updateLeaderboard();
-            }
-        }
-
-        // --- RUOTA DELLA FORTUNA ---
-        let wheelSpinning = false;
-        const wheelOutcomes = [
-            { text: "Vinto +300 Punti!", score: 300 },
-            { text: "HAI PERSO! -200 Punti", score: -200 },
-            { text: "Vinto +500 Punti!", score: 500 },
-            { text: "HAI PERSO! -200 Punti", score: -200 },
-            { text: "Vinto +100 Punti!", score: 100 },
-            { text: "HAI PERSO! -200 Punti", score: -200 }
-        ];
-
-        function checkWheelCooldown() {
-            const lastSpin = localStorage.getItem('guzman_last_spin');
-            const btn = document.getElementById('spinBtn');
-            const timerDisplay = document.getElementById('wheelTimer');
-
-            if (lastSpin) {
-                const elapsed = Date.now() - parseInt(lastSpin);
-                const fourHours = 4 * 60 * 60 * 1000;
-
-                if (elapsed < fourHours) {
-                    btn.disabled = true;
-                    const remainingMs = fourHours - elapsed;
-                    const hours = Math.floor(remainingMs / (1000 * 60 * 60));
-                    const mins = Math.floor((remainingMs % (1000 * 60 * 60)) / (1000 * 60));
-                    timerDisplay.innerText = `Prossimo giro disponibile tra: ${hours}h ${mins}m`;
-                    return false;
-                }
-            }
-            btn.disabled = false;
-            timerDisplay.innerText = "Ruota pronta per girare!";
-            return true;
-        }
-
-        function spinWheel() {
-            if (wheelSpinning || !checkWheelCooldown()) return;
-
-            wheelSpinning = true;
-            const wheel = document.getElementById('wheel');
-            const resultText = document.getElementById('wheelResult');
-            resultText.innerText = "Giro in corso...";
-
-            const randomDeg = Math.floor(1800 + Math.random() * 360);
-            wheel.style.transform = `rotate(${randomDeg}deg)`;
-
-            setTimeout(() => {
-                wheelSpinning = false;
-                const outcome = wheelOutcomes[Math.floor(Math.random() * wheelOutcomes.length)];
-                resultText.innerText = outcome.text;
-                
-                addScore(outcome.score);
-
-                localStorage.setItem('guzman_last_spin', Date.now().toString());
-                checkWheelCooldown();
-            }, 3000);
-        }
-
-        // --- 1. CASINO SLOT ---
-        const slotSymbols = ["🍎", "🍋", "🔔", "🎰", "💎"];
-        function playSlot() {
-            const s1 = slotSymbols[Math.floor(Math.random() * slotSymbols.length)];
-            const s2 = slotSymbols[Math.floor(Math.random() * slotSymbols.length)];
-            const s3 = slotSymbols[Math.floor(Math.random() * slotSymbols.length)];
-            
-            document.getElementById('slotDisplay').innerText = `${s1} ${s2} ${s3}`;
-            const res = document.getElementById('slotResult');
-
-            if (s1 === s2 && s2 === s3) {
-                res.innerText = "JACKPOT! +300 Punti Crew!";
-                addScore(300);
-            } else if (s1 === s2 || s2 === s3 || s1 === s3) {
-                res.innerText = "Coppia! +100 Punti!";
-                addScore(100);
-            } else {
-                res.innerText = "Nessuna combinazione! -200 Punti!";
-                addScore(-200);
-            }
-        }
-
-        // --- 2. TROVA IL BOTTINO ---
-        function guessBox(boxNum) {
-            const winningBox = Math.floor(Math.random() * 3) + 1;
-            const res = document.getElementById('boxResult');
-            if (boxNum === winningBox) {
-                res.innerText = `CORRETTO! Cassa ${boxNum} piena! +150 Punti!`;
-                addScore(150);
-            } else {
-                res.innerText = `SBAGLIATO! Il bottino era nella cassa ${winningBox}. -200 Punti!`;
-                addScore(-200);
-            }
-        }
-
-        // --- 3. REAZIONE FUGA ---
-        let reflexStartTime;
-        let reflexTimeout;
-        function startReflexTest() {
-            const box = document.getElementById('reflexBox');
-            const res = document.getElementById('reflexResult');
-            const btn = document.getElementById('reflexBtn');
-            
-            box.style.background = "red";
-            res.innerText = "Pronto...";
-            btn.onclick = () => {
-                res.innerText = "Troppo presto! Fai ripartire. -200 Punti!";
-                clearTimeout(reflexTimeout);
-                addScore(-200);
-                btn.innerText = "AVVIA FUGA";
-                btn.onclick = startReflexTest;
+        function createFood() {
+            food = {
+                x: Math.floor(Math.random() * (canvas.width / 20)) * 20,
+                y: Math.floor(Math.random() * (canvas.height / 20)) * 20
             };
-
-            const randomDelay = Math.floor(2000 + Math.random() * 3000);
-            reflexTimeout = setTimeout(() => {
-                box.style.background = "green";
-                res.innerText = "SCAPPA! CLICCA ORA!";
-                reflexStartTime = Date.now();
-                btn.innerText = "SCAPPA!";
-                btn.onclick = () => {
-                    const reactionTime = Date.now() - reflexStartTime;
-                    res.innerText = `Fuga riuscita in ${reactionTime}ms! +100 Punti!`;
-                    addScore(100);
-                    box.style.background = "red";
-                    btn.innerText = "AVVIA FUGA";
-                    btn.onclick = startReflexTest;
-                };
-            }, randomDelay);
         }
 
-        // --- 4. QUIZ LORE RP MULTIPLO ---
-        const rpQuestions = [
-            {
-                q: "Cosa si intende per FailRP?",
-                options: [
-                    { text: "Guidare un'auto troppo veloci", correct: false },
-                    { text: "Fare un'azione irrealistica o incoerente", correct: true },
-                    { text: "Disconnettersi durante una rapina", correct: false }
-                ]
-            },
-            {
-                q: "Cosa significa VDM (Vehicle Deathmatch)?",
-                options: [
-                    { text: "Investire giocatori apposta senza un motivo RP", correct: true },
-                    { text: "Fare gare clandestine in città", correct: false },
-                    { text: "Riparare il veicolo dal meccanico", correct: false }
-                ]
-            },
-            {
-                q: "Cosa rappresenta il termine RDM (Random Deathmatch)?",
-                options: [
-                    { text: "Uccidere un altro personaggio senza un valido motivo RP", correct: true },
-                    { text: "Morire accidentalmente cadendo", correct: false },
-                    { text: "Perdere un combattimento con la polizia", correct: false }
-                ]
-            },
-            {
-                q: "Cos'è la regola 'Metagaming'?",
-                options: [
-                    { text: "Usare informazioni fuori dal gioco (es. Stream) in-game", correct: true },
-                    { text: "Usare trucchetti per andare più veloci", correct: false },
-                    { text: "Parlare in chat vocale di gioco", correct: false }
-                ]
-            },
-            {
-                q: "Cosa significa 'Powergaming'?",
-                options: [
-                    { text: "Forzare le azioni RP senza dare possibilità di reazione agli altri", correct: true },
-                    { text: "Avere un'arma molto potente", correct: false },
-                    { text: "Avere molti soldi in banca", correct: false }
-                ]
-            },
-            {
-                q: "Cosa indica la regola dell'NLR (No Value of Life / FearRP)?",
-                options: [
-                    { text: "Non temere la morte quando ti puntano una pistola alla testa", correct: false },
-                    { text: "Valorizzare e temere per la vita del proprio personaggio", correct: true },
-                    { text: "Andare sempre al massimo della velocità", correct: false }
-                ]
-            }
-        ];
-
-        let currentQuizIndex = 0;
-
-        function loadQuizQuestion() {
-            const current = rpQuestions[currentQuizIndex];
-            document.getElementById('quizQuestion').innerText = current.q;
-            const container = document.getElementById('quizAnswers');
-            container.innerHTML = '';
-
-            current.options.forEach(opt => {
-                const btn = document.createElement('button');
-                btn.className = 'btn-submit';
-                btn.style.fontSize = '0.9rem';
-                btn.style.padding = '0.4rem';
-                btn.innerText = opt.text;
-                btn.onclick = () => handleQuizAnswer(opt.correct);
-                container.appendChild(btn);
-            });
-        }
-
-        function handleQuizAnswer(isCorrect) {
-            const res = document.getElementById('quizResult');
-            if (isCorrect) {
-                res.innerText = "ESATTO! +150 Punti Crew!";
-                addScore(150);
-            } else {
-                res.innerText = "ERRATO! -200 Punti!";
-                addScore(-200);
-            }
-
-            currentQuizIndex = (currentQuizIndex + 1) % rpQuestions.length;
-            setTimeout(loadQuizQuestion, 1500);
-        }
-
-        // --- COUNTDOWN LIVE ---
-        function updateCountdown() {
-            const now = new Date();
-            let target = new Date();
-            target.setHours(21, 0, 0, 0);
-
-            if (now > target) target.setDate(target.getDate() + 1);
-
-            const diff = target - now;
-            const hours = Math.floor(diff / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-            const display = document.getElementById('countdown');
-            const status = document.getElementById('liveStatus');
-
-            if (hours === 0 && minutes <= 59) {
-                status.innerText = "🚨 LA LIVE STA PER PARITRE! SECONDI AL VIA:";
-                status.style.color = "#FF0050";
-                display.innerText = `${minutes}m ${seconds < 10 ? '0' : ''}${seconds}s`;
-            } else {
-                status.innerText = "TEMPO ALLA PROSSIMA LIVE (ORE 21:00)";
-                status.style.color = "var(--gta-orange)";
-                display.innerText = `${hours}h ${minutes}m ${seconds < 10 ? '0' : ''}${seconds}s`;
-            }
-        }
-        setInterval(updateCountdown, 1000);
-        setInterval(checkWheelCooldown, 60000);
-        updateCountdown();
-        checkWheelCooldown();
-
-        // --- INVIO RICHIESTA SERVER VIA TELEGRAM BOT ---
-        async function handleServerRequest(e) {
-            e.preventDefault();
+        function updateSnake() {
+            const head = {x: snake[0].x + dx, y: snake[0].y + dy};
             
-            const serverName = document.getElementById('serverName').value;
-            const platform = document.getElementById('serverPlatform').value;
-            const contact = document.getElementById('serverContact').value;
-            const details = document.getElementById('serverDetails').value;
-
-            const telegramBotToken = 'IL_TUO_BOT_TOKEN_QUI';
-            const telegramChatId = 'IL_TUO_CHAT_ID_QUI';
-
-            const message = `🚨 *NUOVA RICHIESTA SERVER GUZMAN TV* 🚨\n\n` +
-                            `🎮 *Server:* ${serverName}\n` +
-                            `💻 *Piattaforma:* ${platform}\n` +
-                            `👤 *Contatto:* ${contact}\n` +
-                            `📝 *Dettagli:* ${details}`;
-
-            if (telegramBotToken !== 'IL_TUO_BOT_TOKEN_QUI') {
-                try {
-                    await fetch(`https://api.telegram.org/bot${telegramBotToken}/sendMessage`, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ chat_id: telegramChatId, text: message, parse_mode: 'Markdown' })
-                    });
-                    alert("Richiesta inviata con successo!");
-                } catch (error) {
-                    alert("Errore nell'invio della richiesta.");
-                }
-            } else {
-                alert("Richiesta registrata con successo!");
+            // Collisioni muri
+            if (head.x < 0 || head.x >= canvas.width || head.y < 0 || head.y >= canvas.height) {
+                alert("GAME OVER! Punteggio: " + score);
+                initSnake();
+                return;
             }
-            document.getElementById('serverForm').reset();
+
+            // Collisione corpo
+            for (let part of snake) {
+                if (head.x === part.x && head.y === part.y) {
+                    alert("GAME OVER! Ti sei mangiato da solo! Punteggio: " + score);
+                    initSnake();
+                    return;
+                }
+            }
+
+            snake.unshift(head);
+
+            if (head.x === food.x && head.y === food.y) {
+                score += 10;
+                createFood();
+            } else {
+                snake.pop();
+            }
         }
 
-        // --- LIKE & COMMENTI PERMANENTI ---
-        let count = parseInt(localStorage.getItem('guzman_likes')) || 1500;
-        document.getElementById('likeCount').innerText = count;
-        document.getElementById('likeBtn').addEventListener('click', () => {
-            count++;
-            document.getElementById('likeCount').innerText = count;
-            localStorage.setItem('guzman_likes', count);
+        function drawSnake() {
+            ctx.fillStyle = "#000";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Disegna cibo
+            ctx.fillStyle = "#f05454";
+            ctx.fillRect(food.x, food.y, 18, 18);
+
+            // Disegna serpente
+            ctx.fillStyle = "#45a29e";
+            snake.forEach(part => {
+                ctx.fillRect(part.x, part.y, 18, 18);
+            });
+
+            // Punteggio su canvas
+            ctx.fillStyle = "#fff";
+            ctx.font = "16px 'Press Start 2P'";
+            ctx.fillText("SCORE: " + score, 15, 25);
+        }
+
+        // --- GIOCO 2: PONG ---
+        let paddle1Y = 130, paddle2Y = 130;
+        let ballX = 240, ballY = 180, ballDX = 3, ballDY = 3;
+
+        function initPong() {
+            ballX = canvas.width / 2;
+            ballY = canvas.height / 2;
+            ballDX = (Math.random() > 0.5 ? 3 : -3);
+            ballDY = (Math.random() > 0.5 ? 2 : -2);
+        }
+
+        function updatePong() {
+            ballX += ballDX;
+            ballY += ballDY;
+
+            // Rimbalzo pareti alto/basso
+            if (ballY <= 0 || ballY >= canvas.height - 10) ballDY *= -1;
+
+            // IA semplice per paddle destro
+            if (paddle2Y + 30 < ballY) paddle2Y += 2.5;
+            else if (paddle2Y + 30 > ballY) paddle2Y -= 2.5;
+
+            // Collisioni paddle
+            if (ballX <= 20 && ballY >= paddle1Y && ballY <= paddle1Y + 60) {
+                ballDX *= -1;
+            }
+            if (ballX >= canvas.width - 30 && ballY >= paddle2Y && ballY <= paddle2Y + 60) {
+                ballDX *= -1;
+            }
+
+            // Punto fuori
+            if (ballX < 0 || ballX > canvas.width) {
+                initPong();
+            }
+        }
+
+        function drawPong() {
+            ctx.fillStyle = "#000";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Reticolo centrale
+            ctx.strokeStyle = "#222";
+            ctx.setLineDash([5, 5]);
+            ctx.beginPath();
+            ctx.moveTo(canvas.width / 2, 0);
+            ctx.lineTo(canvas.width / 2, canvas.height);
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            // Paddle 1 (Giocatore - si muove col mouse o tasti)
+            ctx.fillStyle = "#45a29e";
+            ctx.fillRect(10, paddle1Y, 10, 60);
+
+            // Paddle 2 (CPU)
+            ctx.fillStyle = "#f05454";
+            ctx.fillRect(canvas.width - 20, paddle2Y, 10, 60);
+
+            // Palla
+            ctx.fillStyle = "#fff";
+            ctx.fillRect(ballX, ballY, 10, 10);
+            
+            ctx.font = "14px 'Press Start 2P'";
+            ctx.fillText("RETRO PONG (CPU VS PLAYER)", 80, 25);
+        }
+
+        // --- GESTIONE LOOP E COMANDI ---
+        function startGame() {
+            clearInterval(gameInterval);
+            if (currentGame === "snake") {
+                initSnake();
+                document.getElementById("controls-text").innerText = "USA LE FRECCE DIREZIONALI PER MUOVERTI";
+                gameInterval = setInterval(() => {
+                    updateSnake();
+                    drawSnake();
+                }, 100);
+            } else if (currentGame === "pong") {
+                initPong();
+                document.getElementById("controls-text").innerText = "USA FRECCIA SU/GIÙ PER MUOVERRE IL PADDLE";
+                gameInterval = setInterval(() => {
+                    updatePong();
+                    drawPong();
+                }, 1000 / 60);
+            }
+        }
+
+        function switchGame(gameName) {
+            currentGame = gameName;
+            document.getElementById("current-game-title").innerText = gameName.toUpperCase();
+            
+            // Aggiorna classi UI
+            document.querySelectorAll('.game-list-item').forEach(el => el.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+
+            startGame();
+        }
+
+        // Ascoltatore tastiera universale
+        window.addEventListener("keydown", e => {
+            if (currentGame === "snake") {
+                if (e.key === "ArrowUp" && dy === 0) { dx = 0; dy = -20; }
+                if (e.key === "ArrowDown" && dy === 0) { dx = 0; dy = 20; }
+                if (e.key === "ArrowLeft" && dx === 0) { dx = -20; dy = 0; }
+                if (e.key === "ArrowRight" && dx === 0) { dx = 20; dy = 0; }
+            } else if (currentGame === "pong") {
+                if (e.key === "ArrowUp" && paddle1Y > 10) paddle1Y -= 20;
+                if (e.key === "ArrowDown" && paddle1Y < canvas.height - 70) paddle1Y += 20;
+            }
+            if(["ArrowUp","ArrowDown","ArrowLeft","ArrowRight"," "].includes(e.key)) {
+                e.preventDefault(); // Evita lo scroll della pagina
+            }
         });
 
-        let commentsList = JSON.parse(localStorage.getItem('guzman_comments')) || [
-            { name: "Franklin", text: "Ci vediamo su Twitch stasera!" }
-        ];
-
-        function renderComments() {
-            const chatBox = document.getElementById('chatBox');
-            chatBox.innerHTML = '';
-            commentsList.forEach(c => {
-                const msg = document.createElement('div');
-                msg.className = 'chat-msg';
-                msg.innerHTML = `<span class="user">${escapeHTML(c.name)}:</span> ${escapeHTML(c.text)}`;
-                chatBox.appendChild(msg);
-            });
-            chatBox.scrollTop = chatBox.scrollHeight;
+        // Funzioni interattive extra
+        function vote(game) {
+            document.getElementById("vote-result").innerText = "Hai votato " + game + "! Grazie per il feedback.";
         }
 
-        function sendMessage() {
-            const name = document.getElementById('nicknameInput').value.trim() || 'Anonimo';
-            const text = document.getElementById('chatInput').value.trim();
-            if (text !== "") {
-                commentsList.push({ name, text });
-                localStorage.setItem('guzman_comments', JSON.stringify(commentsList));
-                document.getElementById('chatInput').value = "";
-                renderComments();
+        function signGuestbook() {
+            let val = document.getElementById("gb").value;
+            if(val) {
+                let wall = document.getElementById("guestbook-wall");
+                wall.innerHTML += `<div><b>Tu:</b> ${val}</div>`;
+                document.getElementById("gb").value = "";
             }
         }
 
-        function escapeHTML(str) {
-            return str.replace(/[&<>'"]/g, tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag));
-        }
-
-        // INIZIALIZZAZIONE GLOBALE
-        initViewsCounter();
-        updateLeaderboard();
-        renderComments();
-        loadQuizQuestion();
-        checkDiscordStatus();
+        // Avvio automatico al caricamento
+        startGame();
     </script>
 </body>
 </html>
