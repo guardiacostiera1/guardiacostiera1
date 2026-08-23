@@ -2,117 +2,378 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>GUZMAN_ARCADE.TV</title>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Anni '60 - Whitelist & Lore</title>
+    <!-- Font retrò -->
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=VT323&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #f4ebd0;
-            --panel-bg: #fff8e8;
-            --border-color: #2b3a42;
-            --accent-teal: #2b6a73;
-            --accent-orange: #d97742;
-            --window-top: #3b5965;
+            --bg-color: #f4ecd8;
+            --paper-color: #fcf8ec;
+            --border-color: #2b2318;
+            --accent-orange: #d96b27;
+            --accent-dark: #2b2318;
+            --text-main: #2b2318;
+            --green-ok: #2e7d32;
+            --red-err: #c62828;
         }
 
-        body { background-color: var(--bg-color); font-family: 'VT323', monospace; color: var(--border-color); margin: 0; padding: 20px; font-size: 20px; }
-        .container { max-width: 1400px; margin: 0 auto; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-        header { text-align: center; border: 4px solid var(--border-color); background-color: var(--panel-bg); padding: 20px; margin-bottom: 20px; box-shadow: 6px 6px 0px var(--border-color); }
-        .logo { font-family: 'Press Start 2P', cursive; font-size: 40px; color: var(--accent-orange); text-shadow: 3px 3px 0px var(--border-color); }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Courier Prime', monospace;
+            padding: 20px;
+            background-image: radial-gradient(#e3d5b8 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
 
-        .tv-banner { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; background-color: var(--accent-teal); border: 4px solid var(--border-color); padding: 20px; margin-bottom: 20px; box-shadow: 6px 6px 0px var(--border-color); }
-        .tv-box { background-color: var(--panel-bg); border: 3px solid var(--border-color); padding: 15px; height: 180px; }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            border: 4px solid var(--border-color);
+            background-color: var(--paper-color);
+            padding: 20px;
+            box-shadow: 8px 8px 0px var(--border-color);
+        }
 
-        .windows-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
-        .win95-window { background-color: var(--panel-bg); border: 3px solid var(--border-color); box-shadow: 5px 5px 0px var(--border-color); display: flex; flex-direction: column; min-height: 300px; }
-        .win95-titlebar { background-color: var(--window-top); color: white; padding: 5px 10px; font-family: 'Press Start 2P', cursive; font-size: 10px; display: flex; justify-content: space-between; }
-        
-        .desktop-icons { display: flex; flex-wrap: wrap; gap: 20px; padding: 20px; }
-        .icon { cursor: pointer; text-align: center; width: 80px; }
-        .icon img { width: 50px; }
+        /* Navbar / Tabs */
+        .nav-bar {
+            display: flex;
+            justify-content: space-around;
+            background-color: #8c7853;
+            border: 3px solid var(--border-color);
+            padding: 10px;
+            margin-bottom: 25px;
+            box-shadow: 4px 4px 0px var(--border-color);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
 
-        #main-game-screen { background: #000; height: 400px; display: flex; align-items: center; justify-content: center; position: relative; }
-        canvas { border: 2px solid var(--accent-teal); }
+        .nav-btn {
+            background-color: var(--paper-color);
+            border: 2px solid var(--border-color);
+            padding: 8px 16px;
+            font-family: 'Special Elite', cursive;
+            font-size: 1rem;
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--border-color);
+            transition: all 0.2s ease;
+            box-shadow: 2px 2px 0px var(--border-color);
+        }
 
-        footer { background: var(--panel-bg); border: 4px solid var(--border-color); padding: 15px; margin-top: 20px; display: flex; justify-content: space-between; align-items: center; }
+        .nav-btn:hover, .nav-btn.active {
+            background-color: var(--accent-orange);
+            color: #fff;
+            transform: translate(-2px, -2px);
+            box-shadow: 4px 4px 0px var(--border-color);
+        }
+
+        /* Sezioni Contenuto */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        h1, h2 {
+            font-family: 'Special Elite', cursive;
+            text-transform: uppercase;
+            color: var(--accent-orange);
+            text-shadow: 2px 2px 0px var(--border-color);
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+        }
+
+        p, li {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        ul {
+            margin-left: 20px;
+        }
+
+        /* Stile Form Whitelist */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-family: 'Special Elite', cursive;
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid var(--border-color);
+            background-color: #fff;
+            font-family: 'Courier Prime', monospace;
+            font-size: 1rem;
+            box-shadow: 2px 2px 0px var(--border-color);
+        }
+
+        textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        .submit-btn {
+            background-color: var(--accent-orange);
+            color: white;
+            border: 2px solid var(--border-color);
+            padding: 12px 24px;
+            font-family: 'Special Elite', cursive;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 4px 4px 0px var(--border-color);
+            width: 100%;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        .submit-btn:hover {
+            background-color: #b5551c;
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px var(--border-color);
+        }
+
+        .alert-box {
+            padding: 15px;
+            border: 2px solid var(--border-color);
+            margin-top: 15px;
+            font-family: 'Special Elite', cursive;
+            text-align: center;
+        }
+
+        .alert-error {
+            background-color: rgba(198, 40, 40, 0.1);
+            color: var(--red-err);
+        }
+
+        .alert-success {
+            background-color: rgba(46, 125, 50, 0.1);
+            color: var(--green-ok);
+        }
+
+        .stamp {
+            border: 3px dashed var(--accent-orange);
+            padding: 20px;
+            text-align: center;
+            background: rgba(217, 107, 39, 0.05);
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <header>
-        <div class="logo">GUZMAN_ARCADE.TV</div>
-    </header>
-
-    <div class="tv-banner">
-        <div class="tv-box"><h3>ARCHIVE SPOTLIGHT</h3><p>Rivivi l'era dei cabinati in sala giochi.</p></div>
-        <div class="tv-box" id="main-game-screen">
-            <canvas id="gameCanvas" width="300" height="200"></canvas>
-            <div id="game-status" style="color:white; position:absolute; top:5px; font-family:'Press Start 2P'">CLICCA UN GIOCO</div>
-        </div>
-        <div class="tv-box"><h3>GUESTBOOK</h3><p>Lascia il tuo record!</p></div>
+    <!-- Navbar -->
+    <div class="nav-bar">
+        <button class="nav-btn active" onclick="switchTab('home', event)">Home</button>
+        <button class="nav-btn" onclick="switchTab('lore', event)">Lore</button>
+        <button class="nav-btn" onclick="switchTab('regolamento', event)">Regolamento</button>
+        <button class="nav-btn" onclick="switchTab('whitelist', event)">Whitelist</button>
     </div>
 
-    <div class="windows-grid">
-        <!-- SEZIONE GIOCHI (Stile Download dell'immagine) -->
-        <div class="win95-window">
-            <div class="win95-titlebar"><span>PLAY_GAMES.EXE</span><span>_ X</span></div>
-            <div class="desktop-icons">
-                <div class="icon" onclick="startGame('snake')">
-                    <img src="https://cdn-icons-png.flaticon.com/512/2721/2721020.png">
-                    <p>SNAKE.exe</p>
-                </div>
-                <div class="icon" onclick="startGame('pong')">
-                    <img src="https://cdn-icons-png.flaticon.com/512/3405/3405232.png">
-                    <p>PONG.exe</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="win95-window">
-            <div class="win95-titlebar"><span>90s SURVEY</span><span>_ X</span></div>
-            <div style="padding: 20px;">
-                <p>Qual è il miglior gioco 90s?</p>
-                <button>STREET FIGHTER II</button><br><br>
-                <button>METAL SLUG</button>
-            </div>
-        </div>
-
-        <div class="win95-window">
-            <div class="win95-titlebar"><span>VINYL CORNER</span><span>_ X</span></div>
-            <div style="padding: 20px;">
-                <p>Ascolta le OST originali in formato MIDI puro.</p>
-                <button>PLAY MUSIC</button>
-            </div>
+    <!-- SEZIONE HOME -->
+    <div id="home" class="tab-content active">
+        <h1>Benvenuti negli Anni '60</h1>
+        <p>Entra nel cuore pulsante di un'epoca irripetibile. Sperimenta il gioco di ruolo definitivo tra tensioni geopolitiche, stile inconfondibile, automobili d'epoca e criminalità organizzata.</p>
+        <div class="stamp">
+            <h3>"Il futuro appartiene a chi sa custodire il passato."</h3>
+            <p>Esplora le sezioni in alto per leggere la storia del server, consultare le regole e tentare l'accesso tramite il modulo di whitelist.</p>
         </div>
     </div>
 
-    <footer>
-        <div class="hit-counter">21,345 Hits</div>
-        <div>Optimized for 800x600 viewing</div>
-    </footer>
+    <!-- SEZIONE LORE -->
+    <div id="lore`" class="tab-content"> <!-- Attenzione al tag script sotto per i nomi tab -->
+    </div>
+
+    <!-- SEZIONE LORE (Corretta) -->
+    <div id="lore" class="tab-content">
+        <h1>La Lore del Server</h1>
+        <p>Anno 1968. Il mondo sta cambiando rapidamente. Tra proteste giovanili, fermento culturale e una cortina di ferro sempre più tesa, la nostra città rappresenta il crocevia perfetto di opportunità e pericoli.</p>
+        <p>Le famiglie storiche si contendono i traffici del porto, mentre la polizia cerca di mantenere il controllo di strade infuocate. Da che parte deciderai di stare?</p>
+    </div>
+
+    <!-- SEZIONE REGOLAMENTO -->
+    <div id="regolamento" class="tab-content">
+        <h1>Regolamento Generale</h1>
+        <ul>
+            <li><strong>1. Rispetto reciproco:</strong> Il rispetto fuori dai personaggi (OOC) è obbligatorio in ogni situazione.</li>
+            <li><strong>2. Value of Life (FearRP):</strong> La vita del tuo personaggio viene prima di ogni altra cosa. Se minacciato da armi da fuoco, devi cedere alle richieste.</li>
+            <li><strong>3. No Powergaming / Metagaming:</strong> È vietato sfruttare informazioni ottenute fuori dal gioco o compiere azioni impossibili nella realtà.</li>
+            <li><strong>4. New Life Rule (NLR):</strong> Se il tuo personaggio muore in azione, dimentica gli eventi recenti legati a quella situazione.</li>
+        </ul>
+    </div>
+
+    <!-- SEZIONE WHITELIST -->
+    <div id="whitelist" class="tab-content">
+        <h1>Test di Whitelist</h1>
+        <p>Compila il modulo sottostante per richiedere l'accesso. 
+        <br><strong>Regole di invio:</strong> Hai a disposizione un massimo di **2 tentativi totali**. Tra un invio e l'altro deve passare un intervallo di **24 ore**. Termini i tentativi, non potrai più inviare richieste.</p>
+
+        <!-- Form Whitelist -->
+        <form id="wlForm" onsubmit="inviaWhitelist(event)">
+            <div class="form-group">
+                <label for="discordName">Il tuo Nome Discord (es. utente#0000):</label>
+                <input type="text" id="discordName" required placeholder="Il tuo tag discord">
+            </div>
+            <div class="form-group">
+                <label for="characterName">Nome e Cognome del Personaggio (IC):</label>
+                <input type="text" id="characterName" required placeholder="Es. Mario Rossi">
+            </div>
+            <div class="form-group">
+                <label for="story">Racconta brevemente la storia del tuo personaggio:</label>
+                <textarea id="story" required placeholder="Da dove viene? Quali sono i suoi obiettivi negli anni '60?"></textarea>
+            </div>
+            <button type="submit" class="submit-btn" id="submitBtn">Invia Richiesta</button>
+        </form>
+
+        <!-- Messaggi di stato / blocco -->
+        <div id="statusMessage" class="alert-box" style="display: none;"></div>
+    </div>
 </div>
 
 <script>
-    const canvas = document.getElementById('gameCanvas');
-    const ctx = canvas.getContext('2d');
-    let gameLoop;
+    // Configura qui il tuo Webhook Discord
+    const WEBHOOK_URL = "INSERISCI_QUI_IL_TUO_WEBHOOK_DISCORD";
 
-    function startGame(type) {
-        clearInterval(gameLoop);
-        document.getElementById('game-status').innerText = type.toUpperCase() + " RUNNING";
-        if(type === 'snake') {
-            gameLoop = setInterval(() => {
-                ctx.fillStyle = 'black'; ctx.fillRect(0,0,300,200);
-                ctx.fillStyle = 'green'; ctx.fillRect(Math.random()*280, Math.random()*180, 10, 10);
-            }, 200);
-        } else {
-            gameLoop = setInterval(() => {
-                ctx.fillStyle = 'black'; ctx.fillRect(0,0,300,200);
-                ctx.fillStyle = 'white'; ctx.fillRect(10, 50, 5, 50); ctx.fillRect(280, 50, 5, 50);
-            }, 100);
-        }
+    // Gestione Tab
+    function switchTab(tabId, event) {
+        document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+        document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
+        
+        document.getElementById(tabId).classList.add('active');
+        event.currentTarget.classList.add('active');
     }
+
+    // Logica Whitelist (Max 2 tentativi, 1 ogni 24 ore)
+    const MAX_TENTATIVI = 2;
+    const COOLDOWN_MS = 24 * 60 * 60 * 1000; // 24 ore in millisecondi
+
+    function getWlData() {
+        const tentativi = parseInt(localStorage.getItem('wl_tentativi') || '0', 10);
+        const ultimoInvio = parseInt(localStorage.getItem('wl_ultimo_invio') || '0', 10);
+        return { tentativi, ultimoInvio };
+    }
+
+    function checkWlStatus() {
+        const { tentativi, ultimoInvio } = getWlData();
+        const form = document.getElementById('wlForm');
+        const statusMsg = document.getElementById('statusMessage');
+
+        const oraCorrente = Date.now();
+        const tempoTrascorso = oraCorrente - ultimoInvio;
+
+        // Controllo se ha esaurito i 2 tentativi totali
+        if (tentativi >= MAX_TENTATIVI) {
+            form.style.display = 'none';
+            statusMsg.style.display = 'block';
+            statusMsg.className = 'alert-box alert-error';
+            statusMsg.innerHTML = "Hai esaurito i tuoi <strong>2 tentativi massimi</strong> consentiti per la whitelist. Non puoi inviare ulteriori richieste.";
+            return;
+        }
+
+        // Controllo cooldown 24 ore dal primo tentativo
+        if (tentativi > 0 && tempoTrascorso < COOLDOWN_MS) {
+            form.style.display = 'none';
+            statusMsg.style.display = 'block';
+            statusMsg.className = 'alert-box alert-error';
+            
+            const tempoMancante = COOLDOWN_MS - tempoTrascorso;
+            const oreMancanti = Math.ceil(tempoMancante / (1000 * 60 * 60));
+            
+            statusMsg.innerHTML = `Hai già effettuato un invio. Il tuo tentativo rimanente sarà sbloccato tra circa <strong>${oreMancanti} ore</strong>.`;
+            
+            // Riattiva automaticamente dopo lo scadere del tempo (controllo approssimativo o ricarica)
+            setTimeout(() => {
+                checkWlStatus();
+            }, 5000);
+            return;
+        }
+
+        // Se tutto ok, mostra il form
+        form.style.display = 'block';
+        statusMsg.style.display = 'none';
+    }
+
+    function inviaWhitelist(event) {
+        event.preventDefault();
+
+        const discordName = document.getElementById('discordName').value;
+        const characterName = document.getElementById('characterName').value;
+        const story = document.getElementById('story').value;
+
+        let { tentativi } = getWlData();
+        tentativi += 1;
+
+        // Aggiorna localStorage
+        localStorage.setItem('wl_tentativi', tentativi);
+        localStorage.setItem('wl_ultimo_invio', Date.now());
+
+        // Prepara il payload per il Webhook di Discord
+        const payload = {
+            embeds: [{
+                title: "📜 Nuova Richiesta Whitelist (Anni '60)",
+                color: 14248999, // Colore arancione
+                fields: [
+                    { name: "Utente Discord", value: discordName, inline: true },
+                    { name: "Tentativo N°", value: `${tentativi} / ${MAX_TENTATIVI}`, inline: true },
+                    { name: "Nome Personaggio", value: characterName, inline: false },
+                    { name: "Storia / Lore", value: story, inline: false }
+                ],
+                timestamp: new Date().toISOString()
+            }]
+        };
+
+        // Invio al Webhook
+        fetch(WEBHOOK_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        })
+        .then(response => {
+            const statusMsg = document.getElementById('statusMessage');
+            document.getElementById('wlForm').reset();
+            statusMsg.style.display = 'block';
+
+            if (response.ok) {
+                statusMsg.className = 'alert-box alert-success';
+                statusMsg.innerHTML = `Richiesta inviata con successo! (Tentativo ${tentativi}/${MAX_TENTATIVI}).`;
+            } else {
+                statusMsg.className = 'alert-box alert-error';
+                statusMsg.innerHTML = "Richiesta registrata, ma c'è stato un errore nell'invio al webhook Discord.";
+            }
+            checkWlStatus();
+        })
+        .catch(error => {
+            console.error('Errore:', error);
+            alert("Errore di connessione durante l'invio del modulo.");
+            checkWlStatus();
+        });
+    }
+
+    // Esegui il controllo dello stato whitelist all'avvio della pagina
+    window.onload = checkWlStatus;
 </script>
+
 </body>
 </html>
