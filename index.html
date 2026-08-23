@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centro Dati Alcatraz - Whitelist & Lore</title>
-    <!-- Font retrò ed eleganti anni '60 -->
+    <title>Alcatraz 1970: The Last Rock - Whitelist & Documentazione</title>
+    <!-- Font retrò ed eleganti anni '70 -->
     <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -91,7 +91,7 @@
 
         .main-title {
             font-family: 'Special Elite', cursive;
-            font-size: 2.8rem;
+            font-size: 2.6rem;
             text-transform: uppercase;
             color: var(--accent-orange);
             text-shadow: 3px 3px 0px var(--border-dark);
@@ -102,7 +102,7 @@
 
         .main-subtitle {
             font-family: 'Special Elite', cursive;
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             text-transform: uppercase;
             color: var(--border-dark);
             font-weight: bold;
@@ -139,11 +139,19 @@
             border-bottom: 2px solid var(--border-dark);
             padding-bottom: 5px;
             margin-bottom: 15px;
-            font-size: 1.6rem;
+            font-size: 1.5rem;
+        }
+
+        h3 {
+            font-family: 'Special Elite', cursive;
+            color: var(--border-dark);
+            margin-top: 15px;
+            margin-bottom: 8px;
+            font-size: 1.2rem;
         }
 
         p, li {
-            font-size: 1.05rem;
+            font-size: 1.02rem;
             line-height: 1.6;
             margin-bottom: 12px;
             text-align: justify;
@@ -162,40 +170,27 @@
             margin-bottom: 20px;
         }
 
-        .bottom-layout {
+        .grid-fazioni {
             display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 20px;
-            margin-top: 20px;
-            align-items: stretch;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
         }
 
         @media(max-width: 768px) {
-            .bottom-layout {
+            .grid-fazioni {
                 grid-template-columns: 1fr;
             }
             .main-title {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
         }
 
-        .card-tag {
-            background-color: #f7d5b8;
-            border: 3px solid var(--border-dark);
-            padding: 15px;
-            box-shadow: 4px 4px 0px var(--border-dark);
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .card-tag h4 {
-            font-family: 'Special Elite', cursive;
-            text-transform: uppercase;
-            font-size: 0.95rem;
-            margin-top: 10px;
+        .fazione-card {
+            border: 2px solid var(--border-dark);
+            background-color: var(--container-bg);
+            padding: 12px;
+            box-shadow: 3px 3px 0px var(--border-dark);
         }
 
         /* --- LOGIN DISCORD & FORM --- */
@@ -253,9 +248,10 @@
             font-weight: bold;
             margin-bottom: 5px;
             font-family: 'Special Elite', cursive;
+            font-size: 0.95rem;
         }
 
-        input[type="text"], textarea {
+        input[type="text"], select, textarea {
             width: 100%;
             padding: 10px;
             border: 2px solid var(--border-dark);
@@ -267,7 +263,7 @@
 
         textarea {
             resize: vertical;
-            height: 110px;
+            height: 100px;
         }
 
         .submit-btn {
@@ -315,7 +311,7 @@
             margin-top: 25px;
             padding-top: 15px;
             border-top: 2px dashed var(--border-dark);
-            font-size: 0.95rem;
+            font-size: 0.90rem;
             color: #554433;
         }
     </style>
@@ -327,74 +323,82 @@
     <!-- Barra di Navigazione -->
     <div class="nav-bar">
         <button class="nav-btn active" onclick="switchTab('home', event)">Home</button>
-        <button class="nav-btn" onclick="switchTab('lore', event)">Lore</button>
+        <button class="nav-btn" onclick="switchTab('lore', event)">Lore & Fazioni</button>
         <button class="nav-btn" onclick="switchTab('regolamento', event)">Regolamento</button>
         <button class="nav-btn" onclick="switchTab('whitelist', event)">Whitelist</button>
     </div>
 
     <!-- Header -->
     <div class="header-section">
-        <h1 class="main-title">Centro Dati Alcatraz</h1>
-        <p class="main-subtitle">Il tuo hosting impenetrabile negli anni '60</p>
+        <h1 class="main-title">Alcatraz 1970: The Last Rock</h1>
+        <p class="main-subtitle">Documentazione Ufficiale e Linee Guida Server Roleplay[cite: 2]</p>
     </div>
 
     <!-- ================= SEZIONE HOME ================= -->
     <div id="home" class="tab-content active">
         <div class="alcatraz-img-container">
-            <img src="alcatraz.jpg" alt="Centro Dati Alcatraz Anni 60">
+            <img src="alcatraz.jpg" alt="Alcatraz 1970 The Last Rock">
         </div>
 
-        <div class="bottom-layout">
-            <div class="retro-box" style="margin-bottom:0;">
-                <h2 style="border:none; margin-top:0;">Affidabilità e Sicurezza</h2>
-                <p>Il tuo dominio è al sicuro sulle rocce di Alcatraz. Connettività avanzata e tecnologia all'avanguardia per le vostre esigenze di ruolo. Visita il nostro centro all'isola e scopri i segreti del sistema!</p>
-            </div>
-            <div class="card-tag">
-                <svg width="60" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h20v18H2zM6 7h12M6 11h12M6 15h8"/></svg>
-                <h4>Tecnologia all'Avanguardia del 1969</h4>
-            </div>
+        <div class="retro-box">
+            <h2>Presentazione del Server</h2>
+            <p>Benvenuto su **Alcatraz 1970: The Last Rock**, un'esperienza di Roleplay immersiva, cruda e altamente realistica ambientata nei turbolenti anni '70[cite: 2]. L'isola di Alcatraz è il centro nevralgico della massima sicurezza federale, un luogo tagliato fuori dal mondo, circondato dalle gelide acque della baia di San Francisco[cite: 2].</p>
+            <p><strong>L'Atmosfera degli Anni '70:</strong> Tensioni sociali, nascita di movimenti organizzati, contrabbando di sostanze, spionaggio interno, corruzione istituzionale e una radio rock 'n' roll che risuona sottobanco tra le celle[cite: 2]. Nessuna tecnologia moderna: solo istinto, ingegno, contrabbando e alleanze tattiche[cite: 2].</p>
         </div>
     </div>
 
-    <!-- ================= SEZIONE LORE ================= -->
+    <!-- ================= SEZIONE LORE & FAZIONI ================= -->
     <div id="lore" class="tab-content">
-        <h2>La Storia dell'Isola</h2>
-        <p>Anno 1969. Circondata dalle fredde acque della baia e protetta da torrette di guardia e radar militari, Alcatraz non è più soltanto un penitenziario federale, ma il centro nevralgico di elaborazione dati e terminali protetti più avanzato del paese.</p>
+        <h2>Fazioni e Ruoli Disponibili</h2>
+        <p>All'interno del server potrai interpretare diversi ruoli chiave per la sopravvivenza e la gestione dell'isola[cite: 2]:</p>
         
-        <div class="retro-box">
-            <h3 style="font-family:'Special Elite'; margin-bottom:8px;">La Trama e il Contesto</h3>
-            <p>Tra spie internazionali, fazioni rivali che lottano per il controllo dei server centrali e operazioni segrete sotto copertura, ogni cittadino che arriva sull'isola ha un passato da nascondere o un futuro da scrivere.</p>
+        <div class="grid-fazioni">
+            <div class="fazione-card">
+                <h3>I Detenuti</h3>
+                <p>Divisi in gang etniche, sindacati del crimine organizzato, prigionieri politici o cani sciolti. Il tuo obiettivo: sopravvivere, dominare il mercato nero interno o pianificare l'impossibile fuga[cite: 2].</p>
+            </div>
+            <div class="fazione-card">
+                <h3>Corpo Guardie (US Federal Guards)</h3>
+                <p>Mantieni l'ordine con pugno di ferro o cedi alla corruzione e ai ricatti per arricchirti[cite: 2].</p>
+            </div>
+            <div class="fazione-card">
+                <h3>Staff Medico e Psichiatrico</h3>
+                <p>Gestisci l'infermeria, mantieni in vita i detenuti... o usali come cavie per esperimenti psicologici dell'epoca[cite: 2].</p>
+            </div>
+            <div class="fazione-card">
+                <h3>Civili e Personale Esterno</h3>
+                <p>Cuochi, tecnici, fornitori e visitatori occasionali che trasportano segreti (e contrabbando) da e per la terraferma[cite: 2].</p>
+            </div>
         </div>
     </div>
 
     <!-- ================= SEZIONE REGOLAMENTO ================= -->
     <div id="regolamento" class="tab-content">
-        <h2>Regolamento Generale</h2>
-        <p>L'accesso al sistema richiede il rispetto tassativo delle norme di sicurezza e convivenza:</p>
+        <h2>Regolamento Fondamentale</h2>
+        <p>L'accesso al sistema richiede il rispetto tassativo delle direttive ufficiali di gioco:</p>
         <ul>
-            <li><strong>1. Rispetto OOC:</strong> Mette sempre al primo posto l'educazione e il rispetto reciproco fuori dal personaggio.</li>
-            <li><strong>2. Value of Life (FearRP):</strong> La vita del tuo personaggio ha valore assoluto. Di fronte a minacce armate evidenti, devi sottostare agli ordini ricevuti.</li>
-            <li><strong>3. No Metagaming / Powergaming:</strong> Vietato l'uso di informazioni esterne al gioco o l'esecuzione di azioni fisicamente impossibili o forzate verso gli altri utenti.</li>
-            <li><strong>4. New Life Rule (NLR):</strong> In caso di decesso sul campo, si azzerano i ricordi legati all'azione specifica che ha causato la morte.</li>
+            <li><strong>No Fear RP (NFR):</strong> Il valore della vita deve essere sempre rispettato. Alcatraz è un carcere spietato[cite: 2].</li>
+            <li><strong>Coerenza Storica (Metagaming & Anacronismi):</strong> È severamente vietato introdurre concetti, terminologie o tecnologie non esistenti nel 1970[cite: 2].</li>
+            <li><strong>Character Kill (CK):</strong> Può avvenire a seguito di scontri tra gang, condanne o esecuzioni approvate dallo Staff[cite: 2].</li>
         </ul>
     </div>
 
     <!-- ================= SEZIONE WHITELIST ================= -->
     <div id="whitelist" class="tab-content">
-        <h2>Terminal di Ammissione Whitelist</h2>
+        <h2>Scheda Identificativa Personaggio (Whitelist)</h2>
         
         <div class="retro-box" style="background-color: #faebd7; margin-bottom: 20px;">
-            <p><strong>REGOLE DI ACCESSO AL SISTEMA:</strong></p>
+            <p><strong>REGOLE DI AMMISSIONE:</strong></p>
             <ul style="margin-bottom: 0;">
-                <li>È obbligatorio effettuare l'accesso con il proprio account **Discord**.</li>
-                <li>Hai a disposizione un massimo di **2 tentativi totali**.</li>
-                <li>Tra il primo e il secondo tentativo deve passare un intervallo di **24 ore**.</li>
+                <li>Obbligatorio l'accesso tramite account **Discord**.</li>
+                <li>La bio deve riflettere rigorosamente il contesto storico del 1970 (minimo 250 parole per il background)[cite: 2].</li>
+                <li>Limite massimo di **2 tentativi totali** (intervallo di 24 ore tra un invio e l'altro).</li>
             </ul>
         </div>
 
         <!-- Blocco Richiesta Login Discord -->
         <div id="discordLoginSection" class="retro-box discord-login-box">
-            <p style="text-align: center; margin-bottom: 15px;">Per procedere con la richiesta di ammissione, autenticati tramite il tuo account Discord ufficiale:</p>
+            <p style="text-align: center; margin-bottom: 15px;">Autenticati con il tuo account Discord per compilare il modulo ufficiale:</p>
             <a id="loginBtn" href="#" class="discord-btn">🔐 Accedi con Discord</a>
         </div>
 
@@ -404,19 +408,55 @@
             <span class="logout-link" onclick="logoutDiscord()">Disconnetti</span>
         </div>
 
-        <!-- Form Whitelist (Nascosto finché non si fa il login) -->
+        <!-- Form Whitelist Ufficiale 1970 -->
         <form id="wlForm" onsubmit="inviaWhitelist(event)" style="display: none;">
             <div class="form-group">
-                <label for="characterName">Nome e Cognome del Personaggio (IC):</label>
-                <input type="text" id="characterName" required placeholder="Es. Frank Miller">
+                <label for="characterName">Nome e Cognome del Personaggio:</label>
+                <input type="text" id="characterName" required placeholder="Esempio: Arthur 'Slim' Pendelton">
             </div>
 
             <div class="form-group">
-                <label for="story">Background e Motivazioni del Personaggio:</label>
-                <textarea id="story" required placeholder="Perché vuoi accedere al Centro Dati Alcatraz? Racconta la storia del tuo personaggio..."></textarea>
+                <label for="charAge">Data di Nascita & Età:</label>
+                <input type="text" id="charAge" required placeholder="Esempio: 14 Marzo 1938 (32 anni)">
             </div>
 
-            <button type="submit" class="submit-btn" id="submitBtn">Invia Richiesta al Server</button>
+            <div class="form-group">
+                <label for="charOrigin">Luogo di Origine:</label>
+                <input type="text" id="charOrigin" required placeholder="Esempio: Chicago, Illinois">
+            </div>
+
+            <div class="form-group">
+                <label for="charRole">Ruolo Richiesto:</label>
+                <select id="charRole" required style="width:100%; padding:10px; border:2px solid var(--border-dark); font-family:'Courier Prime'; background:#fff;">
+                    <option value="">Seleziona un ruolo...</option>
+                    <option value="Detenuto">Detenuto</option>
+                    <option value="Guardia Federale (US Federal Guards)">Guardia Federale</option>
+                    <option value="Medico / Psichiatrico">Staff Medico e Psichiatrico</option>
+                    <option value="Civile / Personale Esterno">Civile / Personale Esterno</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="charCrime">Reato & Condanna (Se Detenuto o N/A):</label>
+                <input type="text" id="charCrime" required placeholder="Esempio: Rapina a mano armata ed estorsione - 20 anni">
+            </div>
+
+            <div class="form-group">
+                <label for="story">Storia / Background (Min. 250 parole):</label>
+                <textarea id="story" required placeholder="Origini, contesto socio-culturale anni '50 e '60, eventi che ti hanno portato ad Alcatraz nel 1970, motivazioni, paure e ambizioni..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="charAppearance">Carattere e Aspetto Fisico:</label>
+                <textarea id="storyChar" required placeholder="Tratti caratteriali (es. impulsivo, calcolatore) e descrizione visiva (stile anni '70, tatuaggi d'epoca, cicatrici, baffi/capelli lunghi)..." style="height: 80px;"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="charGoals">Obiettivi sull'Isola:</label>
+                <textarea id="charGoals" required placeholder="Cosa spera di ottenere all'interno della prigione? Giro di contrabbando, profilo basso o evadere?" style="height: 80px;"></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">Invia Scheda di Ammissione</button>
         </form>
 
         <!-- Box Messaggi di Stato / Blocco -->
@@ -425,7 +465,7 @@
 
     <!-- Footer -->
     <div class="footer-hashtags">
-        #ALCATRAZSERVER &nbsp;&nbsp; #SICUREZZADATY &nbsp;&nbsp; #ANNI60 &nbsp;&nbsp; #TECNOLOGIA
+        #ALCATRAZ1970 &nbsp;&nbsp; #THELASTROCK &nbsp;&nbsp; #ROLPLAY1970 &nbsp;&nbsp; #FEDERALPRISON
     </div>
 
 </div>
@@ -551,7 +591,13 @@
 
         const discordName = localStorage.getItem('alcatraz_discord_username') || "Sconosciuto";
         const characterName = document.getElementById('characterName').value;
+        const charAge = document.getElementById('charAge').value;
+        const charOrigin = document.getElementById('charOrigin').value;
+        const charRole = document.getElementById('charRole').value;
+        const charCrime = document.getElementById('charCrime').value;
         const story = document.getElementById('story').value;
+        const storyChar = document.getElementById('storyChar').value;
+        const charGoals = document.getElementById('charGoals').value;
 
         let { tentativi } = getWlData();
         tentativi += 1;
@@ -561,15 +607,21 @@
 
         const payload = {
             embeds: [{
-                title: "🔒 Nuova Richiesta Whitelist - Centro Dati Alcatraz",
+                title: "🔒 Nuova Scheda Whitelist - Alcatraz 1970",
                 color: 14248999,
                 fields: [
-                    { name: "👤 Utente Discord Verificato", value: discordName, inline: true },
+                    { name: "👤 Utente Discord", value: discordName, inline: true },
                     { name: "🔄 Tentativo N°", value: `${tentativi} / ${MAX_TENTATIVI}`, inline: true },
                     { name: "🏷️ Nome Personaggio", value: characterName, inline: false },
-                    { name: "📜 Background / Storia", value: story, inline: false }
+                    { name: "📅 Data di Nascita ed Età", value: charAge, inline: true },
+                    { name: "🌍 Origine", value: charOrigin, inline: true },
+                    { name: "📋 Ruolo Richiesto", value: charRole, inline: false },
+                    { name: "⚖️ Reato e Condanna", value: charCrime, inline: false },
+                    { name: "📜 Background", value: story, inline: false },
+                    { name: "🎭 Carattere & Aspetto", value: storyChar, inline: false },
+                    { name: "🎯 Obiettivi sull'Isola", value: charGoals, inline: false }
                 ],
-                footer: { text: "Terminal Automated Security System • Anni '60" },
+                footer: { text: "Documentazione Ufficiale Anno 1970 • The Last Rock" },
                 timestamp: new Date().toISOString()
             }]
         };
@@ -586,7 +638,7 @@
 
             if (response.ok) {
                 statusMsg.className = 'alert-box alert-success';
-                statusMsg.innerHTML = `Richiesta trasmessa con successo! (Tentativo ${tentativi}/${MAX_TENTATIVI}).`;
+                statusMsg.innerHTML = `Scheda trasmessa con successo! (Tentativo ${tentativi}/${MAX_TENTATIVI}).`;
             } else {
                 statusMsg.className = 'alert-box alert-error';
                 statusMsg.innerHTML = "Errore di trasmissione verso il server Discord.";
