@@ -89,7 +89,7 @@
 
         .main-title {
             font-family: 'Special Elite', cursive;
-            font-size: 3rem;
+            font-size: 2.8rem;
             text-transform: uppercase;
             color: var(--accent-orange);
             text-shadow: 3px 3px 0px var(--border-dark);
@@ -104,6 +104,21 @@
             text-transform: uppercase;
             color: var(--border-dark);
             font-weight: bold;
+        }
+
+        /* --- IMMAGINE PRINCIPALE ALCATRAZ --- */
+        .alcatraz-img-container {
+            border: 3px solid var(--border-dark);
+            box-shadow: 5px 5px 0px var(--border-dark);
+            margin-bottom: 20px;
+            overflow: hidden;
+            background-color: #000;
+        }
+
+        .alcatraz-img-container img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
         /* --- SEZIONI CONTENUTO (TAB) --- */
@@ -137,7 +152,7 @@
             margin-bottom: 15px;
         }
 
-        /* --- BOX RETRÒ E GRIGLIA INFERIORE (Come l'immagine) --- */
+        /* --- BOX RETRÒ E GRIGLIA INFERIORE --- */
         .retro-box {
             border: 3px solid var(--border-dark);
             background-color: var(--box-bg);
@@ -263,7 +278,7 @@
 
 <div class="container">
     
-    <!-- Barra di Navigazione superiore con bordi arrotondati -->
+    <!-- Barra di Navigazione superiore -->
     <div class="nav-bar">
         <button class="nav-btn active" onclick="switchTab('home', event)">Home</button>
         <button class="nav-btn" onclick="switchTab('lore', event)">Lore</button>
@@ -271,7 +286,7 @@
         <button class="nav-btn" onclick="switchTab('whitelist', event)">Whitelist</button>
     </div>
 
-    <!-- Header con titolo principale in stile "Alcatraz" -->
+    <!-- Header con titolo principale -->
     <div class="header-section">
         <h1 class="main-title">Centro Dati Alcatraz</h1>
         <p class="main-subtitle">Il tuo hosting impenetrabile negli anni '60</p>
@@ -279,9 +294,10 @@
 
     <!-- ================= SEZIONE HOME ================= -->
     <div id="home" class="tab-content active">
-        <div class="retro-box" style="text-align: center; font-size: 1.15rem; font-family: 'Special Elite', cursive;">
-            <p><strong>L'ISOLA PIÙ PROTETTA DEL CONTINENTE.</strong></p>
-            <p>La fortezza tecnologica e strategica degli anni '60 apre i battenti ai nuovi cittadini. Sistemi di calcolo avanzati, segreti industriali e massima sicurezza.</p>
+        
+        <!-- QUI C'È L'IMMAGINE ALCATRAZ.JPG -->
+        <div class="alcatraz-img-container">
+            <img src="alcatraz.jpg" alt="Centro Dati Alcatraz Anni 60">
         </div>
 
         <div class="bottom-layout">
