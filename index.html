@@ -8,7 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-marmo: url('https://www.transparenttextures.com/patterns/marble-white-fresh.png'), #fcf8ec;
+            /* Sfondo aggiornato a sfondo.jpg */
+            --bg-texture: url('sfondo.jpg');
             --border-bronzo: #8c7853;
             --accent-oro: #b59441;
             --text-dark: #2b2318;
@@ -24,8 +25,13 @@
         }
 
         body {
+            /* Applicazione dello sfondo */
             background-color: #fcf8ec;
-            background-image: var(--bg-marmo);
+            background-image: var(--bg-texture);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Lo sfondo rimane fisso allo scorrimento */
+            
             color: var(--text-dark);
             font-family: var(--font-body);
             padding: 20px;
@@ -36,105 +42,77 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 40px;
+            /* Aggiungiamo un leggero sfondo semitrasparente al container per leggibilità */
+            background-color: rgba(252, 248, 236, 0.95); 
+            border: 3px solid var(--border-bronzo);
+            box-shadow: 10px 10px 0px rgba(0,0,0,0.2);
         }
 
-        /* --- TOP BAR (NAV) --- */
-        .top-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid var(--border-bronzo);
-            padding-bottom: 15px;
-            margin-bottom: 40px;
-            font-family: var(--font-heading);
-            font-size: 1.1rem;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-dark);
-            position: relative;
-        }
-        
-        .nav-links a.active {
-             border-bottom: 1px solid var(--text-dark);
-        }
-
-        .dona-ora-btn {
-            background-color: var(--border-bronzo);
-            color: #fff;
-            border: 2px solid var(--border-bronzo);
-            padding: 8px 25px;
-            font-family: var(--font-heading);
-            font-size: 1.1rem;
-            cursor: pointer;
-            text-decoration: none;
-        }
-        
-        .dona-ora-btn:hover {
-            background-color: #a69166;
-        }
-
-        /* --- HEADER PRINCIPALE --- */
+        /* --- HEADER PRINCIPALE (Logo + Titolo) --- */
         .header-main {
             display: flex;
-            justify-content: center;
+            justify-content: center; /* Centriamo il blocco intero */
             align-items: center;
             margin-bottom: 50px;
-            gap: 40px;
-            text-align: center;
+            gap: 50px; /* Spazio tra logo e titolo */
+            text-align: left;
+            border-bottom: 2px solid var(--border-bronzo);
+            padding-bottom: 30px;
         }
 
         .logo-container img {
-            max-width: 180px;
+            /* Logo aggiornato a logo.png */
+            max-width: 200px; 
             height: auto;
+            display: block;
         }
 
         .main-title {
             font-family: var(--font-heading);
-            font-size: 3rem;
+            font-size: 3.5rem;
             color: var(--text-dark);
             line-height: 1.1;
             font-weight: 700;
+            text-transform: uppercase;
         }
 
         /* --- SEZIONE TITOLI SEZIONI --- */
         .section-title {
             font-family: var(--font-heading);
-            font-size: 2rem;
+            font-size: 2.2rem;
             text-align: center;
-            margin-bottom: 30px;
-            border-bottom: 2px solid var(--border-bronzo);
-            padding-bottom: 10px;
+            margin-bottom: 40px;
             color: var(--text-dark);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         /* --- GRIGLIA VEICOLI --- */
         .veicoli-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
         }
 
         .veicolo-card {
             border: 2px solid var(--border-bronzo);
             background-color: var(--card-bg);
-            box-shadow: 5px 5px 0px rgba(0,0,0,0.05);
+            box-shadow: 5px 5px 0px rgba(0,0,0,0.1);
             overflow: hidden;
             display: flex;
             flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .veicolo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 8px 8px 0px rgba(0,0,0,0.15);
         }
 
         .veicolo-img-container {
             width: 100%;
-            height: 180px;
+            height: 220px;
             background-color: #e3dbc7;
             border-bottom: 2px solid var(--border-bronzo);
             overflow: hidden;
@@ -150,7 +128,7 @@
         }
 
         .veicolo-info {
-            padding: 20px;
+            padding: 25px;
             text-align: center;
             flex-grow: 1;
             display: flex;
@@ -160,49 +138,53 @@
 
         .veicolo-nome {
             font-family: var(--font-heading);
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             font-weight: bold;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
         .veicolo-prezzo {
             font-family: var(--font-heading);
-            font-size: 1.4rem;
-            color: #b71c1c; /* Colore in evidenza per il prezzo */
+            font-size: 1.6rem;
+            color: #b71c1c;
             margin-bottom: 15px;
             font-weight: bold;
         }
 
         .veicolo-desc {
-            font-size: 0.95rem;
-            margin-bottom: 15px;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            opacity: 0.9;
         }
 
         .richiedi-veicolo-btn {
             background-color: var(--border-bronzo);
             color: white;
-            border: 1px solid var(--border-bronzo);
-            padding: 8px 15px;
+            border: 2px solid var(--border-bronzo);
+            padding: 10px 20px;
             font-family: var(--font-heading);
+            font-size: 1.1rem;
             cursor: pointer;
             text-decoration: none;
             display: inline-block;
+            transition: background-color 0.2s;
         }
 
         .richiedi-veicolo-btn:hover {
             background-color: #a69166;
+            border-color: #a69166;
         }
 
         /* --- IMPORTO PERSONALIZZATO & PAYPAL --- */
         .custom-donate-section {
             display: flex;
-            gap: 40px;
+            gap: 60px;
             align-items: center;
             background-color: var(--card-bg);
-            border: 2px solid var(--border-bronzo);
-            padding: 30px;
-            margin-bottom: 60px;
-            box-shadow: 5px 5px 0px rgba(0,0,0,0.05);
+            border: 3px solid var(--border-bronzo);
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 8px 8px 0px rgba(0,0,0,0.15);
         }
 
         .custom-input-group {
@@ -212,8 +194,9 @@
         .custom-input-group label {
             display: block;
             font-family: var(--font-heading);
-            font-size: 1.1rem;
-            margin-bottom: 10px;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-weight: bold;
         }
 
         .input-wrapper {
@@ -225,32 +208,34 @@
             left: 15px;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 1.2rem;
+            font-size: 1.4rem;
+            font-weight: bold;
         }
 
         .input-wrapper input {
             width: 100%;
-            padding: 12px 15px 12px 40px;
-            border: 1px solid var(--border-bronzo);
+            padding: 15px 15px 15px 45px;
+            border: 2px solid var(--border-bronzo);
             font-family: var(--font-body);
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             background-color: #fff;
         }
 
         .custom-donate-btn {
             display: block;
             width: 100%;
-            margin-top: 15px;
-            background-color: #0070ba; /* Colore ufficiale brand PayPal */
+            margin-top: 20px;
+            background-color: #0070ba;
             color: #fff;
-            border: 2px solid var(--border-bronzo);
-            padding: 12px;
+            border: 2px solid #005ea6;
+            padding: 15px;
             font-family: var(--font-heading);
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             cursor: pointer;
             text-decoration: none;
             text-align: center;
             font-weight: bold;
+            transition: background-color 0.2s;
         }
         
         .custom-donate-btn:hover {
@@ -259,43 +244,36 @@
 
         .custom-text-group {
             flex: 2;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
         }
 
         /* --- FOOTER --- */
         .footer {
             border-top: 2px solid var(--border-bronzo);
             padding-top: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            text-align: center;
             font-size: 0.9rem;
-            flex-wrap: wrap;
-            gap: 20px;
+            opacity: 0.8;
+            margin-top: 40px;
         }
 
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .social-links a {
-            opacity: 0.7;
-            text-decoration: none;
-            color: var(--text-dark);
-            font-family: var(--font-heading);
-        }
-        .social-links a:hover { opacity: 1; }
-
+        /* Responsive adjustments */
         @media (max-width: 768px) {
+            .main-container {
+                padding: 20px;
+            }
             .header-main {
                 flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+            .main-title {
+                font-size: 2.5rem;
             }
             .custom-donate-section {
                 flex-direction: column;
-            }
-            .main-title {
-                font-size: 2.2rem;
+                gap: 30px;
+                padding: 20px;
             }
         }
     </style>
@@ -304,26 +282,14 @@
 
 <div class="main-container">
     
-    <!-- Barra di Navigazione Superiore -->
-    <nav class="top-nav">
-        <div class="nav-links">
-            <a href="#">Home</a>
-            <a href="#">Il Server</a>
-            <a href="#" class="active">Donazioni & Veicoli</a>
-            <a href="#">Staff</a>
-            <a href="#">Forum</a>
-        </div>
-        <a href="#donazione" class="dona-ora-btn">DONA ORA</a>
-    </nav>
-
     <!-- Header Principale (Logo + Titolo) -->
     <header class="header-main">
         <div class="logo-container">
-            <!-- Sostituisci "logo_roma_eterna.png" con il nome del tuo file logo -->
-            <img src="logo_roma_eterna.png" alt="Logo Roma Eterna">
+            <!-- Sostituisci "logo.png" con il nome del tuo file logo -->
+            <img src="logo.png" alt="Logo Server">
         </div>
         <div>
-            <h1 class="main-title">SOSTIENI IL SERVER<br>ROMA ETERNA</h1>
+            <h1 class="main-title">SOSTIENI IL SERVER<br>ETERNA</h1>
         </div>
     </header>
 
@@ -336,7 +302,7 @@
             <!-- Veicolo 1 -->
             <div class="veicolo-card">
                 <div class="veicolo-img-container">
-                    <!-- Inserisci l'immagine del veicolo sostituendo il link o il file -->
+                    <!-- Inserisci l'immagine del veicolo -->
                     <img src="veicolo1.jpg" alt="Nome Veicolo 1">
                 </div>
                 <div class="veicolo-info">
@@ -388,12 +354,12 @@
         
         <div class="custom-donate-section">
             <div class="custom-input-group">
-                <label for="importoDonazione">Importo Personalizzato / Veicolo:</label>
+                <label for="importoDonazione">Importo / Veicolo Scelto:</label>
                 <div class="input-wrapper">
                     <span>€</span>
                     <input type="number" id="importoDonazione" placeholder="Inserisci importo (es. 15)" min="1">
                 </div>
-                <!-- Link di PayPal: sostituisci l'attributo href con il tuo link diretto PayPal.me o bottone business -->
+                <!-- Link di PayPal: sostituisci l'attributo href con il tuo link diretto PayPal.me -->
                 <a href="https://paypal.me/TUONOMETRO" target="_blank" class="custom-donate-btn">
                     🔵 Dona con PayPal / Carta
                 </a>
@@ -401,20 +367,16 @@
             
             <div class="custom-text-group">
                 <p><strong>Come funziona?</strong></p>
-                <p>Aiutaci a mantenere e migliorare la nostra comunità di Roma Eterna. Tutte le donazioni vanno direttamente ai costi di gestione del server Dedicato, ottimizzazione e allo sviluppo di nuove funzionalità.</p>
-                <p style="margin-top: 10px; font-size: 0.95rem; opacity: 0.9;">*Dopo aver effettuato il pagamento su PayPal, apri un ticket su Discord inserendo la ricevuta e il nome del veicolo scelto per l'erogazione in-game.</p>
+                <p>Aiutaci a mantenere e migliorare la nostra comunità di Eterna. Tutte le donazioni vanno direttamente ai costi di gestione del server Dedicato, ottimizzazione e allo sviluppo di nuove funzionalità.</p>
+                <p style="margin-top: 15px; font-size: 1rem; opacity: 0.9;">*Dopo aver effettuato il pagamento su PayPal, apri un ticket su Discord inserendo la ricevuta e il nome del veicolo scelto per l'erogazione in-game.</p>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div>&copy; 2026 Roma Eterna Roleplay - Tutti i diritti riservati.</div>
-        <div class="social-links">
-            <a href="#">Discord</a>
-            <a href="#">TikTok</a>
-            <a href="#">Instagram</a>
-        </div>
+        <div>&copy; 2026 Eterna Roleplay - Tutti i diritti riservati.</div>
+        <!-- Link social rimossi come richiesto -->
     </footer>
 
 </div>
